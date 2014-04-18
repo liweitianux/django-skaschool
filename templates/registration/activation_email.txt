@@ -1,0 +1,14 @@
+Dear {% username %},
+
+Please follow the link below to activate your account at
+"2014 SKA Summer School".
+
+{% activation_key %}
+{% expiration_days %}
+{% site %}
+
+
+Best regards.
+
+2014 SKA Summer School Team
+
