@@ -11,10 +11,13 @@
 
 {% block content %}
   <div class="container">
+    <h2>注册账户</h2>
+    <br />
+
     <form role="form" class="form-horizontal" method="post">
       {% csrf_token %}
       {% bootstrap_form form layout='horizontal' %}
-      {% buttons submit='OK' reset='Cancel' layout='horizontal' %}{% endbuttons %}
+      {% buttons submit='提交' reset='取消' layout='horizontal' %}{% endbuttons %}
     </form>
   </div>
 {% endblock %}
