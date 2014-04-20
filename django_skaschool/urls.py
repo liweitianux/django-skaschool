@@ -11,20 +11,25 @@ from django.views.generic.base import TemplateView
 
 
 urlpatterns = patterns('',
+    # admin
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^page/', include('page.urls')),
+    # index page
     url(r'^$', TemplateView.as_view(template_name='index.html'),
         name='index'),
-)
-
-## demo
-urlpatterns += patterns('',
-    url(r'^demo/', include('demo.urls')),
+    # app 'page'
+    url(r'^page/', include('page.urls')),
 )
 
 ## django-registration
 urlpatterns += patterns('',
-    url(r'^accounts/', include('registration.backends.default.urls')),
+    # url(r'^accounts/', include('registration.backends.default.urls')),
+    url(r'^accounts/', include('account.urls')),
+)
+
+
+## demo
+urlpatterns += patterns('',
+    url(r'^demo/', include('demo.urls')),
 )
 
 ## staticfiles
