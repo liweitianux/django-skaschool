@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load url from future %}
+{% load bootstrap3 %}
+
+{# step 3. activating ... #}
+{% comment %}
+Note: This page is showed when activation failed.
+      Otherwise, it will be redirect to 'registration_activation_complete'
+{% endcomment %}
+
+{% block title %}
+激活失败 | 2014 SKA Summer School
+{% endblock %}
+
+{% block content %}
+  <div class="container">
+    <h2>激活失败</h2>
+    <p class="lead">Oops, 激活您的账户时遇到一点小问题，请检查激活链接是否正确并且没有过期……</p>
+    <p>如果您还是不能激活账户，请直接与我们联系：<a href="mailto:skaschool2014@163.com"><code>skaschool2014@163.com</code></a></p>
+  </div>
+{% endblock %}
+
+{# vim: set ts=8 sw=2 tw=0 fenc=utf-8 ft=htmldjango.html: #}

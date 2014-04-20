@@ -1,0 +1,16 @@
+/*
+ * skaschool website custom css
+ * base.css (linked in 'base.html')
+ *
+ * Weitian LI
+ */
+
+body {
+    position: relative; /* For scrollyspy */
+    padding-top: 52px; /* Account for fixed navbar */
+}
+
+.navbar-btn {
+    margin-left: 8px;
+}
+

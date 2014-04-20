@@ -1,0 +1,101 @@
+/*
+ * skaschool website custom css
+ * index.css
+ *
+ * Weitian LI
+ */
+
+.skaschool-home {
+    background: url(../images/skaschool-bg.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/skaschool-bg.jpg', sizingMethod='scale');
+    -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/skaschool-bg.jpg', sizingMethod='scale')";
+}
+
+.masthead {
+    color: #CCCCCC;
+    padding: 30px 15px;
+    position: relative;
+    text-align: center;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
+}
+.masthead h1 {
+    color: #EEEEEE;
+}
+.masthead .btn-outline-inverse {
+    margin: 10px;
+}
+.masthead-links {
+    list-style: none outside none;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    padding: 0 15px;
+    text-align: center;
+}
+.masthead-links li {
+    display: inline;
+}
+.masthead-links li + li {
+    margin-left: 10px;
+}
+.masthead-links a {
+    color: #EEEEEE;
+}
+@media (min-width: 768px) {
+  .masthead {
+      padding-top: 80px;
+      padding-bottom: 140px;
+      text-align: left;
+  }
+  .masthead .lead {
+      font-size: 20px;
+      margin-right: 25%;
+  }
+  .masthead .btn-outline-inverse {
+      font-size: 18px;
+      margin: 18px 5px 18px 0;
+      padding: 16px 20px;
+      width: auto;
+  }
+  .masthead-links {
+      padding: 0;
+      text-align: left;
+  }
+}
+
+/* Outline button for use within the docs */
+.btn-outline {
+    color: #563d7c;
+    background-color: #FFFFFF;
+    border-color: #e5e5e5;
+}
+.btn-outline:hover,
+.btn-outline:focus,
+.btn-outline:active {
+    color: #fff;
+    background-color: #563d7c;
+    border-color: #563d7c;
+}
+
+/* Inverted outline button (white on dark) */
+.btn-outline-inverse {
+    color: #E5E5E5;
+    background-color: transparent;
+    border-color: #E5E5E5;
+}
+.btn-outline-inverse:hover,
+.btn-outline-inverse:focus,
+.btn-outline-inverse:active {
+    color: #252525;
+    text-shadow: none;
+    background-color: #E5E5E5;
+    border-color: #E5E5E5;
+}
+
+footer {
+    color: #CCCCCC;
+}
+

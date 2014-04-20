@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load url from future %}
+{% load bootstrap3 %}
+
+{# step 2. registration complete #}
+
+{% block title %}
+注册完成 | 2014 SKA Summer School
+{% endblock %}
+
+{% block content %}
+  <div class="container">
+    <h2>注册完成</h2>
+    <p class="lead">
+      您已顺利完成注册。我们已向您注册使用的邮箱发送了激活邮件，请留意查收，并使用其中的链接激活账户。
+    </p>
+
+    <br />
+    <p>
+      还未收到激活邮件？
+      <a href="#" class="btn btn-default">重新发送激活邮件</a>
+    </p>
+  </div>
+{% endblock %}
+
+{# vim: set ts=8 sw=2 tw=0 fenc=utf-8 ft=htmldjango.html: #}

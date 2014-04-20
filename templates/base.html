@@ -1,25 +1,76 @@
-{% extends 'bootstrap.html' %}
+{% extends 'bootstrap3/bootstrap3.html' %}
 
-{% load url from future %}
+{% comment %}
+'base.html' for skaschool
+based on 'django-bootstrap3'
+
+Weitian LI <liweitianux@gmail.com>
+2014/04/19
+{% endcomment %}
 
 {% load bootstrap3 %}
+{% load url from future %}
+{% load staticfiles %}
 
-{% block bootstrap3_content %}
-    <div class="container">
-        <h1>{% block title %}(no title){% endblock %}</h1>
-
-        <p>
-            <a href="{% url 'home' %}">home</a>
-            <a href="{% url 'form_default' %}">form</a>
-            <a href="{% url 'form_horizontal' %}">form_horizontal</a>
-            <a href="{% url 'form_inline' %}">form_inline</a>
-            <a href="{% url 'form_with_files' %}">form_with_files</a>
-            <a href="{% url 'pagination' %}">pagination</a>
-        </p>
-
-        {% bootstrap_messages %}
-
-        {% block content %}(no content){% endblock %}
-    </div>
-
+{# title #}
+{% block bootstrap3_title %}
+  {% block title %}(title){% endblock %}
 {% endblock %}
+
+{# bootstrap3_extra_head #}
+{% block bootstrap3_extra_head %}
+  {# custom css #}
+  {% block custom_css %}
+    <link href="{% static 'css/base.css' %}" rel="stylesheet">
+    {# css_extra #}
+    {% block css_extra %}{% endblock %}
+  {% endblock %} {# custom_css #}
+  {# add favicon #}
+  {% block favicon %}
+    {% include 'favicon.html' %}
+  {% endblock %}
+{% endblock %}
+
+{# body #}
+{% block bootstrap3_content %}
+  {# add block page #}
+  {% block page %}
+  {# message #}
+  {% block message %}
+    {# show 'django.contrib.messages' in Bootstrap alert containers #}
+    {% bootstrap_messages %}
+  {% endblock %} {# message #}
+  {# header #}
+  {% block header %}
+  <header role="banner">
+    {# navigation bar #}
+    {% block navbar %}
+      {% include 'navbar.html' %}
+    {% endblock %} {# navbar #}
+    {# header_extra #}
+    {% block header_extra %}{% endblock %}
+  </header>
+  {% endblock %} {# header #}
+  {# main #}
+  {% block main %}
+  <main role="main">
+    {# sidebar #}
+    {% block sidebar %}{% endblock %}
+    {# content #}
+    {% block content %}{% endblock %}
+  </main>
+  {% endblock %} {# main #}
+  {# footer #}
+  {% block footer %}{% endblock %}
+  {% endblock page %} {# page #}
+{% endblock %} {# bootstrap3_content #}
+
+{# bootstrap3_extra_scripts #}
+{% block bootstrap3_extra_script %}
+  {# extra javascript files #}
+  {% block js_extra %}{% endblock %}
+  {# custom script (e.g. built-in js code) #}
+  {% block custom_script %}{% endblock %}
+{% endblock %} {# bootstrap3_extra_script #}
+
+{# vim: set ts=8 sw=2 tw=0 fenc=utf-8 ft=htmldjango.html: #}

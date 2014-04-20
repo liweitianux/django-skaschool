@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load url from future %}
+
+{# index page for skaschool #}
+
+{% block title %}
+首页 | 2014 SKA Summer School
+{% endblock %}
+
+{% block css_extra %}
+  <link href="{% static 'css/index.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+  <div class="container">
+    <h1>第二届 中国SKA暑期学校</h1>
+    <h1>暨 中国-新西兰联合SKA暑期学校</h1>
+    <h2>China-New Zealand Joint SKA Summer School</h2>
+
+    <br />
+    <p class="lead">
+      上海，2014，6月28日-7月5日 <br />
+      June 28 - July 05, 2014, Shanghai
+    </p>
+
+    <br />
+    <p>
+      <a href="#" class="btn btn-outline-inverse btn-lg">了解更多</a>
+      <a href="{% url 'registration_register' %}" class="btn btn-outline-inverse btn-lg">注册参加</a>
+    </p>
+  </div>
+{% endblock %} {# content #}
+
+{% block footer %}
+  <footer class="container" role="contentinfo">
+    <p>Brought to you by: <strong>Weitian LI</strong>.</p>
+    <ul class="masthead-links">
+      <li>Powered by:</li>
+      <li><a href="https://www.djangoproject.com/">Django</a></li>
+      <li><a href="http://getbootstrap.com/">Bootstrap</a></li>
+    </ul>
+  </footer>
+{% endblock %}
+
+{% block js_extra %}
+  <script src="{% static 'js/index.js' %}" type="text/javascript"></script>
+{% endblock %}
+
+{# vim: set ts=8 sw=2 tw=0 fenc=utf-8 ft=htmldjango.html: #}

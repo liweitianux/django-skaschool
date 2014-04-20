@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load url from future %}
+{% load bootstrap3 %}
+
+{# step 4. activation complete #}
+
+{% block title %}
+成功激活 | 2014 SKA Summer School
+{% endblock %}
+
+{% block content %}
+  <div class="container">
+    <h2>成功激活</h2>
+    <p class="lead">您已成功激活账户。</p>
+
+    <br />
+    <p><a href="#" class="btn btn-primary">登录</a></p>
+  </div>
+{% endblock %}
+
+{# vim: set ts=8 sw=2 tw=0 fenc=utf-8 ft=htmldjango.html: #}

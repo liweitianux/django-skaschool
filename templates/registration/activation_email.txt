@@ -1,11 +1,11 @@
-Dear {% username %},
+Hello,
 
 Please follow the link below to activate your account at
-"2014 SKA Summer School".
+"2014 SKA Summer School"({{ site }}).
 
-{% activation_key %}
-{% expiration_days %}
-{% site %}
+http://{{ site }}/accounts/activate/{{ activation_key }}
+
+Note: this link will expire in {{ expiration_days }} days.
 
 
 Best regards.
