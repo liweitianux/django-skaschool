@@ -33,7 +33,7 @@
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">English</a></li>
+        <!-- <li><a href="#">English</a></li> -->
         {% if user.is_authenticated %}
         <li><a href="{% url 'profile' %}" class="navbar-link">{{ user.username }}</a></li>
         <li><div><a href="{% url 'logout' %}" class="btn btn-default navbar-btn">退出</a></div></li>

@@ -12,9 +12,57 @@
 {% block content %}
   <div class="container">
     <h2>个人主页</h2>
-    <p class="lead">TODO ...</p>
+    <br>
 
-    <br />
+    <table class="table table-striped table-bordered table-hover">
+      <tbody>
+        <tr>
+          <th class="profile-name">姓名</th>
+          <td class="profile-name-data">{{ profile.realname }}</td>
+        </tr>
+        <tr>
+          <th class="profile-email">邮箱</th>
+          <td class="profile-email-data">{{ user.email }}</td>
+        </tr>
+        <tr>
+          <th class="profile-institute">单位</th>
+          <td class="profile-institute-data">{{ profile.institute }}</td>
+        </tr>
+        <tr>
+          <th class="profile-approval">是否审定</th>
+          <td class="profile-approval-data">
+            {% if profile.is_approved == 'Y' %}
+            <span class="glyphicon glyphicon-ok"></span> <span class="label label-success">是</span>
+            {% elif profile.is_approved == 'N' %}
+            <span class="glyphicon glyphicon-remove"></span> <span class="label label-warning">否</span>
+            {% elif profile.is_approved == 'C' %}
+            <span class="glyphicon glyphicon-question-sign"></span> <span class="label label-default">审核中</span>
+            {% else %}
+            <span class="glyphicon glyphicon-warning-sign"></span> <span class="label label-danger">错误</span>
+            {% endif %}
+          </td>
+        </tr>
+        <tr>
+          <th class="profile-sponsorship">是否资助</th>
+          <td class="profile-sponsorship-data">
+            {% if profile.is_sponsored == 'Y' %}
+            <span class="glyphicon glyphicon-ok"></span> <span class="label label-success">是</span>
+            {% elif profile.is_sponsored == 'N' %}
+            <span class="glyphicon glyphicon-remove"></span> <span class="label label-warning">否</span>
+            {% elif profile.is_sponsored == 'C' %}
+            <span class="glyphicon glyphicon-question-sign"></span> <span class="label label-default">审核中</span>
+            {% else %}
+            <span class="glyphicon glyphicon-warning-sign"></span> <span class="label label-danger">错误</span>
+            {% endif %}
+          </td>
+        </tr>
+    </table>
+
+    <br>
+    <p>
+      <a href="#" class="btn btn-default">编辑个人信息</a>
+      <a href="{% url 'password_change' %}" class="btn btn-default">修改密码</a>
+    </p>
   </div>
 {% endblock %}
 
