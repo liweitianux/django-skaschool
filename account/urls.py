@@ -7,6 +7,7 @@ customize 'registration.backends.default.urls' to use custom form
 
 from django.conf.urls import patterns, include, url
 from django.views.generic.base import TemplateView
+from django.contrib.auth.decorators import login_required
 
 from registration.backends.default.views import ActivationView
 from registration.backends.default.views import RegistrationView
@@ -40,6 +41,10 @@ urlpatterns = patterns('',
     url(r'^activate/(?P<activation_key>\w+)/$',
         ActivationView.as_view(),
         name='registration_activate'),
+    ## profile
+    url(r'^profile/$',
+        login_required(TemplateView.as_view(template_name='account/profile.html')),
+        name='profile'),
     ## django auth views
     # login
     url(r'^login/$', 'django.contrib.auth.views.login',
@@ -49,10 +54,16 @@ urlpatterns = patterns('',
     url(r'^logout/$', 'django.contrib.auth.views.logout',
         {'template_name': 'account/logout.html'},
         name='logout'),
-    # profile
-    url(r'^profile/$',
-        TemplateView.as_view(template_name='account/profile.html'),
-        name='profile'),
+    # change password
+    # If 'post_change_redirect' not provided,
+    # then redirect to url 'password_change_done'.
+    url(r'^password/change/$', 'django.contrib.auth.views.password_change',
+        {'template_name': 'account/password_change.html'},
+        name='password_change'),
+    # change password done
+    url(r'^password/change/done$', 'django.contrib.auth.views.password_change_done',
+        {'template_name': 'account/password_change_done.html'},
+        name='password_change_done'),
 )
 
 
