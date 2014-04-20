@@ -96,6 +96,18 @@ USE_TZ = True
 # contrib.sites
 SITE_ID = 1
 
+# The URL where requests are redirected after login when the
+# 'contrib.auth.login' view gets no 'next' parameter.
+LOGIN_REDIRECT_URL = '/accounts/profile/'
+
+# The URL where requests are redirected for login,
+# especially when using the 'login_required()' decorator.
+LOGIN_URL = '/accounts/login/'
+
+# The URL redirected to after logout
+LOGOUT_URL = '/accounts/logout/'
+
+
 ## template directories
 TEMPLATE_DIRS = (
     # Don't forget to use absolute paths, not relative paths.
