@@ -21,6 +21,20 @@
           <td class="profile-name-data">{{ profile.realname }}</td>
         </tr>
         <tr>
+          <th class="profile-gender">性别</th>
+          <td class="profile-gender-data">
+            {% if profile.gender == 'M' %}
+            男
+            {% elif profile.gender == 'F' %}
+            女
+            {% elif profile.gender == 'X' %}
+            <span class="glyphicon glyphicon-ban-circle"></span>
+            {% else %}
+            <span class="glyphicon glyphicon-warning-sign"></span> <span class="label label-danger">系统错误</span>
+            {% endif %}
+          </td>
+        </tr>
+        <tr>
           <th class="profile-email">邮箱</th>
           <td class="profile-email-data">{{ user.email }}</td>
         </tr>
@@ -38,7 +52,7 @@
             {% elif profile.is_approved == 'C' %}
             <span class="glyphicon glyphicon-question-sign"></span> <span class="label label-default">审核中</span>
             {% else %}
-            <span class="glyphicon glyphicon-warning-sign"></span> <span class="label label-danger">错误</span>
+            <span class="glyphicon glyphicon-warning-sign"></span> <span class="label label-danger">系统错误</span>
             {% endif %}
           </td>
         </tr>
@@ -52,7 +66,7 @@
             {% elif profile.is_sponsored == 'C' %}
             <span class="glyphicon glyphicon-question-sign"></span> <span class="label label-default">审核中</span>
             {% else %}
-            <span class="glyphicon glyphicon-warning-sign"></span> <span class="label label-danger">错误</span>
+            <span class="glyphicon glyphicon-warning-sign"></span> <span class="label label-danger">系统错误</span>
             {% endif %}
           </td>
         </tr>
@@ -60,7 +74,7 @@
 
     <br>
     <p>
-      <a href="#" class="btn btn-default">编辑个人信息</a>
+      <a href="{% url 'profile_update' %}" class="btn btn-default">更新个人信息</a>
       <a href="{% url 'password_change' %}" class="btn btn-default">修改密码</a>
     </p>
   </div>

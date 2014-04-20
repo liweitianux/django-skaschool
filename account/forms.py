@@ -8,6 +8,8 @@ from django import forms
 from registration.forms import RegistrationFormUniqueEmail
 from django.utils.translation import ugettext_lazy as _
 
+from account.models import UserProfile
+
 
 class UserRegForm(RegistrationFormUniqueEmail):
     """
@@ -36,5 +38,17 @@ class UserRegForm(RegistrationFormUniqueEmail):
                 'gender',
                 'institute',
         ]
+
+
+class UpdateProfileForm(forms.ModelForm):
+    """
+    ModelForm of 'UserProfile' used in 'UpdateProfileView'
+    """
+    # extra email field
+    email = forms.EmailField(label=_("E-mail"))
+
+    class Meta:
+        model = UserProfile
+        fields = ('realname', 'gender', 'institute')
 
 

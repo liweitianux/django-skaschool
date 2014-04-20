@@ -37,6 +37,7 @@ class UserProfile(models.Model):
         ('C', _("Checking")),
     )
     # model fields
+    # FK default backward manager name 'userprofile_set'
     user = models.ForeignKey(User, unique=True, verbose_name=_("Username"))
     realname = models.CharField(_("Name"), max_length=30)
     gender = models.CharField(_("Gender"), max_length=1, choices=GENDERS)

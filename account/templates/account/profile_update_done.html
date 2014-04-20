@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load url from future %}
+{% load bootstrap3 %}
+
+{# login template #}
+
+{% block title %}
+信息已更新 | 2014 SKA Summer School
+{% endblock %}
+
+{% block content %}
+  <div class="container">
+    <h2>信息已更新</h2>
+    <p class="lead">您的个人信息已更新。</p>
+    <br>
+    <p><a href="{% url 'profile' %}" class="btn btn-default">返回个人主页</a></p>
+  </div>
+{% endblock %}
+
+{# vim: set ts=8 sw=2 tw=0 fenc=utf-8 ft=htmldjango.html: #}
