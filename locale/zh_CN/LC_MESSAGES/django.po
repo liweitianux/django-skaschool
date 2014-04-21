@@ -1,0 +1,135 @@
+# zh_CN messages for django_skaschool project.
+# Copyright (C) 2014 Weitian LI
+# This file is distributed under the same license as the 'django_skaschool' package.
+# Weitian LI <liweitianux@gmail.com>, 2014.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: 0.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-04-21 17:42+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Weitian LI <liweitianux@gmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: account/forms.py:22 account/models.py:58
+msgid "Name"
+msgstr "姓名"
+
+#: account/forms.py:23 account/models.py:59
+msgid "Gender"
+msgstr "性别"
+
+#: account/forms.py:24 account/models.py:60
+msgid "Institute"
+msgstr "单位"
+
+#: account/forms.py:25 account/models.py:61
+msgid "Identify"
+msgstr "身份"
+
+#: account/forms.py:47
+msgid "E-mail"
+msgstr "邮箱"
+
+#: account/models.py:23
+msgid "Male"
+msgstr "男"
+
+#: account/models.py:24
+msgid "Female"
+msgstr "女"
+
+#: account/models.py:25
+msgid "Secret"
+msgstr "保密"
+
+#: account/models.py:29 account/models.py:35
+msgid "Yes"
+msgstr "是"
+
+#: account/models.py:30 account/models.py:36
+msgid "No"
+msgstr "否"
+
+#: account/models.py:31 account/models.py:37
+msgid "Checking"
+msgstr "审核中"
+
+#: account/models.py:41
+msgid "Other"
+msgstr "其他"
+
+#: account/models.py:42
+msgid "Undergraudate"
+msgstr "本科生"
+
+#: account/models.py:43
+msgid "Master graudate"
+msgstr "硕士研究生"
+
+#: account/models.py:44
+msgid "PhD graudate"
+msgstr "博士研究生"
+
+#: account/models.py:45
+msgid "Post-doctoral"
+msgstr "博士后"
+
+#: account/models.py:46
+msgid "Assistant researcher"
+msgstr "助理研究员"
+
+#: account/models.py:47
+msgid "Associate researcher"
+msgstr "副研究员"
+
+#: account/models.py:48
+msgid "Distinguished researcher"
+msgstr "特别研究员"
+
+#: account/models.py:49
+msgid "Researcher"
+msgstr "研究员"
+
+#: account/models.py:50
+msgid "Instructor"
+msgstr "讲师"
+
+#: account/models.py:51
+msgid "Assistant professor"
+msgstr "助理教授"
+
+#: account/models.py:52
+msgid "Associate professor"
+msgstr "副教授"
+
+#: account/models.py:53
+msgid "Professor"
+msgstr "教授"
+
+#: account/models.py:57
+msgid "Username"
+msgstr "用户名"
+
+#: account/models.py:63
+msgid "Is approved"
+msgstr "是否审定"
+
+#: account/models.py:65
+msgid "Is sponsored"
+msgstr "是否资助"
+
+#: account/models.py:69
+msgid "user profile"
+msgstr "用户信息"
+
+#: account/models.py:70
+msgid "user profiles"
+msgstr "用户信息"
