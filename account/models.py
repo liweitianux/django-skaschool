@@ -36,12 +36,29 @@ class UserProfile(models.Model):
         ('N', _("No")),
         ('C', _("Checking")),
     )
+    # choices for identify
+    IDENTIFIES = (
+        ('OT', _("Other")),
+        ('UG', _("Undergraudate")),
+        ('MG', _("Master graudate")),
+        ('PG', _("PhD graudate")),
+        ('PD', _("Post-doctoral")),
+        ('SR', _("Assistant researcher")),
+        ('AR', _("Associate researcher")),
+        ('DR', _("Distinguished researcher")),
+        ('RE', _("Researcher")),
+        ('IN', _("Instructor")),
+        ('SP', _("Assistant professor")),
+        ('AP', _("Associate professor")),
+        ('PR', _("Professor")),
+    )
     # model fields
     # FK default backward manager name 'userprofile_set'
     user = models.ForeignKey(User, unique=True, verbose_name=_("Username"))
     realname = models.CharField(_("Name"), max_length=30)
     gender = models.CharField(_("Gender"), max_length=1, choices=GENDERS)
     institute = models.CharField(_("Institute"), max_length=100)
+    identify = models.CharField(_("Identify"), max_length=2, choices=IDENTIFIES)
     # store the infomation about approval and sponsorship
     is_approved = models.CharField(_("Is approved"), max_length=1,
             choices=APPROVED_STATUS, default='C')

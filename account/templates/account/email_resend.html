@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load url from future %}
+{% load bootstrap3 %}
+
+{# resend activation email done #}
+
+{% block title %}
+重新发送激活邮件 | 2014 SKA Summer School
+{% endblock %}
+
+{% block content %}
+  <div class="container">
+    <h2>重新发送激活邮件</h2>
+    <br>
+
+    <form role="form" class="form-horizontal" method="post">
+      {% csrf_token %}
+      {% bootstrap_form form layout='horizontal' %}
+      {% buttons submit='提交' reset='重置' layout='horizontal' %}{% endbuttons %}
+    </form>
+  </div>
+{% endblock %}
+
+{% block js_extra %}
+  <script src="{% static 'js/account_email_resend.js' %}" type="text/javascript"></script>
+{% endblock %}
+
+{# vim: set ts=8 sw=2 tw=0 fenc=utf-8 ft=htmldjango.html: #}

@@ -6,16 +6,31 @@ views.py of app 'account'
 
 from django.shortcuts import render
 from django.views.generic.base import TemplateView
-from django.views.generic.edit import UpdateView
+from django.views.generic.edit import FormView, UpdateView
 from django.views.generic.list import ListView
 from django.core.urlresolvers import reverse_lazy
 from django.http import HttpResponseRedirect
 
 from account.models import UserProfile
-from account.forms import UpdateProfileForm
+from account.forms import ResendEmailForm, UpdateProfileForm
 
 
 ###### Class-based views ######
+class ResendEmailView(FormView):
+    """
+    class-based view used to resend activation email
+    if user provided different email, then update email to User instance
+    """
+    form_class = ResendEmailForm
+    template_name = 'account/email_resend.html'
+    success_url = reverse_lazy('email_resend_done')
+
+    def form_valid(self, form):
+        form.update_email()
+        form.resend_email()
+        return super(ResendEmailView, self).form_valid(form)
+
+
 class ProfileView(TemplateView):
     """
     class view to show profile page

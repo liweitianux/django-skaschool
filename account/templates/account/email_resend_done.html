@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load url from future %}
+{% load bootstrap3 %}
+
+{# resend activation email done #}
+
+{% block title %}
+已重新发送激活邮件 | 2014 SKA Summer School
+{% endblock %}
+
+{% block content %}
+  <div class="container">
+    <h2>已重新发送激活邮件</h2>
+    <p class="lead">
+      我们已向您注册使用的邮箱重新发送了激活邮件，请留意查收，并使用其中的链接激活账户。
+    </p>
+
+    <br>
+    <p>如果您还未收到激活邮件，或者激活链接已过期，请直接联系我们以激活账户：<a href="mailto:skaschool2014@163.com"><code>skaschool2014@163.com</code></a></p>
+  </div>
+{% endblock %}
+
+{# vim: set ts=8 sw=2 tw=0 fenc=utf-8 ft=htmldjango.html: #}

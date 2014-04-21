@@ -12,7 +12,7 @@ from django.contrib.auth.decorators import login_required
 from registration.backends.default.views import ActivationView
 from registration.backends.default.views import RegistrationView
 
-from account.views import ProfileView, UpdateProfileView, ListApprovedView
+from account.views import ResendEmailView, ProfileView, UpdateProfileView, ListApprovedView
 from account.forms import UserRegForm
 
 
@@ -38,6 +38,14 @@ urlpatterns = patterns('',
     url(r'^logout/$', 'django.contrib.auth.views.logout',
         {'template_name': 'account/logout.html'},
         name='logout'),
+    # resend activate email
+    url(r'^email/resend/$',
+        ResendEmailView.as_view(),
+        name='email_resend'),
+    # resend activate email done
+    url(r'^email/resend/done/$',
+        TemplateView.as_view(template_name='account/email_resend_done.html'),
+        name='email_resend_done'),
     # change password
     # If 'post_change_redirect' not provided,
     # then redirect to url 'password_change_done'.
