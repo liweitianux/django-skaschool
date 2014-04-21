@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load url from future %}
+{% load bootstrap3 %}
+
+{# login template #}
+
+{% block title %}
+审定名单 | 2014 SKA Summer School
+{% endblock %}
+
+{% block content %}
+  <div class="container">
+    <h2>审定名单</h2>
+    <br>
+    {% if object_list %}
+      <table class="table table-striped table-bordered table-hover">
+        <thead>
+          <tr>
+            <th class="col-md-1">序号</th>
+            <th class="col-md-3">姓名</th>
+            <th class="col-md-8">单位</th>
+          </tr>
+        </thead>
+        <tbody>
+        {# mark out current user if approved #}
+        {% for profile in object_list %}
+          <tr{% if profile.user == user %} class="success"{% endif %}>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ profile.realname }}</td>
+            <td>{{ profile.institute }}</td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+      <p>（注：按注册先后排序）</p>
+    {% else %}
+    <div class="alert alert-warning">
+      审核正在进行，请稍后查询……
+    </div>
+    {% endif %}
+  </div>
+{% endblock %}
+
+{# vim: set ts=8 sw=2 tw=0 fenc=utf-8 ft=htmldjango.html: #}

@@ -55,6 +55,18 @@ class UserProfile(models.Model):
     def __unicode__(self):
         return u'UserProfile for %s' % self.user
 
+    def get_approved(self, *args, **kwargs):
+        """
+        return list of approved object
+        """
+        return self.objects.filter(is_approved='Y')
+
+    def get_sponsored(self, *args, **kwargs):
+        """
+        return list of sponsored object
+        """
+        return self.objects.filter(is_sponsored='Y')
+
 
 ###### signal callback ######
 def user_registered_callback(sender, user, request, **kwargs):

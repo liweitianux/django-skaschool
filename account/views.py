@@ -7,6 +7,7 @@ views.py of app 'account'
 from django.shortcuts import render
 from django.views.generic.base import TemplateView
 from django.views.generic.edit import UpdateView
+from django.views.generic.list import ListView
 from django.core.urlresolvers import reverse_lazy
 from django.http import HttpResponseRedirect
 
@@ -28,6 +29,7 @@ class ProfileView(TemplateView):
         context['user'] = user
         context['profile'] = profile
         return context
+
 
 class UpdateProfileView(UpdateView):
     form_class = UpdateProfileForm
@@ -64,5 +66,24 @@ class UpdateProfileView(UpdateView):
         user.email = form_data.get('email', user.email)
         user.save()
         return super(UpdateProfileView, self).form_valid(form)
+
+
+class ListApprovedView(ListView):
+    """
+    class-based view to show list of approved users
+    """
+    queryset = UserProfile.objects.filter(is_approved='Y')
+    template_name = 'account/list_approved.html'
+    # allow queryset/model returns no object, otherwise 404error raised
+    allow_empty = True
+
+    def get_context_data(self, **kwargs):
+        """
+        add 'user' context
+        """
+        context = super(ListApprovedView, self).get_context_data(**kwargs)
+        user = self.request.user
+        context['user'] = user
+        return context
 
 

@@ -12,7 +12,7 @@ from django.contrib.auth.decorators import login_required
 from registration.backends.default.views import ActivationView
 from registration.backends.default.views import RegistrationView
 
-from account.views import ProfileView, UpdateProfileView
+from account.views import ProfileView, UpdateProfileView, ListApprovedView
 from account.forms import UserRegForm
 
 
@@ -48,6 +48,9 @@ urlpatterns = patterns('',
     url(r'^password/change/done$', 'django.contrib.auth.views.password_change_done',
         {'template_name': 'account/password_change_done.html'},
         name='password_change_done'),
+    ## show approved user list
+    url(r'^list/approved/$', login_required(ListApprovedView.as_view()),
+        name='list_approved'),
 )
 
 urlpatterns += patterns('',
