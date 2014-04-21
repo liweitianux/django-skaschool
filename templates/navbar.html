@@ -24,10 +24,8 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">更多 <b class="caret"></b></a>
           <ul class="dropdown-menu">
-            {% if user.is_authenticated %}
             <li><a href="{% url 'list_approved' %}">审定名单</a></li>
-            {% endif %}
-            <li><a href="#">下载</a></li>
+            <li><a href="#">资料下载</a></li>
             <li><a href="#">赞助方</a></li>
             <li><a href="#">联系方式</a></li>
             <li class="divider"></li>
