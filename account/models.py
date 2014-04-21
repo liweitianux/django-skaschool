@@ -6,7 +6,6 @@
 
 from django.db import models
 from django.contrib.auth.models import User
-from django.contrib import admin
 
 from django.utils.translation import ugettext_lazy as _
 
@@ -129,11 +128,5 @@ def user_registered_callback(sender, user, request, **kwargs):
 
 ### connect 'user_registered_callback' to signal
 user_registered.connect(user_registered_callback)
-
-
-### add to adim
-admin.site.register([
-    UserProfile,
-])
 
 
