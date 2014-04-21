@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 {% load url from future %}
+{% load i18n %}
 {% load bootstrap3 %}
 
 {# login template #}
@@ -41,6 +42,10 @@
         <tr>
           <th class="profile-institute">单位</th>
           <td class="profile-institute-data">{{ profile.institute }}</td>
+        </tr>
+        <tr>
+          <th class="profile-identify">身份</th>
+          <td class="profile-identify-data">{% trans profile.get_identify_value %}</td>
         </tr>
         <tr>
           <th class="profile-approval">是否审定</th>

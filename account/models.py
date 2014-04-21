@@ -17,8 +17,8 @@ class UserProfile(models.Model):
     """
     custom user profile
     connected with signal 'user_registered' sent by 'django-registration'
+    NOTE: keep this model fields consistent with 'user_registered_callback'
     """
-    # XXX: keep consistent with GENDERS in 'forms.UserRegForm'
     GENDERS = (
         ('M', _("Male")),
         ('F', _("Female")),
@@ -84,6 +84,34 @@ class UserProfile(models.Model):
         """
         return self.objects.filter(is_sponsored='Y')
 
+    def get_gender_value(self):
+        """
+        return the corresponding value of user's gender
+        """
+        genders_dict = dict((k, v) for k, v in self.GENDERS)
+        return genders_dict.get(self.gender)
+
+    def get_approved_value(self):
+        """
+        return the corresponding value of is_approved for the user
+        """
+        approved_dict = dict((k, v) for k, v in self.APPROVED_STATUS)
+        return approved_dict.get(self.is_approved)
+
+    def get_sponsored_value(self):
+        """
+        return the corresponding value of is_sponsored for the user
+        """
+        sponsored_dict = dict((k, v) for k, v in self.SPONSORED_STATUS)
+        return sponsored_dict.get(self.is_sponsored)
+
+    def get_identify_value(self):
+        """
+        return the corresponding value of identify for the user
+        """
+        identifies_dict = dict((k, v) for k, v in self.IDENTIFIES)
+        return identifies_dict.get(self.identify)
+
 
 ###### signal callback ######
 def user_registered_callback(sender, user, request, **kwargs):
@@ -96,6 +124,7 @@ def user_registered_callback(sender, user, request, **kwargs):
     profile.realname = request.POST['realname']
     profile.gender = request.POST['gender']
     profile.institute = request.POST['institute']
+    profile.identify = request.POST['identify']
     profile.save()
 
 ### connect 'user_registered_callback' to signal
