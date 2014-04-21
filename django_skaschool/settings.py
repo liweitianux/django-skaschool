@@ -138,6 +138,8 @@ STATIC_URL = '/static/'
 ## media root
 # absolute filesystem path to the directory that hold user-uploaded files
 #MEDIA_ROOT = '/var/www/example.com/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media_root')
+
 # media url
 MEDIA_URL = '/media/'
 
