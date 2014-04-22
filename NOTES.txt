@@ -3,3 +3,9 @@ Notes and Documents on django
 1. Django Class Based Generic Views (The Good, The Bad, And the Ugly)
 http://glitterbug.in/blog/django-class-based-generic-views-the-good-the-bad-/show/
 
+2. Django documentation: The contenttypes framework
+https://docs.djangoproject.com/en/1.6/ref/contrib/contenttypes/
+  GenericForeignKey, GenericRelation, GenericInlineModelAdmin
+  * serializing references to ContentType objects:
+    [natural keys] dumpdata --natural
+
