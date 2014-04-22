@@ -9,7 +9,6 @@ from django.views.generic.base import TemplateView
 
 
 ###### class-based views ######
-## IndexView: used in 'django_skaschool/urls' as index
 
 
 
