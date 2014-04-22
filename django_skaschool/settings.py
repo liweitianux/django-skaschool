@@ -144,10 +144,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media_root')
 MEDIA_URL = '/media/'
 
 ## email settings
-try:
-    from settings_email import *
-except ImportError:
-    pass
+from settings_email import *
 
 
 #################################################
