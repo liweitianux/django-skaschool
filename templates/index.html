@@ -26,8 +26,10 @@
 
     <br>
     <p>
-      <a href="#" class="btn btn-outline-inverse btn-lg">了解更多</a>
+      <a href="{% url 'introduction' %}" class="btn btn-outline-inverse btn-lg">了解更多</a>
+      {% if not user.is_authenticated %}
       <a href="{% url 'registration_register' %}" class="btn btn-outline-inverse btn-lg">注册参加</a>
+      {% endif %}
     </p>
   </div>
 {% endblock %} {# content #}
