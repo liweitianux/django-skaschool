@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load url from future %}
+{% load i18n %}
+{% load bootstrap3 %}
+
+{# template to show notice list #}
+
+{% block title %}
+全部通知 | 2014 SKA Summer School
+{% endblock %}
+
+{% block css_extra %}
+  <link href="{% static 'css/list_notice.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+  <div class="container">
+    <h2>全部通知</h2>
+    <br>
+    {% for notice in object_list %}
+    <div class="notice-title">
+      <h3>{{ notice.title }} {% if notice.is_important %}<span class="label label-primary">重要</span>{% endif %}</h3>
+      <p>{{ notice.show_pubtime }}, {{ notice.category.category_name }}</p>
+    </div>
+    <div class="notice-content">
+      {{ notice.contents }}
+    </div>
+      {% if notice.attachments %}
+      <div class="notice-attachment">
+        <ul class="list-unstyled">
+        {% for attachment in notice.get_attachment_list %}
+          <li>
+            附件{{ forloop.counter }}：
+            <a href="{{ attachment.attachment.url }}">{{ attachment.title }}</a>
+          </li>
+        {% endfor %}
+        </ul>
+      </div>
+      {% endif %}
+    <br>
+    {% empty %}
+    <div class="alert alert-info">
+      暂时没有通知，多谢您的关注……
+    </div>
+    {% endfor %}
+  </div>
+{% endblock %}
+
+{# vim: set ts=8 sw=2 tw=0 fenc=utf-8 ft=htmldjango.html: #}

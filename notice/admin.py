@@ -19,4 +19,5 @@ class NoticeAdmin(admin.ModelAdmin):
 ## register to admin
 admin.site.register(Notice, NoticeAdmin)
 admin.site.register(NoticeCategory)
+admin.site.register(NoticeAttachment)
 

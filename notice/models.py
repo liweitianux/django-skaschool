@@ -28,6 +28,15 @@ class Notice(models.Model):
     def __unicode__(self):
         return u'Notice at %s' % self.pubtime.isoformat()
 
+    def show_pubtime(self):
+        # used in 'list_notice.html' template
+        return self.pubtime.strftime('%Y-%m-%d')
+
+    def get_attachment_list(self):
+        # used in 'list_notice.html' template,
+        # because 'GenericRelatedObjectManager' is not iterable
+        return list(self.attachments.all())
+
 
 class NoticeCategory(models.Model):
     """
@@ -45,6 +54,8 @@ class NoticeCategory(models.Model):
 
 
 class NoticeAttachment(models.Model):
+    title = models.CharField(_("Title"), max_length=100)
+    description = models.TextField(_("Description"))
     attachment = models.FileField(upload_to='notice/attachments',
             verbose_name=_("Attachment"))
     content_type = models.ForeignKey(ContentType)
