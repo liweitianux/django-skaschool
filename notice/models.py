@@ -3,7 +3,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.contrib.contenttypes.models import ContentType
-from django.contrib.contenttypes.generic import GenericForeignKey
+from django.contrib.contenttypes import generic
 from django.utils.translation import ugettext_lazy as _
 
 
@@ -17,7 +17,8 @@ class Notice(models.Model):
     publisher = models.ForeignKey(User, verbose_name=_("Publisher"))
     is_important = models.BooleanField(_("Is important"), default=False)
     contents = models.TextField(_("Contents"))
-    # NoticeAttachments to deal with attachments
+    # NoticeAttachment to deal with attachments
+    attachments = generic.GenericRelation('NoticeAttachment')
 
     class Meta:
         verbose_name = _('notice')
@@ -46,8 +47,8 @@ class NoticeCategory(models.Model):
 class NoticeAttachment(models.Model):
     attachment = models.FileField(upload_to='notice/attachments',
             verbose_name=_("Attachment"))
-    content_type = models.ForeignKey(ContentType, verbose_name=_("Content type"))
-    object_id = models.PositiveIntegerField(_("Object ID"))
-    content_object = GenericForeignKey("content_type", "object_id")
+    content_type = models.ForeignKey(ContentType)
+    object_id = models.PositiveIntegerField()
+    content_object = generic.GenericForeignKey("content_type", "object_id")
 
 

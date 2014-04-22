@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 
 from django.contrib import admin
-from django.contrib.contenttypes.generic import GenericTabularInline
+from django.contrib.contenttypes import generic
 
 from notice.models import Notice, NoticeCategory, NoticeAttachment
 
 
-class NoticeAttachmentInline(GenericTabularInline):
+class NoticeAttachmentInline(generic.GenericTabularInline):
     model = NoticeAttachment
 
 

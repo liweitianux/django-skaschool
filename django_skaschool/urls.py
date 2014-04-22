@@ -27,11 +27,6 @@ urlpatterns += patterns('',
 )
 
 
-## demo
-urlpatterns += patterns('',
-    url(r'^demo/', include('demo.urls')),
-)
-
 ## staticfiles
 if settings.DEBUG:
     urlpatterns += staticfiles_urlpatterns()
