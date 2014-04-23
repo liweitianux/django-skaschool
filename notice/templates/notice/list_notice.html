@@ -29,7 +29,7 @@
       {% if notice.attachments %}
       <div class="notice-attachment">
         <ul class="list-unstyled">
-        {% for attachment in notice.get_attachment_list %}
+        {% for attachment in notice.attachments.all %}
           <li>
             附件{{ forloop.counter }}：
             <a href="{{ attachment.attachment.url }}">{{ attachment.title }}</a>

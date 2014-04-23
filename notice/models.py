@@ -32,11 +32,6 @@ class Notice(models.Model):
         # used in 'list_notice.html' template
         return self.pubtime.strftime('%Y-%m-%d')
 
-    def get_attachment_list(self):
-        # used in 'list_notice.html' template,
-        # because 'GenericRelatedObjectManager' is not iterable
-        return list(self.attachments.all())
-
 
 class NoticeCategory(models.Model):
     """
