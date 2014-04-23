@@ -18,18 +18,19 @@
       <ul class="nav navbar-nav">
         <li><a href="{% url 'introduction' %}">介绍</a></li>
         <li><a href="{% url 'list_notice' %}">通知</a></li>
-        <li><a href="#">日程</a></li>
-        <li><a href="#">组委会</a></li>
-        <li><a href="#">交通/食宿</a></li>
+        <li><a href="{% url 'program' %}">日程</a></li>
+        <li><a href="{% url 'committee' %}">组委会</a></li>
+        <li><a href="{% url 'sponsor' %}">赞助方</a></li>
+        <li><a href="#">资料下载</a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">更多 <b class="caret"></b></a>
           <ul class="dropdown-menu">
             <li><a href="{% url 'list_approved' %}">审定名单</a></li>
-            <li><a href="#">资料下载</a></li>
-            <li><a href="#">赞助方</a></li>
-            <li><a href="#">联系方式</a></li>
+            <li><a href="{% url 'traffic' %}">交通</a></li>
+            <li><a href="{% url 'accommodation' %}">住宿</a></li>
+            <li><a href="{% url 'contact' %}">联系我们</a></li>
             <li class="divider"></li>
-            <li><a href="#">关于</a></li>
+            <li><a href="{% url 'about' %}">关于</a></li>
           </ul>
         </li>
       </ul>
