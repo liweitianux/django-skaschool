@@ -150,6 +150,18 @@ MEDIA_URL = '/media/'
 ## email settings
 from settings_email import *
 
+## ADMINS: notified 500 error by emails
+# When DEBUG=False and a view raises an exception, django will
+# email these people with full exception information.
+ADMINS = (
+    ('admin', 'skaschool2014@163.com'),
+)
+
+## MANAGERS: notified of 404 errors
+# Specifies who should get broken link notifications when
+# 'BrokenLinkEmailsMiddleware' is enabled.
+MANAGERS = ADMINS
+
 
 #################################################
 ## bootstrap3

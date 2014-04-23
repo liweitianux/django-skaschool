@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load url from future %}
+
+{# 400 bad request template #}
+
+{% block title %}
+400无效的请求 | 2014 SKA Summer School
+{% endblock %}
+
+{% block content %}
+  <div class="container">
+    <h2>404 Bad Request</h2>
+    <p class="lead">Oops, 无效的请求……</p>
+    <br>
+    <p>如有问题，请与我们联系：<a href="mailto:skaschool2014@163.com"><code>skaschool2014@163.com</code></a></p>
+  </div>
+{% endblock %}
+
+{# vim: set ts=8 sw=2 tw=0 fenc=utf-8 ft=htmldjango.html: #}

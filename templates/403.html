@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load url from future %}
+
+{# 403 HTTP Forbidden template #}
+
+{% block title %}
+403禁止访问 | 2014 SKA Summer School
+{% endblock %}
+
+{% block content %}
+  <div class="container">
+    <h2>403 HTTP Forbidden</h2>
+    <p class="lead">Oops, 您没有足够的权限访问该页面……</p>
+    <br>
+    <p>如有问题，请与我们联系：<a href="mailto:skaschool2014@163.com"><code>skaschool2014@163.com</code></a></p>
+  </div>
+{% endblock %}
+
+{# vim: set ts=8 sw=2 tw=0 fenc=utf-8 ft=htmldjango.html: #}
