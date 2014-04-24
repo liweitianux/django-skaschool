@@ -9,12 +9,101 @@
 介绍 | 2014 SKA Summer School
 {% endblock %}
 
+{% block css_extra %}
+  <link href="{% static 'css/introduction.css' %}" rel="stylesheet">
+{% endblock %}
+
 {% block content %}
   <div class="container">
-    <h2>2014 SKA 暑期学校介绍</h2>
-    <br>
-    TODO
+    <h2>第二届 中国SKA暑期学校</h2>
+    <h2>暨 中国-新西兰联合SKA暑期学校</h2>
+    <h3>China-New Zealand Joint SKA Summer School</h3>
+    <p class="lead">上海，2014，6月28日 – 7月5日</p>
+    <hr>
   </div>
+
+  <div class="container">
+    <div class="row">
+    <div class="col-md-9" id="content-col">
+    <h3 id="ska-intro">SKA项目介绍</h3>
+    <p>平方公里阵（Square Kilometre Array；SKA）是计划中的下一代巨型射电望远镜阵。它由工作于高、中、低频的三组天线阵组成，工作在0.10–30GHz的波段，基线跨越三千余公里，有效接收面积可以达到大约1平方公里，灵敏度将比目前世界上最大的射电望远镜还要高50倍。SKA将是2020年之后在射电天文领域内长期占统治地位的大设备。</p>
+    <p>平方公里阵将由上千台天线组成，其中有一半天线位于中央直径5公里的区域内，另有四分之一的天线散布在周围150公里的区域内，其余的分布在大约3000公里的范围内，呈螺旋形排列。平方千米阵预计能够探测到宇宙大爆炸之后第一代恒星和星系形成时发出的电磁波、揭示磁场在恒星和星系演化过程中的作用、探测暗能量产生的种种效应，甚至有希望能够接受到地外智慧生命发出的无线电信号。</p>
+    <p>平方公里阵计划始于1993年。在国际无线电科联在日本京都举行的大会上，10个国家的天文学家联合提议建造接受面积为1平方公里的巨型射电望远镜阵。初期选址有澳大利亚、南非、中国、阿根廷四个国家参加了角逐。2006年9月，中国和阿根廷的方案分别由于地理条件以及电离层不稳定而遭到否决。澳大利亚和南非因良好的无线电环境成为最后的候选者。澳大利亚的候选台址位于其西部，距离米卡萨拉（Meekatharra）大约100公里，南非候选站址位于北开普省的卡鲁盆地，距离卡那封（Carnarvon）大约95公里，部分天线将位于博茨瓦纳、纳米比亚、莫桑比克、马达加斯加、毛里求斯、肯尼亚、加纳等周边国家。</p>
+
+    <h3 id="skaschool-intro">暑期学校介绍</h3>
+    <p>SKA由全球十多个国家共同出资建造，中国是SKA的创始成员国。我国在国际SKA组织的正式成员身份目前由中国科技部出任。科技部、国家基金委、中科院三家单位正联合支持我国在SKA建设准备阶段的技术研发、科学研究、及人才培养。</p>
+    <p>作为中国SKA人才培养计划的一个重要环节，“中国SKA暑期学校”将每年举办一届，面向在校学生（研究生、特别是有志于天文与物理事业的本科生）和青年学者。首届暑期学校已于2013年7月在贵阳举办。2014年6月底至7月初，将于上海举办第二届SKA暑期学校。自本届起，暑期学校将由中国和新西兰联合举办。全程参加暑期学校且考核合格的学员将获结业证书和上海交通大学教务处出具的课程学分证明，学员所在单位可据此证明并同时依照单位培养计划酌情授予学员1–2个课程学分。</p>
+
+    <h3 id="skaschool-info">基本信息</h3>
+    <ul>
+      <li>授课语言：中文（pre-school；国内教师）、英文（国外教师）</li>
+      <li>地点：上海交通大学闵行校区（具体讲课地点待定）</li>
+      <li>规模：50–60名本科生和研究生，申请者的参会资格由相关委员会审定，同等情况下大三及以下有志于射电天文事业的本科生优先。</li>
+      <li>资助：
+        <ul>
+          <li>本科生、研究生 — 免缴注册费，并获餐饮资助。经审定，部分本科生、研究生将获住宿资助（原则上倾向资助本科生）。</li>
+          <li>参会学者 — 缴注册费，住宿自理，并获餐饮资助。原则上，参会学者人数不受预先设定的名额限制，但申请者必须于6月1日前在网上注册。</li>
+        </ul>
+      </li>
+    </ul>
+
+    <h3 id="skaschool-date">日期安排</h3>
+    <ul>
+      <li>4月25日（暂定）：暑期学校网站开通（同时将发送电邮通知）。</li>
+      <li>6月1日：于此日期0点前注册者将有获住宿资助的资格。同日发布参会者及获资助者审定名单。</li>
+      <li>6月15日：6月1日0点至此日期0点期间仍可注册，但注册者无获得资助的资格。此日期0点注册系统关闭。同日发布审定的参会者补充名单。</li>
+      <li>6月28日：暑期学校报到。</li>
+      <li>6月29日：暑期学校开幕。</li>
+      <li>6月29–30日：Pre-School，国内教师中文授课。</li>
+      <li>7月1–5日：海外教师授课。</li>
+      <li>7月2日：参观上海65米射电天文望远镜、上海天文台专家授课。</li>
+    </ul>
+
+    <h3 id="lecturer">主讲教员</h3>
+    <ul>
+      <li>武向平（中国科学院院士、国家天文台研究员）</li>
+      <li>洪晓瑜（上海天文台台长）</li>
+      <li>沈志强（上海天文台副台长、杰青）</li>
+      <li>徐海光（上海交通大学教授、杰青）</li>
+      <li>Lister Staveley-Smith（澳大利亚西澳大学）</li>
+      <li>Melanie Johnston-Hollitt（新西兰惠灵顿大学）</li>
+      <li>Miguel Morales（美国华盛顿大学）</li>
+      <li>Tzu-Ching Chang（台湾中研院天文所）</li>
+    </ul>
+
+    <h3 id="consultant">顾问</h3>
+    <ul>
+      <li>张杰（上海交通大学）</li>
+      <li>严俊（国家天文台）</li>
+      <li>郝晋新（国家天文台）</li>
+      <li>洪晓瑜（上海天文台）</li>
+      <li>沈志强（上海天文台）</li>
+    </ul>
+
+    <h3 id="poster">宣传海报</h3>
+    TODO
+
+    </div> <!-- col-md-9, content-col -->
+
+    <div class="col-md-3" id="sidebar-col" role="complementary">
+      <ul class="nav nav-stacked" id="sidebar">
+        <li><a href="#ska-intro">SKA项目介绍</a></li>
+        <li><a href="#skaschool-intro">暑期学校介绍</a></li>
+        <li><a href="#skaschool-info">基本信息</a></li>
+        <li><a href="#skaschool-date">日期安排</a></li>
+        <li><a href="#lecturer">主讲教员</a></li>
+        <li><a href="#consultant">顾问</a></li>
+        <li><a href="#poster">海报</a></li>
+      </ul>
+    </div> <!-- col-md-3; sidebar-col -->
+
+    </div> <!-- row -->
+  </div> <!-- container -->
 {% endblock %}
+
+{% block js_extra %}
+  <script src="{% static 'js/introduction.js' %}" type="text/javascript"></script>
+{% endblock %}
+
 
 {# vim: set ts=8 sw=2 tw=0 fenc=utf-8 ft=htmldjango.html: #}
