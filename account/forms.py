@@ -7,8 +7,10 @@ account/forms.py for skaschool
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.sites.models import Site, RequestSite
-from registration.forms import RegistrationFormUniqueEmail
 from django.utils.translation import ugettext_lazy as _
+
+from registration.forms import RegistrationFormUniqueEmail
+from captcha.fields import ReCaptchaField
 
 from account.models import UserProfile
 
@@ -25,6 +27,8 @@ class UserRegForm(RegistrationFormUniqueEmail):
     gender = forms.ChoiceField(choices=GENDERS, label=_("Gender"))
     institute = forms.CharField(max_length=100, label=_("Institute"))
     identify = forms.ChoiceField(choices=IDENTIFIES, label=_("Identify"))
+    captcha = ReCaptchaField(label=_("Captcha"),
+            attrs={'theme': 'clean'})
 
     #def __init__(self, *args, **kw):
     #    super(UserRegForm, self).__init__(*args, **kw)
