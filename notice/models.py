@@ -14,7 +14,6 @@ class Notice(models.Model):
     title = models.CharField(_("Title"), max_length=100)
     pubtime = models.DateTimeField(_("Publish time"), auto_now_add=True)
     category = models.ForeignKey('NoticeCategory', verbose_name=_("Category"))
-    publisher = models.ForeignKey(User, verbose_name=_("Publisher"))
     is_important = models.BooleanField(_("Is important"), default=False)
     contents = models.TextField(_("Contents"))
     # NoticeAttachment to deal with attachments
@@ -50,7 +49,7 @@ class NoticeCategory(models.Model):
 
 class NoticeAttachment(models.Model):
     title = models.CharField(_("Title"), max_length=100)
-    description = models.TextField(_("Description"))
+    description = models.TextField(_("Description"), blank=True)
     attachment = models.FileField(upload_to='notice/attachments',
             verbose_name=_("Attachment"))
     content_type = models.ForeignKey(ContentType)

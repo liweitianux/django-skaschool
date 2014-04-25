@@ -26,7 +26,7 @@
     <div class="notice-content">
       {{ notice.contents }}
     </div>
-      {% if notice.attachments %}
+      {% if notice.attachments.all %}
       <div class="notice-attachment">
         <ul class="list-unstyled">
         {% for attachment in notice.attachments.all %}
