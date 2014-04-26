@@ -29,15 +29,6 @@ urlpatterns = patterns('',
     url(r'^profile/update/done/$',
         login_required(TemplateView.as_view(template_name='account/profile_update_done.html')),
         name='profile_update_done'),
-    ## django auth views
-    # login
-    url(r'^login/$', 'django.contrib.auth.views.login',
-        {'template_name': 'account/login.html'},
-        name='login'),
-    # logout
-    url(r'^logout/$', 'django.contrib.auth.views.logout',
-        {'template_name': 'account/logout.html'},
-        name='logout'),
     # resend activate email
     url(r'^email/resend/$',
         ResendEmailView.as_view(),
@@ -46,19 +37,48 @@ urlpatterns = patterns('',
     url(r'^email/resend/done/$',
         TemplateView.as_view(template_name='account/email_resend_done.html'),
         name='email_resend_done'),
-    # change password
-    # If 'post_change_redirect' not provided,
-    # then redirect to url 'password_change_done'.
-    url(r'^password/change/$', 'django.contrib.auth.views.password_change',
-        {'template_name': 'account/password_change.html'},
-        name='password_change'),
-    # change password done
-    url(r'^password/change/done$', 'django.contrib.auth.views.password_change_done',
-        {'template_name': 'account/password_change_done.html'},
-        name='password_change_done'),
     ## show approved user list
     url(r'^list/approved/$', login_required(ListApprovedView.as_view()),
         name='list_approved'),
+)
+
+urlpatterns += patterns('django.contrib.auth.views',
+    ## django auth views
+    # login
+    url(r'^login/$', 'login',
+        {'template_name': 'account/login.html'},
+        name='login'),
+    # logout
+    url(r'^logout/$', 'logout',
+        {'template_name': 'account/logout.html'},
+        name='logout'),
+    ## change password
+    # If 'post_change_redirect' not provided,
+    # then redirect to url 'password_change_done'.
+    url(r'^password/change/$', 'password_change',
+        {'template_name': 'account/password_change.html'},
+        name='password_change'),
+    # change password done
+    url(r'^password/change/done$', 'password_change_done',
+        {'template_name': 'account/password_change_done.html'},
+        name='password_change_done'),
+    ## reset password
+    url(r'^password/reset/$', 'password_reset',
+        {'template_name': 'account/password_reset_form.html'},
+        name='password_reset'),
+    # reset password done
+    url(r'^password/reset/done/$', 'password_reset_done',
+        {'template_name': 'account/password_reset_done.html'},
+        name='password_reset_done'),
+    # reset password confirm
+    url(r'^password/reset/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
+        'password_reset_confirm',
+        {'template_name': 'account/password_reset_confirm.html'},
+        name='password_reset_confirm'),
+    # reset password complete
+    url(r'^password/reset/complete/$', 'password_reset_complete',
+        {'template_name': 'account/password_reset_complete.html'},
+        name='password_reset_complete'),
 )
 
 urlpatterns += patterns('',
