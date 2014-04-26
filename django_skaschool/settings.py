@@ -175,25 +175,43 @@ RECAPTCHA_PRIVATE_KEY = '6Lf8dvISAAAAAH75mmLlVWOp6JB9Gx6WARR_6HXb'
 #################################################
 ## allowed content types to be uploaded by user
 ALLOWED_CONTENT_TYPES = [
-    'application/octet-stream', # arbitrary binary data: doc, ppt, etc.
-    'application/pdf',          # pdf
-    'application/postscript',   # postscript
-    'application/zip',          # zip
-    'application/gzip',         # gzip
+    'application/gzip',             # gzip
+    'application/msword',           # doc
+    'application/pdf',              # pdf
+    'application/postscript',       # postscript
+    'application/rar',              # rar
+    'application/vnd.oasis.opendocument.spreadsheet',   # ods
+    'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',    # xlsx
+    'application/vnd.openxmlformats-officedocument.wordprocessingml.document',      # docx
+    'application/wps-office.doc',   # wps doc/rtf
+    'application/wps-office.dps',   # wps dps
+    'application/wps-office.et',    # wps et
+    'application/wps-office.ppt',   # wps ppt
+    'application/wps-office.pptx',  # wps pptx
+    'application/wps-office.wps',   # wps wps
+    'application/wps-office.xls',   # wps xls
+    'application/zip',                  # zip
     'application/x-7z-compressed',      # 7z
+    'application/x-bzip2',              # bz2
     'application/x-dvi',                # dvi
     'application/x-latex',              # latex
     'application/x-rar-compressed',     # rar
     'application/x-tar',                # tar
-    'image/gif',                # gif
-    'image/jpeg',               # jpg
-    'image/png',                # png
-    'text/html',                # html
-    'text/plain',               # txt
-    'text/rtf',                 # rtf
-    'text/xml',                 # xml
-    'text/x-markdown',          # markdown
+    'image/bmp',                    # bmp
+    'image/gif',                    # gif
+    'image/jpeg',                   # jpg
+    'image/png',                    # png
+    'image/tiff',                   # tif
+    'text/csv',                     # csv
+    'text/html',                    # html
+    'text/plain',                   # txt
+    'text/rtf',                     # rtf
+    'text/xml',                     # xml
+    'text/x-markdown',              # markdown
+    'text/x-tex',                   # latex
 ]
+## allowed filesize of uploaded files
+ALLOWED_MAX_UPLOAD_SIZE = 10485760      # 10 MB
 
 
 # vim: set ts=4 sw=4 tw=0 fenc=utf-8 ft=python: 
