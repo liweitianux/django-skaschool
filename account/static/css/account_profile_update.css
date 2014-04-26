@@ -1,0 +1,13 @@
+/*
+ * account_profile_update.css
+ * for 'profile_update.html' template
+ */
+
+.add-attachments .btn {
+    margin-top: -6px;
+}
+
+.add-attachments + hr {
+    margin-top: 0;
+}
+

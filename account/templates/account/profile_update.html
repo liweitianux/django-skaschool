@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 {% load url from future %}
+{% load i18n %}
 {% load bootstrap3 %}
 
 {# login template #}
@@ -9,16 +10,45 @@
 更新个人信息 | 2014 SKA Summer School
 {% endblock %}
 
+{% block css_extra %}
+  <link href="{% static 'css/account_profile_update.css' %}" rel="stylesheet">
+{% endblock %}
+
 {% block content %}
   <div class="container">
     <h2>更新个人信息</h2>
     <br>
-    <form role="form" class="form-horizontal" method="post">
+    <form role="form" class="form-horizontal" method="post" enctype="multipart/form-data">
       {% csrf_token %}
+      <div class="mainform">
       {% bootstrap_form form layout='horizontal' %}
+      </div>
+      <hr>
+      <div class="row add-attachments">
+        <!--<p><strong>上传附件（可选）</strong> &nbsp;&nbsp;&nbsp;-->
+        <div class="col-md-2">
+          <p class="text-right"><strong>上传附件（可选）</strong></p>
+        </div>
+        <div class="col-md-4">
+          <p><a id="add-subform" class="btn btn-info" role="button" href="javascript:void(0)">{% trans 'Add another attachment' %}</a></p>
+        </div>
+      </div>
+      <hr>
+      {# bootstrap_formset formset layout='horizontal' #}
+      {{ formset.management_form }}
+      {% for form in formset.forms %}
+      <div class="subform">
+        {% bootstrap_form form layout='horizontal' %}
+        <hr>
+      </div>
+      {% endfor %}
       {% buttons submit='提交' reset='重置' layout='horizontal' %}{% endbuttons %}
     </form>
   </div>
+{% endblock %}
+
+{% block js_extra %}
+  <script src="{% static 'js/account_profile_update.js' %}" type="text/javascript"></script>
 {% endblock %}
 
 {# vim: set ts=8 sw=2 tw=0 fenc=utf-8 ft=htmldjango.html: #}
