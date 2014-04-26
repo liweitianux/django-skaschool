@@ -172,4 +172,28 @@ REGISTRATION_OPEN = True
 RECAPTCHA_PUBLIC_KEY = '6Lf8dvISAAAAAPljExJQcAkx4jDZPOYbTGXYXCME'
 RECAPTCHA_PRIVATE_KEY = '6Lf8dvISAAAAAH75mmLlVWOp6JB9Gx6WARR_6HXb'
 
+#################################################
+## allowed content types to be uploaded by user
+ALLOWED_CONTENT_TYPES = [
+    'application/octet-stream', # arbitrary binary data: doc, ppt, etc.
+    'application/pdf',          # pdf
+    'application/postscript',   # postscript
+    'application/zip',          # zip
+    'application/gzip',         # gzip
+    'application/x-7z-compressed',      # 7z
+    'application/x-dvi',                # dvi
+    'application/x-latex',              # latex
+    'application/x-rar-compressed',     # rar
+    'application/x-tar',                # tar
+    'image/gif',                # gif
+    'image/jpeg',               # jpg
+    'image/png',                # png
+    'text/html',                # html
+    'text/plain',               # txt
+    'text/rtf',                 # rtf
+    'text/xml',                 # xml
+    'text/x-markdown',          # markdown
+]
+
+
 # vim: set ts=4 sw=4 tw=0 fenc=utf-8 ft=python: 
