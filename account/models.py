@@ -6,12 +6,15 @@
 
 from django.db import models
 from django.contrib.auth.models import User
-
+from django.conf import settings
 from django.utils.translation import ugettext_lazy as _
 
 from registration.signals import user_registered
 
+from account.extra import ContentTypeRestrictedFileField
 
+
+###### account models ######
 class UserProfile(models.Model):
     """
     custom user profile
@@ -38,7 +41,8 @@ class UserProfile(models.Model):
     # choices for identify
     IDENTIFIES = (
         ('OT', _("Other")),
-        ('UG', _("Undergraudate")),
+        ('UG', _("Undergraudate (junior and below)")),
+        ('U4', _("Undergraudate (senior)")),
         ('MG', _("Master graudate")),
         ('PG', _("PhD graudate")),
         ('PD', _("Post-doctoral")),
@@ -53,11 +57,21 @@ class UserProfile(models.Model):
     )
     # model fields
     # FK default backward manager name 'userprofile_set'
-    user = models.ForeignKey(User, unique=True, verbose_name=_("Username"))
+    user = models.ForeignKey(User, unique=True, verbose_name=_("User"))
     realname = models.CharField(_("Name"), max_length=30)
     gender = models.CharField(_("Gender"), max_length=1, choices=GENDERS)
     institute = models.CharField(_("Institute"), max_length=100)
-    identify = models.CharField(_("Identify"), max_length=2, choices=IDENTIFIES)
+    identify = models.CharField(_("Identify"), max_length=2,
+            choices=IDENTIFIES)
+    # reasons to participate
+    reason = models.TextField(_("Why attend"))
+    # transcript: needed if undergraudate (junior and below)
+    transcript = ContentTypeRestrictedFileField(upload_to=lambda instance, filename: u'account/{0}/{1}'.format(instance.user.username, filename),
+            verbose_name=_("Transcript"), blank=True, null=True,
+            content_types=settings.ALLOWED_CONTENT_TYPES,
+            max_upload_size=settings.ALLOWED_MAX_UPLOAD_SIZE)
+    # supplement: record additional information
+    supplement = models.TextField(_("Supplement"), blank=True)
     # store the infomation about approval and sponsorship
     is_approved = models.CharField(_("Is approved"), max_length=1,
             choices=APPROVED_STATUS, default='C')
@@ -69,7 +83,17 @@ class UserProfile(models.Model):
         verbose_name_plural = _('user profiles')
 
     def __unicode__(self):
-        return u'UserProfile for %s' % self.user
+        return u'UserProfile for %s' % self.user.username
+
+    def is_transcript_required(self):
+        """
+        if 'identify' is UG (undergraduate junior and below); then
+        transcript is required, return True. Otherwise, return False
+        """
+        if (self.identify == 'UG'):
+            return True
+        else:
+            return False
 
     def get_approved(self, *args, **kwargs):
         """
@@ -110,6 +134,37 @@ class UserProfile(models.Model):
         """
         identifies_dict = dict((k, v) for k, v in self.IDENTIFIES)
         return identifies_dict.get(self.identify)
+
+    def get_userfiles(self):
+        """
+        return the UserFile objects related to this user
+        NOTE: transcript is not included here.
+        """
+        return self.user.userfile_set.all()
+
+
+class UserFile(models.Model):
+    """
+    model to deal with user uploaded files
+    """
+    user = models.ForeignKey(User, verbose_name=_("User"))
+    title = models.CharField(_("Title"), max_length=100)
+    description = models.TextField(_("Description"), blank=True)
+    file = ContentTypeRestrictedFileField(upload_to=lambda instance, filename: u'account/{0}/{1}'.format(instance.user.username, filename),
+            verbose_name=_("File"),
+            content_types=settings.ALLOWED_CONTENT_TYPES,
+            max_upload_size=settings.ALLOWED_MAX_UPLOAD_SIZE)
+    created_at = models.DateTimeField(_("Created time"),
+            auto_now_add=True)
+    modified_at = models.DateTimeField(_("Modified time"), auto_now=True)
+
+    class Meta:
+        verbose_name = _('user file')
+        verbose_name_plural = _('user files')
+        ordering = ['user', 'id']
+
+    def __unicode__(self):
+        return u'UserFile of %s: %s' % (self.user.username, self.title)
 
 
 ###### signal callback ######

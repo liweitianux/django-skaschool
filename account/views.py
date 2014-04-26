@@ -12,7 +12,7 @@ from django.core.urlresolvers import reverse_lazy
 from django.http import HttpResponseRedirect
 
 from account.models import UserProfile
-from account.forms import ResendEmailForm, UpdateProfileForm
+from account.forms import ResendEmailForm, UpdateProfileForm, UserFileFormSet
 
 
 ###### Class-based views ######
@@ -60,7 +60,8 @@ class UpdateProfileView(UpdateView):
 
     def get(self, request, *args, **kwargs):
         """
-        Returns the keyword arguments for instantiating the form.
+        Returns the keyword arguments for instantiating the form
+        and related formsets.
         modify this method to add 'email' data
         """
         self.object = self.get_object()
@@ -69,18 +70,52 @@ class UpdateProfileView(UpdateView):
         # initialize form 'email' field
         user = self.request.user
         form.fields['email'].initial = user.email
-        return self.render_to_response(self.get_context_data(form=form))
+        # formset
+        formset = UserFileFormSet()
+        return self.render_to_response(
+                self.get_context_data(form=form, formset=formset))
 
-    def form_valid(self, form):
+    def post(self, request, *args, **kwargs):
+        """
+        handle POST requests, instantiating a form instance and
+        related formset with passed POST data and then validate.
+        """
+        self.object = self.get_object()
+        form_class = self.get_form_class()
+        form = self.get_form(form_class)
+        # formset
+        formset = UserFileFormSet(self.request.POST, self.request.FILES)
+        user = self.request.user
+        # set instance for formset first, otherwise cannot generate
+        # right upload_to due to the empty of user
+        formset.instance = user         # UserFileFormSet parent_model
+        if (form.is_valid() and formset.is_valid()):
+            return self.form_valid(form, formset)
+        else:
+            return self.form_invalid(form, formset)
+
+    def form_valid(self, form, formset):
         """
         modify 'form_valid' to update email field
         """
         form_data = form.cleaned_data
+        # save object
+        self.object = form.save()
         # update email and save
         user = self.request.user
         user.email = form_data.get('email', user.email)
         user.save()
-        return super(UpdateProfileView, self).form_valid(form)
+        # formset
+        formset.instance = user         # UserFileFormSet parent_model
+        formset.save()
+        return HttpResponseRedirect(self.get_success_url())
+
+    def form_invalid(self, form, formset):
+        """
+        re-render the context data with the data-filled forms and errors
+        """
+        return self.render_to_response(
+                self.get_context_data(form=form, formset=formset))
 
 
 class ListApprovedView(ListView):

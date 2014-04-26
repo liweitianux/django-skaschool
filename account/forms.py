@@ -5,6 +5,7 @@ account/forms.py for skaschool
 """
 
 from django import forms
+from django.forms.models import inlineformset_factory
 from django.contrib.auth.models import User
 from django.contrib.sites.models import Site, RequestSite
 from django.utils.translation import ugettext_lazy as _
@@ -12,7 +13,7 @@ from django.utils.translation import ugettext_lazy as _
 from registration.forms import RegistrationFormUniqueEmail
 from captcha.fields import ReCaptchaField
 
-from account.models import UserProfile
+from account.models import UserProfile, UserFile
 
 
 class UserRegForm(RegistrationFormUniqueEmail):
@@ -104,6 +105,65 @@ class UpdateProfileForm(forms.ModelForm):
 
     class Meta:
         model = UserProfile
-        fields = ('realname', 'gender', 'institute', 'identify')
+        fields = (
+            'user',
+            'realname',
+            'gender',
+            'institute',
+            'identify',
+            'reason',
+            'transcript',
+            'supplement',
+        )
+        widgets = {
+            'user': forms.HiddenInput,
+        }
 
+    def __init__(self, *args, **kwargs):
+        super(UpdateProfileForm, self).__init__(*args, **kwargs)
+        # reorder fields, append 'email' just after 'realname'
+        self.fields.keyOrder = [
+            'user',
+            'realname',
+            'email',
+            'gender',
+            'institute',
+            'identify',
+            'reason',
+            'transcript',
+            'supplement',
+        ]
+
+    def clean(self):
+        """
+        check if 'transcript' is needed and provided
+        """
+        form_data = self.cleaned_data
+        user = form_data.get('user')
+        profile = user.userprofile_set.get(user=user)
+        profile.identify = form_data.get('identify', profile.identify)
+        transcript = self.cleaned_data.get('transcript', False)
+        if (profile.is_transcript_required() and (not transcript)):
+            raise forms.ValidationError(_("Transcript is required."), code='required')
+        # not save 'profile' here
+        return self.cleaned_data
+
+
+class UserFileForm(forms.ModelForm):
+    """
+    form of UserFile, empty_permitted=True
+    """
+    class Meta:
+        model = UserFile
+
+    def __init__(self, *args, **kwargs):
+        super(UserFileForm, self).__init__(*args, **kwargs)
+        self.empty_permitted = True
+
+
+### formset ###
+# UserFileFormSet: parent_model -> User
+UserFileFormSet = inlineformset_factory(User,
+        UserFile, form=UserFileForm,
+        extra=1, can_delete=True)
 
