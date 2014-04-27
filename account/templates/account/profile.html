@@ -45,7 +45,7 @@
             {% elif profile.gender == 'F' %}
             女
             {% elif profile.gender == 'X' %}
-            <span class="glyphicon glyphicon-ban-circle"></span>
+            <span class="glyphicon glyphicon-ban-circle"></span>保密
             {% else %}
             <span class="glyphicon glyphicon-warning-sign"></span> <span class="label label-danger">系统错误</span>
             {% endif %}
@@ -106,18 +106,18 @@
           </td>
         </tr>
         {# user uploaded files #}
+        {% if userfiles %}
         <tr>
           <th class="attachments">附件</th>
           <td class="attachments-data">
-            {% if userfiles %}
             <ul>
               {% for attachment in userfiles %}
                 <li><a href="{{ attachment.file.url }}">{{ attachment.title }}</a></li>
               {% endfor %}
             </ul>
-            {% endif %}
           </td>
         </tr>
+        {% endif %}
     </table>
 
     <br>

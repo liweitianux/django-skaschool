@@ -130,11 +130,13 @@ class ListApprovedView(ListView):
 
     def get_context_data(self, **kwargs):
         """
-        add 'user' context
+        add 'user' and 'profile' context
         """
         context = super(ListApprovedView, self).get_context_data(**kwargs)
         user = self.request.user
+        profile = user.userprofile_set.get(user=user)
         context['user'] = user
+        context['profile'] = profile
         return context
 
 
