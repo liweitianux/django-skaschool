@@ -15,6 +15,8 @@ from registration.signals import user_registered
 
 from account.extra import ContentTypeRestrictedFileField, OverwriteStorage
 
+import os
+
 
 ###### account models ######
 class UserProfile(models.Model):
@@ -92,11 +94,21 @@ class UserProfile(models.Model):
         """
         overwrite the original save method to delete old file
         """
+        if not self.pk:
+            # -> create
+            return super(UserProfile, self).save(*args, **kwargs)
+        # already exists -> edit
         old_obj = type(self).objects.get(pk=self.pk)
         result = super(UserProfile, self).save(*args, **kwargs)
         # if the path is the same, the file is overwritten already
-        if old_obj.transcript.path != self.transcript.path:
-            old_obj.transcript.delete(save=False)
+        if old_obj.transcript.name:
+            # old_obj has transcript file
+            if not self.transcript.name:
+                # new object has no transcript
+                old_obj.transcript.delete(save=False)
+            elif old_obj.transcript.path != self.transcript.path:
+                # new object has transcript file, and differ from old_obj
+                old_obj.transcript.delete(save=False)
         #
         return result
 
@@ -109,6 +121,10 @@ class UserProfile(models.Model):
             return True
         else:
             return False
+
+    def get_transcript_filename(self):
+        # return the base filename of transcript FileField
+        return os.path.basename(self.transcript.name)
 
     def get_approved(self, *args, **kwargs):
         """
@@ -186,11 +202,21 @@ class UserFile(models.Model):
         """
         overwrite the original save method to delete old file
         """
+        if not self.pk:
+            # -> create
+            return super(UserFile, self).save(*args, **kwargs)
+        # already exists -> edit
         old_obj = type(self).objects.get(pk=self.pk)
         result = super(UserFile, self).save(*args, **kwargs)
         # if the path is the same, the file is overwritten already
-        if old_obj.file.path != self.file.path:
-            old_obj.file.delete(save=False)
+        if old_obj.file.name:
+            # old_obj has file
+            if not self.file.name:
+                # new object has no file
+                old_obj.file.delete(save=False)
+            elif old_obj.file.path != self.file.path:
+                # new object has file, and differ from old_obj
+                old_obj.file.delete(save=False)
         #
         return result
 

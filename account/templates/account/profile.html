@@ -10,10 +10,26 @@
 个人主页 | 2014 SKA Summer School
 {% endblock %}
 
+{% block css_extra %}
+  <link href="{% static 'css/account_profile.css' %}" rel="stylesheet">
+{% endblock %}
+
 {% block content %}
   <div class="container">
     <h2>个人主页</h2>
     <br>
+
+    {# display alert if 'reason' empty, or transcript required but not provided #}
+    {% if not profile.reason %}
+    <div class="alert alert-warning">
+      “为什么参加”的信息是我们审核的重要参考，请您请及时填写。
+    </div>
+    {% endif %}
+    {% if profile.is_transcript_required and not profile.transcript %}
+    <div class="alert alert-warning">
+      “成绩单”是我们审核本科生（大三及以下）和决定资助的重要参考，请您请及时上传。
+    </div>
+    {% endif %}
 
     <table class="table table-striped table-bordered table-hover">
       <tbody>
@@ -48,6 +64,20 @@
           <td class="profile-identify-data">{% trans profile.get_identify_value %}</td>
         </tr>
         <tr>
+          <th class="profile-reason">为什么参加</th>
+          <td class="profile-reason-data">{% if profile.reason %}{{ profile.reason }}{% else %}<span class="label label-warning">请及时填写参加理由</span>{% endif %}</td>
+        </tr>
+        {% if profile.is_transcript_required %}
+        <tr>
+          <th class="profile-transcript">成绩单</th>
+          <td class="profile-transcript-data">{% if profile.transcript %}<a href="{{ profile.transcript.url }}">{{ profile.get_transcript_filename }}{% else %}<span class="label label-warning">请及时上传成绩单</span>{% endif %}</a></td>
+        </tr>
+        {% endif %}
+        <tr>
+          <th class="profile-supplement">补充说明</th>
+          <td class="profile-supplement-data">{% if profile.supplement %}{{ profile.supplement }}{% else %}无{% endif %}</td>
+        </tr>
+        <tr>
           <th class="profile-approval">是否审定</th>
           <td class="profile-approval-data">
             {% if profile.is_approved == 'Y' %}
@@ -72,6 +102,19 @@
             <span class="glyphicon glyphicon-question-sign"></span> <span class="label label-default">审核中</span>
             {% else %}
             <span class="glyphicon glyphicon-warning-sign"></span> <span class="label label-danger">系统错误</span>
+            {% endif %}
+          </td>
+        </tr>
+        {# user uploaded files #}
+        <tr>
+          <th class="attachments">附件</th>
+          <td class="attachments-data">
+            {% if userfiles %}
+            <ul>
+              {% for attachment in userfiles %}
+                <li><a href="{{ attachment.file.url }}">{{ attachment.title }}</a></li>
+              {% endfor %}
+            </ul>
             {% endif %}
           </td>
         </tr>

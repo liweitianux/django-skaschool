@@ -41,8 +41,10 @@ class ProfileView(TemplateView):
         context = super(ProfileView, self).get_context_data(**kwargs)
         user = self.request.user
         profile = user.userprofile_set.get(user=user)
+        userfiles = user.userfile_set.all()
         context['user'] = user
         context['profile'] = profile
+        context['userfiles'] = userfiles
         return context
 
 
@@ -70,8 +72,9 @@ class UpdateProfileView(UpdateView):
         # initialize form 'email' field
         user = self.request.user
         form.fields['email'].initial = user.email
-        # formset
-        formset = UserFileFormSet()
+        # formset and initialize with instances
+        qset = user.userfile_set.all()
+        formset = UserFileFormSet(instance=user, queryset=qset)
         return self.render_to_response(
                 self.get_context_data(form=form, formset=formset))
 
@@ -83,12 +86,11 @@ class UpdateProfileView(UpdateView):
         self.object = self.get_object()
         form_class = self.get_form_class()
         form = self.get_form(form_class)
-        # formset
-        formset = UserFileFormSet(self.request.POST, self.request.FILES)
+        ## formset
+        # must pass 'instance' here, otherwise raise IndexError
         user = self.request.user
-        # set instance for formset first, otherwise cannot generate
-        # right upload_to due to the empty of user
-        formset.instance = user         # UserFileFormSet parent_model
+        formset = UserFileFormSet(self.request.POST, self.request.FILES,
+                instance=user)
         if (form.is_valid() and formset.is_valid()):
             return self.form_valid(form, formset)
         else:
@@ -106,7 +108,6 @@ class UpdateProfileView(UpdateView):
         user.email = form_data.get('email', user.email)
         user.save()
         # formset
-        formset.instance = user         # UserFileFormSet parent_model
         formset.save()
         return HttpResponseRedirect(self.get_success_url())
 
