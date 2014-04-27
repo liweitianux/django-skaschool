@@ -6,12 +6,14 @@
 
 from django.db import models
 from django.contrib.auth.models import User
+from django.db.models.fields.files import FieldFile
 from django.conf import settings
 from django.utils.translation import ugettext_lazy as _
 
+from django.db.models.signals import pre_delete
 from registration.signals import user_registered
 
-from account.extra import ContentTypeRestrictedFileField
+from account.extra import ContentTypeRestrictedFileField, OverwriteStorage
 
 
 ###### account models ######
@@ -68,6 +70,7 @@ class UserProfile(models.Model):
     # transcript: needed if undergraudate (junior and below)
     transcript = ContentTypeRestrictedFileField(upload_to=lambda instance, filename: u'account/{0}/{1}'.format(instance.user.username, filename),
             verbose_name=_("Transcript"), blank=True, null=True,
+            storage=OverwriteStorage(),
             content_types=settings.ALLOWED_CONTENT_TYPES,
             max_upload_size=settings.ALLOWED_MAX_UPLOAD_SIZE)
     # supplement: record additional information
@@ -84,6 +87,18 @@ class UserProfile(models.Model):
 
     def __unicode__(self):
         return u'UserProfile for %s' % self.user.username
+
+    def save(self, *args, **kwargs):
+        """
+        overwrite the original save method to delete old file
+        """
+        old_obj = type(self).objects.get(pk=self.pk)
+        result = super(UserProfile, self).save(*args, **kwargs)
+        # if the path is the same, the file is overwritten already
+        if old_obj.transcript.path != self.transcript.path:
+            old_obj.transcript.delete(save=False)
+        #
+        return result
 
     def is_transcript_required(self):
         """
@@ -152,6 +167,7 @@ class UserFile(models.Model):
     description = models.TextField(_("Description"), blank=True)
     file = ContentTypeRestrictedFileField(upload_to=lambda instance, filename: u'account/{0}/{1}'.format(instance.user.username, filename),
             verbose_name=_("File"),
+            storage = OverwriteStorage(),
             content_types=settings.ALLOWED_CONTENT_TYPES,
             max_upload_size=settings.ALLOWED_MAX_UPLOAD_SIZE)
     created_at = models.DateTimeField(_("Created time"),
@@ -165,6 +181,18 @@ class UserFile(models.Model):
 
     def __unicode__(self):
         return u'UserFile of %s: %s' % (self.user.username, self.title)
+
+    def save(self, *args, **kwargs):
+        """
+        overwrite the original save method to delete old file
+        """
+        old_obj = type(self).objects.get(pk=self.pk)
+        result = super(UserFile, self).save(*args, **kwargs)
+        # if the path is the same, the file is overwritten already
+        if old_obj.file.path != self.file.path:
+            old_obj.file.delete(save=False)
+        #
+        return result
 
 
 ###### signal callback ######
@@ -183,5 +211,25 @@ def user_registered_callback(sender, user, request, **kwargs):
 
 ### connect 'user_registered_callback' to signal
 user_registered.connect(user_registered_callback)
+
+
+### delete files associated with model FileField
+# Pre-delete signal function for deleting files a model
+# https://djangosnippets.org/snippets/2820/
+def file_cleanup(sender, instance, *args, **kwargs):
+    """
+    Deletes the file(s) associated with a model instance. The model
+    is not saved after deletion of the file(s) since this is meant
+    to be used with the pre_delete signal.
+    """
+    for field_name, _ in instance.__dict__.iteritems():
+        field = getattr(instance, field_name)
+        if (issubclass(field.__class__, FieldFile) and field.name):
+            # pass False so FileField does not save the model
+            field.delete(save=False)
+
+### connect to signal and sender
+pre_delete.connect(file_cleanup, sender=UserProfile)
+pre_delete.connect(file_cleanup, sender=UserFile)
 
 
