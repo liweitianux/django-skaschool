@@ -15,7 +15,11 @@
     <p class="lead">您已成功激活账户。</p>
 
     <br>
+    {% if user.is_authenticated %}
+    <p><a href="{% url 'profile' %}" class="btn btn-primary">进入个人主页</a></p>
+    {% else %}
     <p><a href="{% url 'login' %}" class="btn btn-primary">登录</a></p>
+    {% endif %}
   </div>
 {% endblock %}
 

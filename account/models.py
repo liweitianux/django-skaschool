@@ -5,13 +5,14 @@
 #
 
 from django.db import models
-from django.contrib.auth.models import User
-from django.db.models.fields.files import FieldFile
 from django.conf import settings
+from django.contrib.auth.models import User
+from django.contrib.auth import login
+from django.db.models.fields.files import FieldFile
 from django.utils.translation import ugettext_lazy as _
 
 from django.db.models.signals import pre_delete
-from registration.signals import user_registered
+from registration.signals import user_registered, user_activated
 
 from account.extra import ContentTypeRestrictedFileField, OverwriteStorage
 
@@ -235,8 +236,19 @@ def user_registered_callback(sender, user, request, **kwargs):
     profile.identify = request.POST['identify']
     profile.save()
 
-### connect 'user_registered_callback' to signal
+### connect 'user_registered_callback' to signal user_registered
 user_registered.connect(user_registered_callback)
+
+### login user after activated
+def login_on_activation(sender, user, request, **kwargs):
+    """
+    Logs in the user after activation
+    """
+    user.backend = 'django.contrib.auth.backends.ModelBackend'
+    login(request, user)
+
+# connect 'login_on_activation' to signal user_activated
+user_activated.connect(login_on_activation)
 
 
 ### delete files associated with model FileField
