@@ -8,128 +8,290 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-04-21 17:42+0800\n"
+"POT-Creation-Date: 2014-04-29 01:24+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Weitian LI <liweitianux@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"Language: Chinese (simplified)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: account/forms.py:22 account/models.py:58
+#: account/extra.py:49
+msgid "Please keep filesize under %(maxsize)s. Current filesize %(filesize)s"
+msgstr "请使文件小于%(maxsize)s. 当前大小%(filesize)s"
+
+#: account/extra.py:51
+msgid "Unsupported filetype"
+msgstr "不支持的文件类型"
+
+#: account/forms.py:27 account/models.py:65
 msgid "Name"
 msgstr "姓名"
 
-#: account/forms.py:23 account/models.py:59
+#: account/forms.py:28 account/models.py:66
 msgid "Gender"
 msgstr "性别"
 
-#: account/forms.py:24 account/models.py:60
+#: account/forms.py:29 account/models.py:67
 msgid "Institute"
 msgstr "单位"
 
-#: account/forms.py:25 account/models.py:61
+#: account/forms.py:30 account/models.py:68
 msgid "Identify"
 msgstr "身份"
 
-#: account/forms.py:47
-msgid "E-mail"
-msgstr "邮箱"
+#: account/forms.py:31
+msgid "Captcha"
+msgstr "验证码"
 
-#: account/models.py:23
-msgid "Male"
-msgstr "男"
-
-#: account/models.py:24
-msgid "Female"
-msgstr "女"
-
-#: account/models.py:25
-msgid "Secret"
-msgstr "保密"
-
-#: account/models.py:29 account/models.py:35
-msgid "Yes"
-msgstr "是"
-
-#: account/models.py:30 account/models.py:36
-msgid "No"
-msgstr "否"
-
-#: account/models.py:31 account/models.py:37
-msgid "Checking"
-msgstr "审核中"
-
-#: account/models.py:41
-msgid "Other"
-msgstr "其他"
-
-#: account/models.py:42
-msgid "Undergraudate"
-msgstr "本科生"
-
-#: account/models.py:43
-msgid "Master graudate"
-msgstr "硕士研究生"
-
-#: account/models.py:44
-msgid "PhD graudate"
-msgstr "博士研究生"
-
-#: account/models.py:45
-msgid "Post-doctoral"
-msgstr "博士后"
-
-#: account/models.py:46
-msgid "Assistant researcher"
-msgstr "助理研究员"
-
-#: account/models.py:47
-msgid "Associate researcher"
-msgstr "副研究员"
-
-#: account/models.py:48
-msgid "Distinguished researcher"
-msgstr "特别研究员"
-
-#: account/models.py:49
-msgid "Researcher"
-msgstr "研究员"
-
-#: account/models.py:50
-msgid "Instructor"
-msgstr "讲师"
-
-#: account/models.py:51
-msgid "Assistant professor"
-msgstr "助理教授"
-
-#: account/models.py:52
-msgid "Associate professor"
-msgstr "副教授"
-
-#: account/models.py:53
-msgid "Professor"
-msgstr "教授"
-
-#: account/models.py:57
+#: account/forms.py:55
 msgid "Username"
 msgstr "用户名"
 
-#: account/models.py:63
+#: account/forms.py:56
+msgid "This value may contain only letters, numbers and @/./+/-/_ characters."
+msgstr "请只使用英文字母数字和@.+-_字符"
+
+#: account/forms.py:57
+msgid "Is update email"
+msgstr "是否更新邮箱地址"
+
+#: account/forms.py:59 account/forms.py:104
+msgid "E-mail"
+msgstr "邮箱"
+
+#: account/forms.py:65
+msgid "Username not exists"
+msgstr "该用户名不存在"
+
+#: account/forms.py:73
+msgid "Email is required"
+msgstr "必须填写邮箱地址"
+
+#: account/forms.py:147
+msgid "Transcript is required."
+msgstr "必须上传成绩单"
+
+#: account/models.py:29
+msgid "Male"
+msgstr "男"
+
+#: account/models.py:30
+msgid "Female"
+msgstr "女"
+
+#: account/models.py:31
+msgid "Secret"
+msgstr "保密"
+
+#: account/models.py:35 account/models.py:41
+msgid "Yes"
+msgstr "是"
+
+#: account/models.py:36 account/models.py:42
+msgid "No"
+msgstr "否"
+
+#: account/models.py:37 account/models.py:43
+msgid "Checking"
+msgstr "审核中"
+
+#: account/models.py:47
+msgid "Other"
+msgstr "其他"
+
+#: account/models.py:48
+msgid "Undergraudate (junior and below)"
+msgstr "本科生(大三及以下)"
+
+#: account/models.py:49
+msgid "Undergraudate (senior)"
+msgstr "本科生(大四)"
+
+#: account/models.py:50
+msgid "Master graudate"
+msgstr "硕士研究生"
+
+#: account/models.py:51
+msgid "PhD graudate"
+msgstr "博士研究生"
+
+#: account/models.py:52
+msgid "Post-doctoral"
+msgstr "博士后"
+
+#: account/models.py:53
+msgid "Assistant researcher"
+msgstr "助理研究员"
+
+#: account/models.py:54
+msgid "Associate researcher"
+msgstr "副研究员"
+
+#: account/models.py:55
+msgid "Distinguished researcher"
+msgstr "特别研究员"
+
+#: account/models.py:56
+msgid "Researcher"
+msgstr "研究员"
+
+#: account/models.py:57
+msgid "Instructor"
+msgstr "讲师"
+
+#: account/models.py:58
+msgid "Assistant professor"
+msgstr "助理教授"
+
+#: account/models.py:59
+msgid "Associate professor"
+msgstr "副教授"
+
+#: account/models.py:60
+msgid "Professor"
+msgstr "教授"
+
+#: account/models.py:64 account/models.py:182
+msgid "User"
+msgstr "用户"
+
+#: account/models.py:71
+msgid "Why attend"
+msgstr "为什么参加"
+
+#: account/models.py:74
+msgid "Transcript"
+msgstr "成绩单"
+
+#: account/models.py:75
+msgid ""
+"Undergraduate (junior and below) required to upload transcript. PDF format "
+"is recommended."
+msgstr "本科生(大三及以下)需要上传成绩单. 推荐上传PDF格式."
+
+#: account/models.py:80
+msgid "Supplement"
+msgstr "补充说明"
+
+#: account/models.py:82
 msgid "Is approved"
 msgstr "是否审定"
 
-#: account/models.py:65
+#: account/models.py:84
 msgid "Is sponsored"
 msgstr "是否资助"
 
-#: account/models.py:69
+#: account/models.py:88
 msgid "user profile"
 msgstr "用户信息"
 
-#: account/models.py:70
+#: account/models.py:89
 msgid "user profiles"
 msgstr "用户信息"
+
+#: account/models.py:183 archive/models.py:18 notice/models.py:14
+#: notice/models.py:51
+msgid "Title"
+msgstr "标题"
+
+#: account/models.py:184 archive/models.py:22 notice/models.py:52
+msgid "Description"
+msgstr "描述"
+
+#: account/models.py:186 archive/models.py:23
+msgid "File"
+msgstr "文件"
+
+#: account/models.py:190 archive/models.py:67 notice/models.py:40
+msgid "Created time"
+msgstr "创建时间"
+
+#: account/models.py:192
+msgid "Modified time"
+msgstr "修改时间"
+
+#: account/models.py:195
+msgid "user file"
+msgstr "用户文件"
+
+#: account/models.py:196
+msgid "user files"
+msgstr "用户文件"
+
+#: account/templates/account/profile_update.html:33
+msgid "Add another attachment"
+msgstr "再增加一个附件"
+
+#: archive/models.py:19 notice/models.py:15
+msgid "Publish time"
+msgstr "发布时间"
+
+#: archive/models.py:20 notice/models.py:16
+msgid "Category"
+msgstr "类别"
+
+#: archive/models.py:21
+msgid "Publisher"
+msgstr "发布人"
+
+#: archive/models.py:28
+msgid "archive"
+msgstr "资料"
+
+#: archive/models.py:29
+msgid "archives"
+msgstr "资料"
+
+#: archive/models.py:66 notice/models.py:39
+msgid "Category name"
+msgstr "类别名称"
+
+#: archive/models.py:70
+msgid "archive category"
+msgstr "资料类别"
+
+#: archive/models.py:71
+msgid "archive categories"
+msgstr "资料类别"
+
+#: notice/models.py:17
+msgid "Is important"
+msgstr "是否重要"
+
+#: notice/models.py:18
+msgid "Contents"
+msgstr "内容"
+
+#: notice/models.py:23
+msgid "notice"
+msgstr "通知"
+
+#: notice/models.py:24
+msgid "notices"
+msgstr "通知"
+
+#: notice/models.py:43
+msgid "notice category"
+msgstr "通知类别"
+
+#: notice/models.py:44
+msgid "notice categories"
+msgstr "通知类别"
+
+#: notice/models.py:54
+msgid "Attachment"
+msgstr "附件"
+
+#: notice/models.py:60
+msgid "notice attachment"
+msgstr "通知附件"
+
+#: notice/models.py:61
+msgid "notice attachments"
+msgstr "通知附件"
+
+#~ msgid "Invalid filetype."
+#~ msgstr "不支持的文件格式"
