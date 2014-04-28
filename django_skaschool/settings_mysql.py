@@ -25,6 +25,8 @@ DEBUG = True
 
 TEMPLATE_DEBUG = True
 
+# ALLOWED_HOSTS is required when deploying with DEBUG=False,
+# otherwise server will throw 400 bad request errors.
 ALLOWED_HOSTS = []
 
 

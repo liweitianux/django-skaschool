@@ -25,7 +25,16 @@ DEBUG = False
 
 TEMPLATE_DEBUG = False
 
-ALLOWED_HOSTS = []
+# ALLOWED_HOSTS is required when deploying with DEBUG=False,
+# otherwise server will throw 400 bad request errors.
+ALLOWED_HOSTS = [
+    'localhost',
+    '127.0.0.1',
+    '202.120.52.45',
+    '202.120.52.18',
+    '.physics.sjtu.edu.cn',
+    '.sjtu.edu.cn',
+]
 
 
 # Application definition
@@ -135,7 +144,7 @@ STATICFILES_DIRS = (
 # absolute path to the directory where 'collectstatic' will collect
 # static files for deployment
 #STATIC_ROOT = '/var/www/example.com/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static_root')
+STATIC_ROOT = os.path.join(BASE_DIR, '../static_root')
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
@@ -144,7 +153,7 @@ STATIC_URL = '/static/'
 ## media root
 # absolute filesystem path to the directory that hold user-uploaded files
 #MEDIA_ROOT = '/var/www/example.com/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media_root')
+MEDIA_ROOT = os.path.join(BASE_DIR, '../media_root')
 
 # media url
 MEDIA_URL = '/media/'
