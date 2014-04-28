@@ -1,0 +1,4 @@
+# database mysql backend:
+o pip install mysql-python (requires 'mysql_config', gcc, Python.h)
+  (libmysqlclient-devel, python-devel)
+
