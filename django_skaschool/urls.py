@@ -21,6 +21,8 @@ urlpatterns = patterns('',
     url(r'^page/', include('page.urls')),
     # app 'notice'
     url(r'^notice/', include('notice.urls')),
+    # app 'archive'
+    url(r'^archive/', include('archive.urls')),
 )
 
 ## django-registration

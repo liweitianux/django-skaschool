@@ -14,7 +14,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.db.models.signals import pre_delete
 from registration.signals import user_registered, user_activated
 
-from account.extra import ContentTypeRestrictedFileField, OverwriteStorage
+from account.extra import ContentTypeRestrictedFileField, OverwriteStorage, file_cleanup
 
 import os
 
@@ -250,21 +250,6 @@ def login_on_activation(sender, user, request, **kwargs):
 # connect 'login_on_activation' to signal user_activated
 user_activated.connect(login_on_activation)
 
-
-### delete files associated with model FileField
-# Pre-delete signal function for deleting files a model
-# https://djangosnippets.org/snippets/2820/
-def file_cleanup(sender, instance, *args, **kwargs):
-    """
-    Deletes the file(s) associated with a model instance. The model
-    is not saved after deletion of the file(s) since this is meant
-    to be used with the pre_delete signal.
-    """
-    for field_name, _ in instance.__dict__.iteritems():
-        field = getattr(instance, field_name)
-        if (issubclass(field.__class__, FieldFile) and field.name):
-            # pass False so FileField does not save the model
-            field.delete(save=False)
 
 ### connect to signal and sender
 pre_delete.connect(file_cleanup, sender=UserProfile)
