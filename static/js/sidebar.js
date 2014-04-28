@@ -1,5 +1,5 @@
 /*
- * js for introduction page
+ * js for sidebar
  */
 
 $(document).ready(function() {
