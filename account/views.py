@@ -10,6 +10,7 @@ from django.views.generic.edit import FormView, UpdateView
 from django.views.generic.list import ListView
 from django.core.urlresolvers import reverse_lazy
 from django.http import HttpResponseRedirect
+from django.shortcuts import get_object_or_404
 
 from account.models import UserProfile
 from account.forms import ResendEmailForm, UpdateProfileForm, UserFileFormSet
@@ -40,7 +41,7 @@ class ProfileView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(ProfileView, self).get_context_data(**kwargs)
         user = self.request.user
-        profile = user.userprofile_set.get(user=user)
+        profile = get_object_or_404(UserProfile, user=user)
         userfiles = user.userfile_set.all()
         context['user'] = user
         context['profile'] = profile
@@ -134,7 +135,7 @@ class ListApprovedView(ListView):
         """
         context = super(ListApprovedView, self).get_context_data(**kwargs)
         user = self.request.user
-        profile = user.userprofile_set.get(user=user)
+        profile = get_object_or_404(UserProfile, user=user)
         context['user'] = user
         context['profile'] = profile
         return context

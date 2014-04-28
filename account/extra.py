@@ -4,8 +4,9 @@
 Extra models for app account
 """
 
-from django.db import models
 from django import forms
+from django.db import models
+from django.db.models.fields.files import FieldFile
 from django.core.files.storage import FileSystemStorage
 from django.conf import settings
 from django.template.defaultfilters import filesizeformat

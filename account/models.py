@@ -8,7 +8,6 @@ from django.db import models
 from django.conf import settings
 from django.contrib.auth.models import User
 from django.contrib.auth import login
-from django.db.models.fields.files import FieldFile
 from django.utils.translation import ugettext_lazy as _
 
 from django.db.models.signals import pre_delete
@@ -73,6 +72,7 @@ class UserProfile(models.Model):
     # transcript: needed if undergraudate (junior and below)
     transcript = ContentTypeRestrictedFileField(upload_to=lambda instance, filename: u'account/{0}/{1}'.format(instance.user.username, filename),
             verbose_name=_("Transcript"), blank=True, null=True,
+            help_text=_("Undergraduate (junior and below) required to upload transcript."),
             storage=OverwriteStorage(),
             content_types=settings.ALLOWED_CONTENT_TYPES,
             max_upload_size=settings.ALLOWED_MAX_UPLOAD_SIZE)
