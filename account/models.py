@@ -72,7 +72,7 @@ class UserProfile(models.Model):
     # transcript: needed if undergraudate (junior and below)
     transcript = ContentTypeRestrictedFileField(upload_to=lambda instance, filename: u'account/{0}/{1}'.format(instance.user.username, filename),
             verbose_name=_("Transcript"), blank=True, null=True,
-            help_text=_("Undergraduate (junior and below) required to upload transcript."),
+            help_text=_("Undergraduate (junior and below) required to upload transcript. PDF format is recommended."),
             storage=OverwriteStorage(),
             content_types=settings.ALLOWED_CONTENT_TYPES,
             max_upload_size=settings.ALLOWED_MAX_UPLOAD_SIZE)

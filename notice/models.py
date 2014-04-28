@@ -56,4 +56,8 @@ class NoticeAttachment(models.Model):
     object_id = models.PositiveIntegerField()
     content_object = generic.GenericForeignKey("content_type", "object_id")
 
+    class Meta:
+        verbose_name = _('notice attachment')
+        verbose_name_plural = _('notice attachments')
+
 
