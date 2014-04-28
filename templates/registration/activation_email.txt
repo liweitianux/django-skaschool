@@ -1,14 +1,14 @@
-Hello,
+您好，
 
-Please follow the link below to activate your account at
-"2014 SKA Summer School"({{ site }}).
+感谢您在"2014SKA暑期学校网站"(http://{{ site }})
+注册账户，请使用以下链接来激活您的账户，然后您便可以登录
+以及修改个人资料。
 
 http://{{ site }}/accounts/activate/{{ activation_key }}
 
-Note: this link will expire in {{ expiration_days }} days.
+注意：该链接将在{{ expiration_days }}天后过期失效。
 
 
-Best regards.
-
-2014 SKA Summer School Team
+祝好！
+2014SKA暑期学校团队
 
