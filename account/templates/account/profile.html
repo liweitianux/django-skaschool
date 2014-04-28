@@ -67,7 +67,7 @@
           <th class="profile-reason">为什么参加</th>
           <td class="profile-reason-data">{% if profile.reason %}{{ profile.reason }}{% else %}<span class="label label-warning">请及时填写参加理由</span>{% endif %}</td>
         </tr>
-        {% if profile.is_transcript_required %}
+        {% if profile.is_transcript_required or profile.transcript %}
         <tr>
           <th class="profile-transcript">成绩单</th>
           <td class="profile-transcript-data">{% if profile.transcript %}<a href="{{ profile.transcript.url }}">{{ profile.get_transcript_filename }}{% else %}<span class="label label-warning">请及时上传成绩单</span>{% endif %}</a></td>

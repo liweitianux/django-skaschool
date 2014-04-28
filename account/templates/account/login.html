@@ -10,9 +10,10 @@
 {% endblock %}
 
 {% block content %}
-  <div class="container">
-    <h2>登录</h2>
-    <br>
+<div class="container">
+  <h2>登录</h2>
+  <br>
+  <div class="row">
     <form role="form" class="form-horizontal" method="post">
       {% csrf_token %}
       {% bootstrap_form form layout='horizontal' %}
@@ -20,8 +21,11 @@
     </form>
 
     <br>
-    <p>忘记密码了？ <a href="{% url 'password_reset' %}" class="btn btn-default">重置密码</a></p>
-  </div>
+    <div class="col-md-4 col-md-push-1">
+      <p>忘记密码了？ <a href="{% url 'password_reset' %}" class="btn btn-default">重置密码</a></p>
+    </div> <!-- col-md-2 -->
+  </div> <!-- row -->
+</div>
 {% endblock %}
 
 {# vim: set ts=8 sw=2 tw=0 fenc=utf-8 ft=htmldjango.html: #}
