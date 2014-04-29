@@ -8,7 +8,10 @@ https://docs.djangoproject.com/en/1.6/howto/deployment/wsgi/
 """
 
 import os
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "django_skaschool.settings")
+
+#os.environ.setdefault("DJANGO_SETTINGS_MODULE", "django_skaschool.settings")
+# use settings_production
+os.environ["DJANGO_SETTINGS_MODULE"] = "django_skaschool.settings_production"
 
 from django.core.wsgi import get_wsgi_application
 application = get_wsgi_application()
