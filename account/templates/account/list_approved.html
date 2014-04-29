@@ -15,7 +15,7 @@
     <h2>审定名单</h2>
     <br>
     {# alert if the user not approved #}
-    {% if profile.is_approved == 'N' %}
+    {% if profile and profile.is_approved == 'N' %}
     <div class="alert alert-warning">
       很抱歉，您未能被批准参加本次SKA暑期学校，感谢您的关注和参与。
     </div>

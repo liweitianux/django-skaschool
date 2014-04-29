@@ -135,7 +135,11 @@ class ListApprovedView(ListView):
         """
         context = super(ListApprovedView, self).get_context_data(**kwargs)
         user = self.request.user
-        profile = get_object_or_404(UserProfile, user=user)
+        profile_qset = user.userprofile_set.all()
+        if profile_qset:
+            profile = profile_qset[0]
+        else:
+            profile = None
         context['user'] = user
         context['profile'] = profile
         return context
