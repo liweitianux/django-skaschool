@@ -3,6 +3,7 @@
 {% load url from future %}
 {% load i18n %}
 {% load bootstrap3 %}
+{% load my_markdown %}
 
 {# template to show notice list #}
 
@@ -24,7 +25,7 @@
       <p>{{ notice.show_pubtime }}, {{ notice.category.category_name }}</p>
     </div>
     <div class="notice-content">
-      {{ notice.contents }}
+      {{ notice.contents|my_markdown }}
     </div>
       {% if notice.attachments.all %}
       <div class="notice-attachment">

@@ -15,7 +15,8 @@ class Notice(models.Model):
     pubtime = models.DateTimeField(_("Publish time"), auto_now_add=True)
     category = models.ForeignKey('NoticeCategory', verbose_name=_("Category"))
     is_important = models.BooleanField(_("Is important"), default=False)
-    contents = models.TextField(_("Contents"))
+    contents = models.TextField(_("Contents"),
+            help_text=_("Markdown syntax supported"))
     # NoticeAttachment to deal with attachments
     attachments = generic.GenericRelation('NoticeAttachment')
 
