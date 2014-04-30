@@ -113,10 +113,15 @@ class UserProfileAdmin(admin.ModelAdmin):
         """
         return the html code of transcript with url link
         """
-        return format_html('<a href="%(url)s">%(name)s</a>' % {
-                'url': obj.transcript.url,
-                'name': os.path.basename(obj.transcript.name),
-            })
+        transcript = obj.transcript
+        if transcript:
+            html = '<a href="%(url)s">%(name)s</a>' % {
+                'url': transcript.url,
+                'name': os.path.basename(transcript.name),
+            }
+        else:
+            html = _("Null")
+        return format_html(html)
     transcript_url.short_description = _("Transcript")
 
     def attachments(self, obj):
