@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-04-30 19:28+0800\n"
+"POT-Creation-Date: 2014-04-30 19:46+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Weitian LI <liweitianux@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -103,6 +103,10 @@ msgstr "成绩单"
 #: account/admin.py:137
 msgid "Null"
 msgstr "无"
+
+#: account/admin.py:139
+msgid "Attachments"
+msgstr "附件"
 
 #: account/extra.py:49
 #, python-format

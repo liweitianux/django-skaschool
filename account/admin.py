@@ -136,6 +136,7 @@ class UserProfileAdmin(admin.ModelAdmin):
         else:
             html = _("Null")
         return format_html(html)
+    attachments.short_description = _("Attachments")
 
 
 admin.site.register(UserProfile, UserProfileAdmin)
