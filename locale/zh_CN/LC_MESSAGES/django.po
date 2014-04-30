@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-04-29 09:09+0800\n"
+"POT-Creation-Date: 2014-04-30 19:28+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Weitian LI <liweitianux@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,92 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+
+#: account/admin.py:45
+msgid "1 user was successfully approved."
+msgstr "1个用户被成功审定."
+
+#: account/admin.py:47
+#, python-format
+msgid "%(num)s users were successfully approved."
+msgstr "%(num)s个用户被成功审定."
+
+#: account/admin.py:49
+msgid "Approve users"
+msgstr "审定用户"
+
+#: account/admin.py:57
+msgid "1 user was successfully sponsored."
+msgstr "1个用户被成功资助."
+
+#: account/admin.py:59
+#, python-format
+msgid "%(num)s users were successfully sponsored."
+msgstr "%(num)s个用户被成功资助."
+
+#: account/admin.py:61
+msgid "Sponsor users"
+msgstr "资助用户"
+
+#: account/admin.py:69
+msgid "1 user was successfully cancelled approval."
+msgstr "1个用户的审定被取消."
+
+#: account/admin.py:71
+#, python-format
+msgid "%(num)s users were successfully cancelled approval."
+msgstr "%(num)s个用户的审定被取消."
+
+#: account/admin.py:73
+msgid "Cancel approve users"
+msgstr "取消用户审定"
+
+#: account/admin.py:81
+msgid "1 user was successfully cancelled sponsor."
+msgstr "1个用户的资助被取消."
+
+#: account/admin.py:83
+#, python-format
+msgid "%(num)s users were successfully cancelled sponsor."
+msgstr "%(num)s个用户的资助被取消."
+
+#: account/admin.py:85
+msgid "Cancel sponsor users"
+msgstr "取消用户资助"
+
+#: account/admin.py:93
+msgid "1 user was successfully reset approval."
+msgstr "1个用户的审定被重置."
+
+#: account/admin.py:95
+#, python-format
+msgid "%(num)s users were successfully reset approval."
+msgstr "%(num)s个用户的审定被重置."
+
+#: account/admin.py:97
+msgid "Reset approve users"
+msgstr "重置用户审定"
+
+#: account/admin.py:105
+msgid "1 user was successfully reset sponsor."
+msgstr "1个用户的资助被重置."
+
+#: account/admin.py:107
+#, python-format
+msgid "%(num)s users were successfully reset sponsor."
+msgstr "%(num)s个用户的审定被重置."
+
+#: account/admin.py:109
+msgid "Reset sponsor users"
+msgstr "重置用户资助"
+
+#: account/admin.py:120 account/models.py:74
+msgid "Transcript"
+msgstr "成绩单"
+
+#: account/admin.py:137
+msgid "Null"
+msgstr "无"
 
 #: account/extra.py:49
 #, python-format
@@ -162,10 +248,6 @@ msgstr "用户"
 #: account/models.py:71
 msgid "Why attend"
 msgstr "为什么参加"
-
-#: account/models.py:74
-msgid "Transcript"
-msgstr "成绩单"
 
 #: account/models.py:75
 msgid ""
