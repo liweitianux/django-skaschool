@@ -153,9 +153,12 @@ from settings_email import *
 
 #################################################
 ## bootstrap3
+# Serve bootstrap3 from local.
+# Otherwise 'respond.js' requires extra configuration with css on CDN.
 BOOTSTRAP3 = {
     'jquery_url': '//code.jquery.com/jquery-1.11.0.min.js',
-    'base_url': '//netdna.bootstrapcdn.com/bootstrap/3.1.1/',
+    #'base_url': '//netdna.bootstrapcdn.com/bootstrap/3.1.1/',
+    'base_url': '/static/third-party/bootstrap/3.1.1/',
     'css_url': None,
     'theme_url': None,
     'javascript_url': None,
