@@ -9,3 +9,7 @@ https://docs.djangoproject.com/en/1.6/ref/contrib/contenttypes/
   * serializing references to ContentType objects:
     [natural keys] dumpdata --natural
 
+
+## dumpdata
+$ python manage.py dumpdata --settings='django_skaschool.settings_production' --indent=4
+
