@@ -26,7 +26,7 @@ class Notice(models.Model):
         ordering = ['-pubtime', 'id']
 
     def __unicode__(self):
-        return u'Notice at %s' % self.pubtime.isoformat()
+        return u'Notice %s: %s' % (self.category.category_name, self.title)
 
     def show_pubtime(self):
         # used in 'list_notice.html' template
