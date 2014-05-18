@@ -14,7 +14,10 @@ Weitian LI <liweitianux@gmail.com>
 
 {# title #}
 {% block bootstrap3_title %}
-  {% block title %}(title){% endblock %}
+  {% block title %}
+    {% block pagetitle %}(pagetitle){% endblock %} |
+    {% block sitetitle %}{% include 'sitetitle.txt' %}{% endblock %}
+  {% endblock %}
 {% endblock %}
 
 {# bootstrap3_extra_head #}
@@ -28,6 +31,10 @@ Weitian LI <liweitianux@gmail.com>
   {# add favicon #}
   {% block favicon %}
     {% include 'favicon.html' %}
+  {% endblock %}
+  {# add meta information #}
+  {% block metainfo %}
+    {% include 'metainfo.html' %}
   {% endblock %}
 {% endblock %}
 

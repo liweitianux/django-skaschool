@@ -1,2 +1,6 @@
 user-agent: AhrefsBot
 disallow: /
+
+user-agent: *
+disallow: /media/account/
+
