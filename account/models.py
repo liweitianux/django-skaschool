@@ -42,6 +42,12 @@ class UserProfile(models.Model):
         ('N', _("No")),
         ('C', _("Checking")),
     )
+    # status choices for is_checkin
+    CHECKIN_STATUS = (
+        ('Y', _("Yes")),
+        ('N', _("No")),
+        ('X', _("N/A")),
+    )
     # choices for identify
     IDENTIFIES = (
         ('OT', _("Other")),
@@ -83,6 +89,8 @@ class UserProfile(models.Model):
             choices=APPROVED_STATUS, default='C')
     is_sponsored = models.CharField(_("Is sponsored"), max_length=1,
             choices=SPONSORED_STATUS, default='C')
+    is_checkin = models.CharField(_("Is checkin"), max_length=1,
+            choices=CHECKIN_STATUS, default='X')
 
     class Meta:
         verbose_name = _('user profile')
@@ -160,6 +168,13 @@ class UserProfile(models.Model):
         sponsored_dict = dict((k, v) for k, v in self.SPONSORED_STATUS)
         return sponsored_dict.get(self.is_sponsored)
 
+    def get_checkin_value(self):
+        """
+        return the corresponding value of checkin for the user
+        """
+        checkin_dict = dict((k, v) for k, v in self.CHECKIN_STATUS)
+        return checkin_dict.get(self.is_checkin)
+
     def get_identify_value(self):
         """
         return the corresponding value of identify for the user
@@ -173,6 +188,53 @@ class UserProfile(models.Model):
         NOTE: transcript is not included here.
         """
         return self.user.userfile_set.all()
+
+    ## fields and names of dumped data
+    def dump_fieldnames(self, *args, **kwargs):
+        fields = {
+            'id':             self.user._meta.get_field_by_name('id')[0].verbose_name,
+            'username':       self.user._meta.get_field_by_name('username')[0].verbose_name,
+            'email':          self.user._meta.get_field_by_name('email')[0].verbose_name,
+            'realname':       self._meta.get_field_by_name('realname')[0].verbose_name,
+            'gender':         self._meta.get_field_by_name('gender')[0].verbose_name,
+            'institute':      self._meta.get_field_by_name('institute')[0].verbose_name,
+            'identify':       self._meta.get_field_by_name('identify')[0].verbose_name,
+            'reason':         self._meta.get_field_by_name('reason')[0].verbose_name,
+            'transcript':     self._meta.get_field_by_name('transcript')[0].verbose_name,
+            'supplement':     self._meta.get_field_by_name('supplement')[0].verbose_name,
+            'is_approved':    self._meta.get_field_by_name('is_approved')[0].verbose_name,
+            'is_sponsored':   self._meta.get_field_by_name('is_sponsored')[0].verbose_name,
+            'is_checkin':     self._meta.get_field_by_name('is_checkin')[0].verbose_name,
+            'attachments':    _("attachments"),
+        }
+        return fields
+
+    ## dump all data of user profile
+    def dump(self, *args, **kwargs):
+        """
+        Dump all data of the userprofile
+        """
+        if self.transcript:
+            transcript = self.transcript.url
+        else:
+            transcript = None
+        data = {
+            'id':             self.id,
+            'username':       self.user.username,
+            'email':          self.user.email,
+            'realname':       self.realname,
+            'gender':         self.get_gender_value(),
+            'institute':      self.institute,
+            'identify':       self.get_identify_value(),
+            'reason':         self.reason,
+            'transcript':     transcript,
+            'supplement':     self.supplement,
+            'is_approved':    self.get_approved_value(),
+            'is_sponsored':   self.get_sponsored_value(),
+            'is_checkin':     self.get_checkin_value(),
+            'attachments':    [obj.file.url for obj in self.get_userfiles()],
+        }
+        return data
 
 
 class UserFile(models.Model):

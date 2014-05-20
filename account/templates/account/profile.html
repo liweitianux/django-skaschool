@@ -103,6 +103,20 @@
             {% endif %}
           </td>
         </tr>
+        <tr>
+          <th class="profile-checkin">是否报到</th>
+          <td class="profile-checkin-data">
+            {% if profile.is_checkin == 'Y' %}
+            <span class="glyphicon glyphicon-ok"></span> <span class="label label-success">是</span>
+            {% elif profile.is_checkin == 'N' %}
+            <span class="glyphicon glyphicon-remove"></span> <span class="label label-warning">否</span>
+            {% elif profile.is_checkin == 'X' %}
+            <span class="glyphicon glyphicon-question-sign"></span> <span class="label label-default">不可用</span>
+            {% else %}
+            <span class="glyphicon glyphicon-warning-sign"></span> <span class="label label-danger">系统错误</span>
+            {% endif %}
+          </td>
+        </tr>
         {# user uploaded files #}
         {% if userfiles %}
         <tr>

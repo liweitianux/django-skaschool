@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
 
 from django.contrib import admin
+from django.conf.urls import url
 from django.utils.html import format_html
 from django.utils.translation import ugettext_lazy as _
+from django.http import HttpResponse
 
 from account.models import UserProfile, UserFile
 
@@ -15,14 +17,18 @@ class UserProfileAdmin(admin.ModelAdmin):
     """
     actions = [
         'approve_users',
-        'sponsor_users',
         'cancel_approve_users',
-        'cancel_sponsor_users',
         'reset_approve_users',
+        'sponsor_users',
+        'cancel_sponsor_users',
         'reset_sponsor_users',
+        'users_checkin',
+        'users_not_checkin',
+        'users_checkin_reset',
     ]
     list_display = (
         'user',
+        'email',
         'realname',
         'gender',
         'institute',
@@ -33,7 +39,15 @@ class UserProfileAdmin(admin.ModelAdmin):
         'attachments',
         'is_approved',
         'is_sponsored',
+        'is_checkin',
     )
+    # search fields
+    search_fields = [
+        'user__username',
+        'user__email',
+        'realname',
+        'institute',
+    ]
 
     ## custom admin actions
     def approve_users(self, request, queryset):
@@ -108,7 +122,52 @@ class UserProfileAdmin(admin.ModelAdmin):
         self.message_user(request, msg)
     reset_sponsor_users.short_description = _("Reset sponsor users")
 
+    # control 'is_checkin' field
+    def users_checkin(self, request, queryset):
+        """
+        Mark selected users as checked in.
+        """
+        profiles_updated = queryset.update(is_checkin='Y')
+        if profiles_updated == 1:
+            msg = _("1 user was successfully marked as checkin.")
+        else:
+            msg = _("%(num)s users were successfully marked as checkin." % {'num': profiles_updated})
+        self.message_user(request, msg)
+    users_checkin.short_description = _("Mark users as checked in")
+
+    def users_not_checkin(self, request, queryset):
+        """
+        Mark selected users as NOT checked in.
+        """
+        profiles_updated = queryset.update(is_checkin='N')
+        if profiles_updated == 1:
+            msg = _("1 user was marked as not checkin.")
+        else:
+            msg = _("%(num)s users were marked as not checkin." % {'num': profiles_updated})
+        self.message_user(request, msg)
+    users_not_checkin.short_description = _("Mark users as not checked in")
+
+    def users_checkin_reset(self, request, queryset):
+        """
+        Reset checkin status of selected users.
+        """
+        profiles_updated = queryset.update(is_checkin='X')
+        if profiles_updated == 1:
+            msg = _("1 user was reset status of checkin.")
+        else:
+            msg = _("%(num)s users were reset status of checkin." % {'num': profiles_updated})
+        self.message_user(request, msg)
+    users_checkin_reset.short_description = _("Reset users checkin status")
+
     ## custom fields
+    def email(self, obj):
+        """
+        return the email of the user profile
+        """
+        user = obj.user
+        return user.email
+    email.short_description = _("E-mail")
+
     def transcript_url(self, obj):
         """
         return the html code of transcript with url link
@@ -143,7 +202,43 @@ class UserProfileAdmin(admin.ModelAdmin):
         return format_html(html)
     attachments.short_description = _("Attachments")
 
+    ## added a view to display all userprofile info (csv format)
+    def get_urls(self):
+        urls = super(type(self), self).get_urls()
+        my_urls = [
+            url(r'^csv/$', self.userprofile_csv_view,
+                name='userprofile_csv_view'),
+        ]
+        return my_urls + urls
 
+    def userprofile_csv_view(self, request):
+        """
+        custom admin view to display all userprofile info in csv format
+        """
+        userprofile_objs = UserProfile.objects.all()
+        fieldnames = userprofile_objs[0].dump_fieldnames()
+        fields = [k for k,v in fieldnames.items()]
+        # header
+        header = u''
+        for k in fields:
+            header += u'{0},'.format(fieldnames[k])
+        header += '\n'
+        # contents
+        contents = u''
+        for obj in userprofile_objs:
+            data = obj.dump()
+            cline = u''
+            for k in fields:
+                if k == 'attachments':
+                    cline += u'{0},'.format('||'.join(data[k]))
+                else:
+                    cline += u'{0},'.format(data[k])
+            cline += '\n'
+            contents += cline
+        return HttpResponse(header+contents, content_type='text/plain')
+
+
+###
 admin.site.register(UserProfile, UserProfileAdmin)
 admin.site.register(UserFile)
 
