@@ -18,7 +18,7 @@ from account.extra import ContentTypeRestrictedFileField, OverwriteStorage, file
 import os
 
 
-###### account models ######
+### UserProfile model {{{
 class UserProfile(models.Model):
     """
     custom user profile
@@ -235,8 +235,10 @@ class UserProfile(models.Model):
             'attachments':    [obj.file.url for obj in self.get_userfiles()],
         }
         return data
+### UserProfile }}}
 
 
+### UserFile model {{{
 class UserFile(models.Model):
     """
     model to deal with user uploaded files
@@ -282,9 +284,10 @@ class UserFile(models.Model):
                 old_obj.file.delete(save=False)
         #
         return result
+### UserFile model }}}
 
 
-###### signal callback ######
+### registration signal callback {{{
 def user_registered_callback(sender, user, request, **kwargs):
     """
     callback of signal 'user_registered' from 'django-registration'
@@ -298,10 +301,12 @@ def user_registered_callback(sender, user, request, **kwargs):
     profile.identify = request.POST['identify']
     profile.save()
 
-### connect 'user_registered_callback' to signal user_registered
+# connect 'user_registered_callback' to signal user_registered
 user_registered.connect(user_registered_callback)
+### user_registered }}}
 
-### login user after activated
+
+### login user after activated {{{
 def login_on_activation(sender, user, request, **kwargs):
     """
     Logs in the user after activation
@@ -311,9 +316,10 @@ def login_on_activation(sender, user, request, **kwargs):
 
 # connect 'login_on_activation' to signal user_activated
 user_activated.connect(login_on_activation)
+### user_activated }}}
 
 
-### connect to signal and sender
+### connect to signal and sender (cleanup uploaded files)
 pre_delete.connect(file_cleanup, sender=UserProfile)
 pre_delete.connect(file_cleanup, sender=UserFile)
 
