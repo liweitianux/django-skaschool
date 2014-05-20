@@ -12,9 +12,12 @@ from django.conf import settings
 from django.template.defaultfilters import filesizeformat
 from django.utils.translation import ugettext_lazy as _
 
+from south.modelsinspector import add_introspection_rules
+
 import os
 
 
+### custom fields ###
 class ContentTypeRestrictedFileField(models.FileField):
     """
     Same as FileField, but you can specify:
@@ -53,6 +56,18 @@ class ContentTypeRestrictedFileField(models.FileField):
             pass
         #
         return data
+
+## add custom fields to south inspection
+add_introspection_rules([
+    (
+        [ContentTypeRestrictedFileField],   # class these apply to
+        [],                                 # positional arguments
+        {                                   # keyword argument
+            "content_types": ["content_types", {}],
+            "max_upload_size": ["max_upload_size", {}],
+        },
+    ),
+], ["^account\.extra\.ContentTypeRestrictedFileField"])
 
 
 ### OverwriteStorage ###

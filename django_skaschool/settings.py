@@ -43,7 +43,7 @@ DEFAULT_APPS = (
 )
 # THIRD_PARTY_APPS
 THIRD_PARTY_APPS = (
-    #'south',
+    'south',
     'bootstrap3',
     'registration',
     'captcha',
