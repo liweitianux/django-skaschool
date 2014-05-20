@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-04-30 19:46+0800\n"
+"POT-Creation-Date: 2014-05-20 21:09+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Weitian LI <liweitianux@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,118 +18,161 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: account/admin.py:45
+#: account/admin.py:59
 msgid "1 user was successfully approved."
 msgstr "1个用户被成功审定."
 
-#: account/admin.py:47
+#: account/admin.py:61
 #, python-format
 msgid "%(num)s users were successfully approved."
 msgstr "%(num)s个用户被成功审定."
 
-#: account/admin.py:49
+#: account/admin.py:63
 msgid "Approve users"
 msgstr "审定用户"
 
-#: account/admin.py:57
+#: account/admin.py:71
 msgid "1 user was successfully sponsored."
 msgstr "1个用户被成功资助."
 
-#: account/admin.py:59
+#: account/admin.py:73
 #, python-format
 msgid "%(num)s users were successfully sponsored."
 msgstr "%(num)s个用户被成功资助."
 
-#: account/admin.py:61
+#: account/admin.py:75
 msgid "Sponsor users"
 msgstr "资助用户"
 
-#: account/admin.py:69
+#: account/admin.py:83
 msgid "1 user was successfully cancelled approval."
 msgstr "1个用户的审定被取消."
 
-#: account/admin.py:71
+#: account/admin.py:85
 #, python-format
 msgid "%(num)s users were successfully cancelled approval."
 msgstr "%(num)s个用户的审定被取消."
 
-#: account/admin.py:73
+#: account/admin.py:87
 msgid "Cancel approve users"
 msgstr "取消用户审定"
 
-#: account/admin.py:81
+#: account/admin.py:95
 msgid "1 user was successfully cancelled sponsor."
 msgstr "1个用户的资助被取消."
 
-#: account/admin.py:83
+#: account/admin.py:97
 #, python-format
 msgid "%(num)s users were successfully cancelled sponsor."
 msgstr "%(num)s个用户的资助被取消."
 
-#: account/admin.py:85
+#: account/admin.py:99
 msgid "Cancel sponsor users"
 msgstr "取消用户资助"
 
-#: account/admin.py:93
+#: account/admin.py:107
 msgid "1 user was successfully reset approval."
 msgstr "1个用户的审定被重置."
 
-#: account/admin.py:95
+#: account/admin.py:109
 #, python-format
 msgid "%(num)s users were successfully reset approval."
 msgstr "%(num)s个用户的审定被重置."
 
-#: account/admin.py:97
+#: account/admin.py:111
 msgid "Reset approve users"
 msgstr "重置用户审定"
 
-#: account/admin.py:105
+#: account/admin.py:119
 msgid "1 user was successfully reset sponsor."
 msgstr "1个用户的资助被重置."
 
-#: account/admin.py:107
+#: account/admin.py:121
 #, python-format
 msgid "%(num)s users were successfully reset sponsor."
 msgstr "%(num)s个用户的审定被重置."
 
-#: account/admin.py:109
+#: account/admin.py:123
 msgid "Reset sponsor users"
 msgstr "重置用户资助"
 
-#: account/admin.py:120 account/models.py:74
-msgid "Transcript"
-msgstr "成绩单"
+#: account/admin.py:132
+msgid "1 user was successfully marked as checkin."
+msgstr "1个用户被标记为已报到."
 
-#: account/admin.py:137
+#: account/admin.py:134
+#, python-format
+msgid "%(num)s users were successfully marked as checkin."
+msgstr "%(num)s个用户被标记为已报到."
+
+#: account/admin.py:136
+msgid "Mark users as checked in"
+msgstr "标记用户为已报到"
+
+#: account/admin.py:144
+msgid "1 user was marked as not checkin."
+msgstr "1个用户被标记为未报到."
+
+#: account/admin.py:146
+#, python-format
+msgid "%(num)s users were marked as not checkin."
+msgstr "%(num)s个用户被标记为未报到."
+
+#: account/admin.py:148
+msgid "Mark users as not checked in"
+msgstr "标记用户为未报到"
+
+#: account/admin.py:156
+msgid "1 user was reset status of checkin."
+msgstr "1个用户的报到状态被重置."
+
+#: account/admin.py:158
+#, python-format
+msgid "%(num)s users were reset status of checkin."
+msgstr "%(num)s个用户的报到状态被重置."
+
+#: account/admin.py:160
+msgid "Reset users checkin status"
+msgstr "重置用户报到状态"
+
+#: account/admin.py:169 account/forms.py:59 account/forms.py:104
+msgid "E-mail"
+msgstr "邮箱"
+
+#: account/admin.py:182 account/admin.py:201
 msgid "Null"
 msgstr "无"
 
-#: account/admin.py:139
+#: account/admin.py:184 account/models.py:80
+msgid "Transcript"
+msgstr "成绩单"
+
+#: account/admin.py:203
 msgid "Attachments"
 msgstr "附件"
 
-#: account/extra.py:49
+#: account/extra.py:52
 #, python-format
 msgid "Please keep filesize under %(maxsize)s. Current filesize %(filesize)s"
 msgstr "请使文件小于%(maxsize)s. 当前大小%(filesize)s"
 
-#: account/extra.py:51
+#: account/extra.py:54
 msgid "Unsupported filetype"
 msgstr "不支持的文件类型"
 
-#: account/forms.py:27 account/models.py:65
+#: account/forms.py:27 account/models.py:71
 msgid "Name"
 msgstr "姓名"
 
-#: account/forms.py:28 account/models.py:66
+#: account/forms.py:28 account/models.py:72
 msgid "Gender"
 msgstr "性别"
 
-#: account/forms.py:29 account/models.py:67
+#: account/forms.py:29 account/models.py:73
 msgid "Institute"
 msgstr "单位"
 
-#: account/forms.py:30 account/models.py:68
+#: account/forms.py:30 account/models.py:74
 msgid "Identify"
 msgstr "身份"
 
@@ -148,10 +191,6 @@ msgstr "请只使用英文字母数字和@.+-_字符"
 #: account/forms.py:57
 msgid "Is update email"
 msgstr "是否更新邮箱地址"
-
-#: account/forms.py:59 account/forms.py:104
-msgid "E-mail"
-msgstr "邮箱"
 
 #: account/forms.py:65
 msgid "Username not exists"
@@ -177,11 +216,11 @@ msgstr "女"
 msgid "Secret"
 msgstr "保密"
 
-#: account/models.py:35 account/models.py:41
+#: account/models.py:35 account/models.py:41 account/models.py:47
 msgid "Yes"
 msgstr "是"
 
-#: account/models.py:36 account/models.py:42
+#: account/models.py:36 account/models.py:42 account/models.py:48
 msgid "No"
 msgstr "否"
 
@@ -189,126 +228,138 @@ msgstr "否"
 msgid "Checking"
 msgstr "审核中"
 
-#: account/models.py:47
+#: account/models.py:49
+msgid "N/A"
+msgstr "不可用"
+
+#: account/models.py:53
 msgid "Other"
 msgstr "其他"
 
-#: account/models.py:48
+#: account/models.py:54
 msgid "Undergraudate (junior and below)"
 msgstr "本科生(大三及以下)"
 
-#: account/models.py:49
+#: account/models.py:55
 msgid "Undergraudate (senior)"
 msgstr "本科生(大四)"
 
-#: account/models.py:50
+#: account/models.py:56
 msgid "Master graudate"
 msgstr "硕士研究生"
 
-#: account/models.py:51
+#: account/models.py:57
 msgid "PhD graudate"
 msgstr "博士研究生"
 
-#: account/models.py:52
+#: account/models.py:58
 msgid "Post-doctoral"
 msgstr "博士后"
 
-#: account/models.py:53
+#: account/models.py:59
 msgid "Assistant researcher"
 msgstr "助理研究员"
 
-#: account/models.py:54
+#: account/models.py:60
 msgid "Associate researcher"
 msgstr "副研究员"
 
-#: account/models.py:55
+#: account/models.py:61
 msgid "Distinguished researcher"
 msgstr "特别研究员"
 
-#: account/models.py:56
+#: account/models.py:62
 msgid "Researcher"
 msgstr "研究员"
 
-#: account/models.py:57
+#: account/models.py:63
 msgid "Instructor"
 msgstr "讲师"
 
-#: account/models.py:58
+#: account/models.py:64
 msgid "Assistant professor"
 msgstr "助理教授"
 
-#: account/models.py:59
+#: account/models.py:65
 msgid "Associate professor"
 msgstr "副教授"
 
-#: account/models.py:60
+#: account/models.py:66
 msgid "Professor"
 msgstr "教授"
 
-#: account/models.py:64 account/models.py:182
+#: account/models.py:70 account/models.py:246
 msgid "User"
 msgstr "用户"
 
-#: account/models.py:71
+#: account/models.py:77
 msgid "Why attend"
 msgstr "为什么参加"
 
-#: account/models.py:75
+#: account/models.py:81
 msgid ""
 "Undergraduate (junior and below) required to upload transcript. PDF format "
 "is recommended."
 msgstr "本科生(大三及以下)需要上传成绩单. 推荐上传PDF格式."
 
-#: account/models.py:80
+#: account/models.py:86
 msgid "Supplement"
 msgstr "补充说明"
 
-#: account/models.py:82
+#: account/models.py:88
 msgid "Is approved"
 msgstr "是否审定"
 
-#: account/models.py:84
+#: account/models.py:90
 msgid "Is sponsored"
 msgstr "是否资助"
 
-#: account/models.py:88
+#: account/models.py:92
+msgid "Is checkin"
+msgstr "是否报到"
+
+#: account/models.py:96
 msgid "user profile"
 msgstr "用户信息"
 
-#: account/models.py:89
+#: account/models.py:97
 msgid "user profiles"
 msgstr "用户信息"
 
-#: account/models.py:183 archive/models.py:18 notice/models.py:14
+#: account/models.py:208
+msgid "attachments"
+msgstr "附件"
+
+#: account/models.py:247 archive/models.py:18 notice/models.py:14
 #: notice/models.py:52
 msgid "Title"
 msgstr "标题"
 
-#: account/models.py:184 archive/models.py:22 notice/models.py:53
+#: account/models.py:248 archive/models.py:22 notice/models.py:53
 msgid "Description"
 msgstr "描述"
 
-#: account/models.py:186 archive/models.py:23
+#: account/models.py:250 archive/models.py:23
 msgid "File"
 msgstr "文件"
 
-#: account/models.py:190 archive/models.py:67 notice/models.py:41
+#: account/models.py:254 archive/models.py:67 notice/models.py:41
 msgid "Created time"
 msgstr "创建时间"
 
-#: account/models.py:192
+#: account/models.py:256
 msgid "Modified time"
 msgstr "修改时间"
 
-#: account/models.py:195
+#: account/models.py:259
 msgid "user file"
 msgstr "用户文件"
 
-#: account/models.py:196
+#: account/models.py:260
 msgid "user files"
 msgstr "用户文件"
 
-#: account/templates/account/profile_update.html:33
+#: account/templates/account/profile_update.html:31
 msgid "Add another attachment"
 msgstr "再增加一个附件"
 
