@@ -1,0 +1,13 @@
+# -*- coding: utf-8 -*-
+#
+# django email settings
+#
+
+EMAIL_HOST = "smtp.example.com"
+EMAIL_HOST_USER = "username"
+EMAIL_HOST_PASSWORD = "password"
+EMAIL_PORT = 25
+EMAIL_SUBJECT_PREFIX = '[Django] '
+EMAIL_USE_TLS = False
+DEFAULT_FROM_EMAIL = "Display Name <username@example.com>"
+
