@@ -8,7 +8,11 @@ from django.http import HttpResponse
 
 from account.models import UserProfile, UserFile
 
+from account.csv_unicode import UnicodeReader, UnicodeWriter
+
 import os
+import datetime
+import csv
 
 
 class UserProfileAdmin(admin.ModelAdmin):
@@ -218,24 +222,47 @@ class UserProfileAdmin(admin.ModelAdmin):
         userprofile_objs = UserProfile.objects.all()
         fieldnames = userprofile_objs[0].dump_fieldnames()
         fields = [k for k,v in fieldnames.items()]
+#        # header
+#        header = u''
+#        for k in fields:
+#            header += u'{0},'.format(fieldnames[k])
+#        header += '\n'
+#        # contents
+#        contents = u''
+#        for obj in userprofile_objs:
+#            data = obj.dump()
+#            cline = u''
+#            for k in fields:
+#                if k == 'attachments':
+#                    cline += u'{0},'.format('||'.join(data[k]))
+#                else:
+#                    cline += u'{0},'.format(data[k])
+#            cline += '\n'
+#            contents += cline
+#        return HttpResponse(header+contents, content_type='text/plain')
+        filename = '{0}-{1}.csv'.format('registration', datetime.date.today().strftime('%Y%m%d'))
+        response = HttpResponse(content_type='text/csv')
+        response['Content-Disposition'] = 'attachment; filename="{0}"'.format(filename)
+        # Python 2's csv module does not support unicode I/O
+        #writer = csv.writer(response)
+        writer = UnicodeWriter(response)
         # header
-        header = u''
+        header = []
         for k in fields:
-            header += u'{0},'.format(fieldnames[k])
-        header += '\n'
+            header.append(fieldnames[k])
+        writer.writerow(header)
         # contents
-        contents = u''
         for obj in userprofile_objs:
             data = obj.dump()
-            cline = u''
+            row = []
             for k in fields:
                 if k == 'attachments':
-                    cline += u'{0},'.format('||'.join(data[k]))
+                    row.append(';'.join(data[k]))
                 else:
-                    cline += u'{0},'.format(data[k])
-            cline += '\n'
-            contents += cline
-        return HttpResponse(header+contents, content_type='text/plain')
+                    row.append(unicode(data[k]))
+            writer.writerow(row)
+        #
+        return response
 
 
 ###
