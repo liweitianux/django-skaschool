@@ -14,18 +14,19 @@
     <br>
     {# alert if the user not approved #}
     {% if profile and profile.is_approved == 'N' %}
-    <div class="alert alert-warning">
-      很抱歉，您未能被批准参加本次SKA暑期学校，感谢您的关注和参与。
-    </div>
+      <div class="alert alert-warning">
+        很抱歉，您未被批准参加本次SKA暑期学校，感谢您的关注与支持。
+      </div>
     {% endif %}
+    {# approved list #}
     {% if object_list %}
       <table class="table table-striped table-bordered table-hover">
         <thead>
           <tr>
             <th class="col-md-1 list-number">序号</th>
             <th class="col-md-2 list-name">姓名</th>
-            <th class="col-md-3 list-identify">身份</th>
-            <th class="col-md-6 list-institute">单位</th>
+            {# <th class="col-md-3 list-identify">身份</th> #}
+            <th class="col-md-6 list-institute">单位(及专业)</th>
           </tr>
         </thead>
         <tbody>
@@ -34,7 +35,7 @@
           <tr{% if approved_profile.user == user %} class="success"{% endif %}>
             <td>{{ forloop.counter }}</td>
             <td>{{ approved_profile.realname }}</td>
-            <td>{% trans approved_profile.get_identify_value %}</td>
+            {# <td>{% trans approved_profile.get_identify_value %}</td> #}
             <td>{{ approved_profile.institute }}</td>
           </tr>
         {% endfor %}
@@ -42,9 +43,9 @@
       </table>
       <p>（注：按注册先后排序）</p>
     {% else %}
-    <div class="alert alert-warning">
-      审核正在进行，请稍后查询……
-    </div>
+      <div class="alert alert-warning">
+        审核正在进行，请稍后查询……
+      </div>
     {% endif %}
   </div>
 {% endblock %}
