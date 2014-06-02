@@ -25,7 +25,7 @@
           <tr>
             <th class="col-md-1 list-number">序号</th>
             <th class="col-md-2 list-name">姓名</th>
-            {# <th class="col-md-3 list-identify">身份</th> #}
+            {# <th class="col-md-3 list-identity">身份</th> #}
             <th class="col-md-6 list-institute">单位(及专业)</th>
           </tr>
         </thead>
@@ -35,7 +35,7 @@
           <tr{% if approved_profile.user == user %} class="success"{% endif %}>
             <td>{{ forloop.counter }}</td>
             <td>{{ approved_profile.realname }}</td>
-            {# <td>{% trans approved_profile.get_identify_value %}</td> #}
+            {# <td>{% trans approved_profile.get_identity_value %}</td> #}
             <td>{{ approved_profile.institute }}</td>
           </tr>
         {% endfor %}

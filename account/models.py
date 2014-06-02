@@ -48,8 +48,8 @@ class UserProfile(models.Model):
         ('N', _("No")),
         ('X', _("N/A")),
     )
-    # choices for identify
-    IDENTIFIES = (
+    # choices for identity
+    IDENTITIES = (
         ('OT', _("Other")),
         ('UG', _("Undergraudate (junior and below)")),
         ('U4', _("Undergraudate (senior)")),
@@ -70,9 +70,9 @@ class UserProfile(models.Model):
     user = models.ForeignKey(User, unique=True, verbose_name=_("User"))
     realname = models.CharField(_("Name"), max_length=30)
     gender = models.CharField(_("Gender"), max_length=1, choices=GENDERS)
-    institute = models.CharField(_("Institute"), max_length=100)
-    identify = models.CharField(_("Identify"), max_length=2,
-            choices=IDENTIFIES)
+    institute = models.CharField(_("Institute (and major)"), max_length=100)
+    identity = models.CharField(_("Identity"), max_length=2,
+            choices=IDENTITIES)
     # reasons to participate
     reason = models.TextField(_("Why attend"))
     # transcript: needed if undergraudate (junior and below)
@@ -123,10 +123,10 @@ class UserProfile(models.Model):
 
     def is_transcript_required(self):
         """
-        if 'identify' is UG (undergraduate junior and below); then
+        if 'identity' is UG (undergraduate junior and below); then
         transcript is required, return True. Otherwise, return False
         """
-        if (self.identify == 'UG'):
+        if (self.identity == 'UG'):
             return True
         else:
             return False
@@ -175,12 +175,12 @@ class UserProfile(models.Model):
         checkin_dict = dict((k, v) for k, v in self.CHECKIN_STATUS)
         return checkin_dict.get(self.is_checkin)
 
-    def get_identify_value(self):
+    def get_identity_value(self):
         """
-        return the corresponding value of identify for the user
+        return the corresponding value of identity for the user
         """
-        identifies_dict = dict((k, v) for k, v in self.IDENTIFIES)
-        return identifies_dict.get(self.identify)
+        identifies_dict = dict((k, v) for k, v in self.IDENTITIES)
+        return identifies_dict.get(self.identity)
 
     def get_userfiles(self):
         """
@@ -198,7 +198,7 @@ class UserProfile(models.Model):
             'realname':       self._meta.get_field_by_name('realname')[0].verbose_name,
             'gender':         self._meta.get_field_by_name('gender')[0].verbose_name,
             'institute':      self._meta.get_field_by_name('institute')[0].verbose_name,
-            'identify':       self._meta.get_field_by_name('identify')[0].verbose_name,
+            'identity':       self._meta.get_field_by_name('identity')[0].verbose_name,
             'reason':         self._meta.get_field_by_name('reason')[0].verbose_name,
             'transcript':     self._meta.get_field_by_name('transcript')[0].verbose_name,
             'supplement':     self._meta.get_field_by_name('supplement')[0].verbose_name,
@@ -225,7 +225,7 @@ class UserProfile(models.Model):
             'realname':       self.realname,
             'gender':         self.get_gender_value(),
             'institute':      self.institute,
-            'identify':       self.get_identify_value(),
+            'identity':       self.get_identity_value(),
             'reason':         self.reason,
             'transcript':     transcript,
             'supplement':     self.supplement,
@@ -298,7 +298,7 @@ def user_registered_callback(sender, user, request, **kwargs):
     profile.realname = request.POST['realname']
     profile.gender = request.POST['gender']
     profile.institute = request.POST['institute']
-    profile.identify = request.POST['identify']
+    profile.identity = request.POST['identity']
     profile.save()
 
 # connect 'user_registered_callback' to signal user_registered

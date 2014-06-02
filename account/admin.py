@@ -36,7 +36,7 @@ class UserProfileAdmin(admin.ModelAdmin):
         'realname',
         'gender',
         'institute',
-        'identify',
+        'identity',
         'reason',
         'transcript_url',
         'supplement',

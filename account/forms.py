@@ -21,13 +21,12 @@ class UserRegForm(RegistrationFormUniqueEmail):
     based on 'django-registration' RegistrationFormUniqueEmail
     add fields 'realname', 'gender', 'institute' and 'captcha'
     """
-    # XXX: keep consistent with GENDERS in 'models.UserProfile'
     GENDERS = UserProfile.GENDERS
-    IDENTIFIES = UserProfile.IDENTIFIES
+    IDENTITIES = UserProfile.IDENTITIES
     realname = forms.CharField(max_length=30, label=_("Name"))
     gender = forms.ChoiceField(choices=GENDERS, label=_("Gender"))
-    institute = forms.CharField(max_length=100, label=_("Institute"))
-    identify = forms.ChoiceField(choices=IDENTIFIES, label=_("Identify"))
+    institute = forms.CharField(max_length=100, label=_("Institute (and major)"))
+    identity = forms.ChoiceField(choices=IDENTITIES, label=_("Identity"))
     captcha = ReCaptchaField(label=_("Captcha"),
             attrs={'theme': 'clean'})
 
@@ -42,7 +41,7 @@ class UserRegForm(RegistrationFormUniqueEmail):
     #            'realname',
     #            'gender',
     #            'institute',
-    #            'identify',
+    #            'identity',
     #    ]
 
 
@@ -110,7 +109,7 @@ class UpdateProfileForm(forms.ModelForm):
             'realname',
             'gender',
             'institute',
-            'identify',
+            'identity',
             'reason',
             'transcript',
             'supplement',
@@ -128,7 +127,7 @@ class UpdateProfileForm(forms.ModelForm):
             'email',
             'gender',
             'institute',
-            'identify',
+            'identity',
             'reason',
             'transcript',
             'supplement',
@@ -141,7 +140,7 @@ class UpdateProfileForm(forms.ModelForm):
         form_data = self.cleaned_data
         user = form_data.get('user')
         profile = user.userprofile_set.get(user=user)
-        profile.identify = form_data.get('identify', profile.identify)
+        profile.identity = form_data.get('identity', profile.identity)
         transcript = self.cleaned_data.get('transcript', False)
         if (profile.is_transcript_required() and (not transcript)):
             raise forms.ValidationError(_("Transcript is required."), code='required')

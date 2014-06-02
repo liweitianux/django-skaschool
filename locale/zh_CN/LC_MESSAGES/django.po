@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-05-20 21:09+0800\n"
+"POT-Creation-Date: 2014-06-03 00:20+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Weitian LI <liweitianux@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,136 +18,136 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: account/admin.py:59
+#: account/admin.py:63
 msgid "1 user was successfully approved."
 msgstr "1个用户被成功审定."
 
-#: account/admin.py:61
+#: account/admin.py:65
 #, python-format
 msgid "%(num)s users were successfully approved."
 msgstr "%(num)s个用户被成功审定."
 
-#: account/admin.py:63
+#: account/admin.py:67
 msgid "Approve users"
 msgstr "审定用户"
 
-#: account/admin.py:71
+#: account/admin.py:75
 msgid "1 user was successfully sponsored."
 msgstr "1个用户被成功资助."
 
-#: account/admin.py:73
+#: account/admin.py:77
 #, python-format
 msgid "%(num)s users were successfully sponsored."
 msgstr "%(num)s个用户被成功资助."
 
-#: account/admin.py:75
+#: account/admin.py:79
 msgid "Sponsor users"
 msgstr "资助用户"
 
-#: account/admin.py:83
+#: account/admin.py:87
 msgid "1 user was successfully cancelled approval."
 msgstr "1个用户的审定被取消."
 
-#: account/admin.py:85
+#: account/admin.py:89
 #, python-format
 msgid "%(num)s users were successfully cancelled approval."
 msgstr "%(num)s个用户的审定被取消."
 
-#: account/admin.py:87
+#: account/admin.py:91
 msgid "Cancel approve users"
 msgstr "取消用户审定"
 
-#: account/admin.py:95
+#: account/admin.py:99
 msgid "1 user was successfully cancelled sponsor."
 msgstr "1个用户的资助被取消."
 
-#: account/admin.py:97
+#: account/admin.py:101
 #, python-format
 msgid "%(num)s users were successfully cancelled sponsor."
 msgstr "%(num)s个用户的资助被取消."
 
-#: account/admin.py:99
+#: account/admin.py:103
 msgid "Cancel sponsor users"
 msgstr "取消用户资助"
 
-#: account/admin.py:107
+#: account/admin.py:111
 msgid "1 user was successfully reset approval."
 msgstr "1个用户的审定被重置."
 
-#: account/admin.py:109
+#: account/admin.py:113
 #, python-format
 msgid "%(num)s users were successfully reset approval."
 msgstr "%(num)s个用户的审定被重置."
 
-#: account/admin.py:111
+#: account/admin.py:115
 msgid "Reset approve users"
 msgstr "重置用户审定"
 
-#: account/admin.py:119
+#: account/admin.py:123
 msgid "1 user was successfully reset sponsor."
 msgstr "1个用户的资助被重置."
 
-#: account/admin.py:121
+#: account/admin.py:125
 #, python-format
 msgid "%(num)s users were successfully reset sponsor."
 msgstr "%(num)s个用户的审定被重置."
 
-#: account/admin.py:123
+#: account/admin.py:127
 msgid "Reset sponsor users"
 msgstr "重置用户资助"
 
-#: account/admin.py:132
+#: account/admin.py:136
 msgid "1 user was successfully marked as checkin."
 msgstr "1个用户被标记为已报到."
 
-#: account/admin.py:134
+#: account/admin.py:138
 #, python-format
 msgid "%(num)s users were successfully marked as checkin."
 msgstr "%(num)s个用户被标记为已报到."
 
-#: account/admin.py:136
+#: account/admin.py:140
 msgid "Mark users as checked in"
 msgstr "标记用户为已报到"
 
-#: account/admin.py:144
+#: account/admin.py:148
 msgid "1 user was marked as not checkin."
 msgstr "1个用户被标记为未报到."
 
-#: account/admin.py:146
+#: account/admin.py:150
 #, python-format
 msgid "%(num)s users were marked as not checkin."
 msgstr "%(num)s个用户被标记为未报到."
 
-#: account/admin.py:148
+#: account/admin.py:152
 msgid "Mark users as not checked in"
 msgstr "标记用户为未报到"
 
-#: account/admin.py:156
+#: account/admin.py:160
 msgid "1 user was reset status of checkin."
 msgstr "1个用户的报到状态被重置."
 
-#: account/admin.py:158
+#: account/admin.py:162
 #, python-format
 msgid "%(num)s users were reset status of checkin."
 msgstr "%(num)s个用户的报到状态被重置."
 
-#: account/admin.py:160
+#: account/admin.py:164
 msgid "Reset users checkin status"
 msgstr "重置用户报到状态"
 
-#: account/admin.py:169 account/forms.py:59 account/forms.py:104
+#: account/admin.py:173 account/forms.py:58 account/forms.py:103
 msgid "E-mail"
 msgstr "邮箱"
 
-#: account/admin.py:182 account/admin.py:201
+#: account/admin.py:186 account/admin.py:205
 msgid "Null"
 msgstr "无"
 
-#: account/admin.py:184 account/models.py:80
+#: account/admin.py:188 account/models.py:80
 msgid "Transcript"
 msgstr "成绩单"
 
-#: account/admin.py:203
+#: account/admin.py:207
 msgid "Attachments"
 msgstr "附件"
 
@@ -160,47 +160,47 @@ msgstr "请使文件小于%(maxsize)s. 当前大小%(filesize)s"
 msgid "Unsupported filetype"
 msgstr "不支持的文件类型"
 
-#: account/forms.py:27 account/models.py:71
+#: account/forms.py:26 account/models.py:71
 msgid "Name"
 msgstr "姓名"
 
-#: account/forms.py:28 account/models.py:72
+#: account/forms.py:27 account/models.py:72
 msgid "Gender"
 msgstr "性别"
 
-#: account/forms.py:29 account/models.py:73
-msgid "Institute"
-msgstr "单位"
+#: account/forms.py:28 account/models.py:73
+msgid "Institute (and major)"
+msgstr "单位(及专业)"
 
-#: account/forms.py:30 account/models.py:74
-msgid "Identify"
+#: account/forms.py:29 account/models.py:74
+msgid "Identity"
 msgstr "身份"
 
-#: account/forms.py:31
+#: account/forms.py:30
 msgid "Captcha"
 msgstr "验证码"
 
-#: account/forms.py:55
+#: account/forms.py:54
 msgid "Username"
 msgstr "用户名"
 
-#: account/forms.py:56
+#: account/forms.py:55
 msgid "This value may contain only letters, numbers and @/./+/-/_ characters."
 msgstr "请只使用英文字母数字和@.+-_字符"
 
-#: account/forms.py:57
+#: account/forms.py:56
 msgid "Is update email"
 msgstr "是否更新邮箱地址"
 
-#: account/forms.py:65
+#: account/forms.py:64
 msgid "Username not exists"
 msgstr "该用户名不存在"
 
-#: account/forms.py:73
+#: account/forms.py:72
 msgid "Email is required"
 msgstr "必须填写邮箱地址"
 
-#: account/forms.py:147
+#: account/forms.py:146
 msgid "Transcript is required."
 msgstr "必须上传成绩单"
 
