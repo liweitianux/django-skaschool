@@ -11,10 +11,12 @@
 {% endblock %}
 
 {% block content %}
+
+  {# title and main info #}
   <div class="container">
     <h1>第二届 中国SKA暑期学校</h1>
     <h1>暨 中国-新西兰联合SKA暑期学校</h1>
-    <h2>China-New Zealand Joint SKA Summer School</h2>
+    <h2 class="smallcaps">China-New Zealand Joint SKA Summer School</h2>
 
     <br>
     <p class="lead">
@@ -33,7 +35,20 @@
 {% endblock %} {# content #}
 
 {% block footer %}
+  {# display latest important notice #}
+  {% if important_notice %}
+  <div class="container">
+    <div class="alert alert-info alert-dismissable">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <strong><a href="{% url 'list_notice' %}" class="alert-link">[通知]</a></strong>
+      {# notice contents #}
+      {{ important_notice.contents }}
+    </div>
+  </div>
+  {% endif %}
+
   <footer class="container" role="contentinfo">
+    {# links #}
     <ul class="masthead-links sponsors">
       <li>Sponsors:</li>
       <li><a href="http://www.most.gov.cn/" target="_blank">科学技术部</a></li>

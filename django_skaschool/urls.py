@@ -10,13 +10,14 @@ from django.conf.urls.static import static
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.views.generic.base import TemplateView
 
+from page.views import IndexView
+
 
 urlpatterns = patterns('',
     # admin
     url(r'^admin/', include(admin.site.urls)),
     # index page
-    url(r'^$', TemplateView.as_view(template_name='index.html'),
-        name='index'),
+    url(r'^$', IndexView.as_view(), name='index'),
     # app 'page'
     url(r'^page/', include('page.urls')),
     # app 'notice'

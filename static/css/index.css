@@ -95,7 +95,12 @@
     border-color: #E5E5E5;
 }
 
+.smallcaps {
+    font-variant: small-caps;
+}
+
 footer {
     color: #CCCCCC;
 }
+
 
