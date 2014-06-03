@@ -40,9 +40,9 @@
   <div class="container">
     <div class="alert alert-info alert-dismissable">
       <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-      <strong><a href="{% url 'list_notice' %}" class="alert-link">[通知]</a></strong>
-      {# notice contents #}
-      {{ important_notice.contents }}
+      {# notice #}
+      <p><strong><a href="{% url 'list_notice' %}" class="alert-link">[通知] {{ important_notice.title }}</a></strong></p>
+      <p>{{ important_notice.contents }}</p>
     </div>
   </div>
   {% endif %}
