@@ -91,6 +91,11 @@ class UserProfile(models.Model):
             choices=SPONSORED_STATUS, default='C')
     is_checkin = models.CharField(_("Is checkin"), max_length=1,
             choices=CHECKIN_STATUS, default='X')
+    # student id & initial password provided by sjtu jwc
+    sjtu_id = models.CharField(_("SJTU student ID"),
+            max_length=15, blank=True)
+    sjtu_initpass = models.CharField(_("SJTU initial password"),
+            max_length=10, blank=True)
 
     class Meta:
         verbose_name = _('user profile')
@@ -202,6 +207,8 @@ class UserProfile(models.Model):
             'reason':         self._meta.get_field_by_name('reason')[0].verbose_name,
             'transcript':     self._meta.get_field_by_name('transcript')[0].verbose_name,
             'supplement':     self._meta.get_field_by_name('supplement')[0].verbose_name,
+            'sjtu_id':        self._meta.get_field_by_name('sjtu_id')[0].verbose_name,
+            'sjtu_initpass':  self._meta.get_field_by_name('sjtu_initpass')[0].verbose_name,
             'is_approved':    self._meta.get_field_by_name('is_approved')[0].verbose_name,
             'is_sponsored':   self._meta.get_field_by_name('is_sponsored')[0].verbose_name,
             'is_checkin':     self._meta.get_field_by_name('is_checkin')[0].verbose_name,
@@ -229,6 +236,8 @@ class UserProfile(models.Model):
             'reason':         self.reason,
             'transcript':     transcript,
             'supplement':     self.supplement,
+            'sjtu_id':        self.sjtu_id,
+            'sjtu_initpass':  self.sjtu_initpass,
             'is_approved':    self.get_approved_value(),
             'is_sponsored':   self.get_sponsored_value(),
             'is_checkin':     self.get_checkin_value(),

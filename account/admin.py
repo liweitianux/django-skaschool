@@ -48,6 +48,8 @@ class UserProfileAdmin(admin.ModelAdmin):
         'is_approved_html',
         'is_sponsored_html',
         'is_checkin_html',
+        'sjtu_id',
+        'sjtu_initpass',
     )
     # fields used to filter rows
     list_filter = (
