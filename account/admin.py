@@ -5,6 +5,7 @@ from django.conf.urls import url
 from django.utils.html import format_html
 from django.utils.translation import ugettext_lazy as _
 from django.http import HttpResponse
+from django.conf import settings
 
 from account.models import UserProfile, UserFile
 
@@ -19,6 +20,7 @@ class UserProfileAdmin(admin.ModelAdmin):
     """
     customize the admin interface for UserProfile
     """
+    # custom actions
     actions = [
         'approve_users',
         'cancel_approve_users',
@@ -30,7 +32,9 @@ class UserProfileAdmin(admin.ModelAdmin):
         'users_not_checkin',
         'users_checkin_reset',
     ]
+    # columns to display
     list_display = (
+        'profile_id',
         'user',
         'email',
         'realname',
@@ -41,6 +45,14 @@ class UserProfileAdmin(admin.ModelAdmin):
         'transcript_url',
         'supplement',
         'attachments',
+        'is_approved_html',
+        'is_sponsored_html',
+        'is_checkin_html',
+    )
+    # fields used to filter rows
+    list_filter = (
+        'gender',
+        'identity',
         'is_approved',
         'is_sponsored',
         'is_checkin',
@@ -164,6 +176,13 @@ class UserProfileAdmin(admin.ModelAdmin):
     users_checkin_reset.short_description = _("Reset users checkin status")
 
     ## custom fields
+    def profile_id(self, obj):
+        """
+        return the id of this user profile
+        """
+        return obj.id
+    profile_id.short_description = _("ID")
+
     def email(self, obj):
         """
         return the email of the user profile
@@ -206,6 +225,55 @@ class UserProfileAdmin(admin.ModelAdmin):
         return format_html(html)
     attachments.short_description = _("Attachments")
 
+    # html formatted fields
+    def is_approved_html(self, obj):
+        """
+        return the html formatted contents of 'is_approved' field
+        display icons instead of text
+        """
+        value = obj.is_approved
+        static_url = settings.STATIC_URL
+        if value == 'Y':
+            html = '<img alt="Yes" src="{0}admin/img/icon-yes.gif"></img>'.format(static_url)
+        elif value == 'N':
+            html = '<img alt="No" src="{0}admin/img/icon-no.gif"></img>'.format(static_url)
+        else:
+            html = '<img alt="Unknown" src="{0}admin/img/icon-unknown.gif"></img>'.format(static_url)
+        return format_html(html)
+    is_approved_html.short_description = _("Is approved")
+
+    def is_sponsored_html(self, obj):
+        """
+        return the html formatted contents of 'is_sponsored' field
+        display icons instead of text
+        """
+        value = obj.is_sponsored
+        static_url = settings.STATIC_URL
+        if value == 'Y':
+            html = '<img alt="Yes" src="{0}admin/img/icon-yes.gif"></img>'.format(static_url)
+        elif value == 'N':
+            html = '<img alt="No" src="{0}admin/img/icon-no.gif"></img>'.format(static_url)
+        else:
+            html = '<img alt="Unknown" src="{0}admin/img/icon-unknown.gif"></img>'.format(static_url)
+        return format_html(html)
+    is_sponsored_html.short_description = _("Is sponsored")
+
+    def is_checkin_html(self, obj):
+        """
+        return the html formatted contents of 'is_checkin' field
+        display icons instead of text
+        """
+        value = obj.is_checkin
+        static_url = settings.STATIC_URL
+        if value == 'Y':
+            html = '<img alt="Yes" src="{0}admin/img/icon-yes.gif"></img>'.format(static_url)
+        elif value == 'N':
+            html = '<img alt="No" src="{0}admin/img/icon-no.gif"></img>'.format(static_url)
+        else:
+            html = '<img alt="Unknown" src="{0}admin/img/icon-unknown.gif"></img>'.format(static_url)
+        return format_html(html)
+    is_checkin_html.short_description = _("Is checkin")
+
     ## added a view to display all userprofile info (csv format)
     def get_urls(self):
         urls = super(type(self), self).get_urls()
@@ -222,24 +290,6 @@ class UserProfileAdmin(admin.ModelAdmin):
         userprofile_objs = UserProfile.objects.all()
         fieldnames = userprofile_objs[0].dump_fieldnames()
         fields = [k for k,v in fieldnames.items()]
-#        # header
-#        header = u''
-#        for k in fields:
-#            header += u'{0},'.format(fieldnames[k])
-#        header += '\n'
-#        # contents
-#        contents = u''
-#        for obj in userprofile_objs:
-#            data = obj.dump()
-#            cline = u''
-#            for k in fields:
-#                if k == 'attachments':
-#                    cline += u'{0},'.format('||'.join(data[k]))
-#                else:
-#                    cline += u'{0},'.format(data[k])
-#            cline += '\n'
-#            contents += cline
-#        return HttpResponse(header+contents, content_type='text/plain')
         filename = '{0}-{1}.csv'.format('registration', datetime.date.today().strftime('%Y%m%d'))
         response = HttpResponse(content_type='text/csv')
         response['Content-Disposition'] = 'attachment; filename="{0}"'.format(filename)
