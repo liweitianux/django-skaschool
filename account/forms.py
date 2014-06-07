@@ -10,10 +10,12 @@ from django.contrib.auth.models import User
 from django.contrib.sites.models import Site, RequestSite
 from django.utils.translation import ugettext_lazy as _
 
-from registration.forms import RegistrationFormUniqueEmail
+from registration.forms import RegistrationForm, RegistrationFormUniqueEmail
 from captcha.fields import ReCaptchaField
 
 from account.models import UserProfile, UserFile
+
+import re
 
 
 class UserRegForm(RegistrationFormUniqueEmail):
@@ -43,6 +45,26 @@ class UserRegForm(RegistrationFormUniqueEmail):
     #            'institute',
     #            'identity',
     #    ]
+
+    def clean_username(self):
+        """
+        It is required to check whether the username matches the
+        specified regular expression.
+        Because the frontend does not correctly validate RegexField.
+        XXX: howto deal with 'RegexField' in 'django-bootstrap3'
+        """
+        username = self.cleaned_data['username']
+        # check whether matches
+        username_p = re.compile(r'^[a-zA-Z_][a-zA-Z0-9_.@+-]{3,29}')
+        username_m = username_p.match(username)
+        if not username_m:
+            raise forms.ValidationError(_("4-30 characters. Start with letters and underscore. Contains letters, digits and _.@+- characters."), code='invalid')
+        # check whether exists
+        existing = User.objects.filter(username__iexact=username)
+        if existing.exists():
+            raise forms.ValidationError(_("A user with that username already exists."), code='invalid')
+        else:
+            return username
 
 
 class ResendEmailForm(forms.Form):
