@@ -9,28 +9,38 @@
 
 {% block content %}
   <div class="container">
-    <h2>住宿情况</h2>
+    <h2>住宿</h2>
     <br>
-    <div class="alert alert-warning">
-      内容待更新……
+    <div class="alert alert-info">
+      住宿安排待定……
     </div>
 
     <ul>
-      <li>上海交通大学学术活动中心</li>
+      <li><strong>上海交通大学学术活动中心</strong></li>
       <ul class="list-unstyled">
-        <li>地址：上海交通大学闵行校区内</li>
+        <li>地址：上海交通大学闵行校区内（同上课地点）</li>
         <li>参考价格：368元（标准间）；400元（高级房）</li>
         <li>联系电话：021-54750800</li>
+        <li><br></li>
       </ul>
-      <li>锦江之星酒店（闵行东川路店）</li>
+      <li><strong>沪华国际大酒店（闵行东川路店）</strong></li>
       <ul class="list-unstyled">
-        <li>地址：闵行区沪闵路319号（距离校门口约1公里）</li>
-        <li>参考价格：211元（标准间）</li>
+        <li>地址：闵行区鹤庆路300号（近沪闵路，距离校门口约2.1公里）</li>
+        <li>参考价格：348元（标准大床房）</li>
+        <li>联系电话：021-61268299</li>
+        <li><img src="{% static 'images/map-huhua-route.png' %}" class="img-responsive" alt="Route from Huhua Hotel to the meeting place"></li>
+        <li><br></li>
+      </ul>
+      <li><strong>锦江之星酒店（闵行东川路店）</strong></li>
+      <ul class="list-unstyled">
+        <li>地址：闵行区沪闵路319号（距离校门口约1.4公里）</li>
+        <li>参考价格：216元（标准间）</li>
         <li>联系电话：021-51101999</li>
+        <li><img src="{% static 'images/map-jinjiang-route.png' %}" class="img-responsive" alt="Route from Jinjiang Hotel to the meeting place"></li>
+        <li><br></li>
       </ul>
     </ul>
-
-    <p>注：交通大学周围还有很多宾馆，大多数较为便宜的旅馆，可在百度地图中查找。</p>
+    <br>
 
   </div>
 {% endblock %}

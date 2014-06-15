@@ -9,49 +9,66 @@
 
 {% block content %}
   <div class="container">
-    <h2>交通情况</h2>
+    <h2>交通/地图</h2>
     <br>
-    <div class="alert alert-warning">
-      内容待更新……
-    </div>
-
     <div class="alert alert-info">
-      <p>地点：上海交通大学闵行校区（上海市闵行区东川路800号）</p>
-      <p>会场：（待定）</p>
+      <p><strong>地点</strong>：上海交通大学闵行校区（上海市闵行区东川路800号）</p>
+      <p><strong>会场</strong>：学术活动中心</p>
     </div>
 
+    <div class="map-place">
+      <img src="{% static 'images/map-place.png' %}" class="img-responsive" alt="Map of Metting Place">
+    </div>
+
+    <h3>交通路线</h3>
     <ul>
-      <li>虹桥机场/虹桥火车站 <span class="glyphicon glyphicon-arrow-right"></span> 上海交大闵行校区</li>
+      <li><strong>虹桥机场/虹桥火车站 <span class="glyphicon glyphicon-arrow-right"></span> 上海交大闵行校区</strong></li>
       <ul>
         <li>出租车：全程约81元（不计夜间、等待时间）；约40分钟</li>
-        <li>公交：乘坐虹桥枢纽4路，在永平路东川路站下车即到；约75分钟</li>
-        <li>地铁：虹桥机场（火车站）换乘10号线-虹桥路换乘4号线-上海体育馆换乘1号线-莘庄换乘5号线-东川路站下车</li>
+        <li>公交：虹桥枢纽4路（紫竹科技园区方向）至"永平路东川路"站下车即到；约80分钟</li>
+        <li>地铁：乘坐"地铁10号线（新江湾城方向）"至"陕西南路"站，站内换乘"地铁1号线（莘庄方向）"至终点站"莘庄"，换乘"地铁5号线（闵行开发区方向）"至"东川路"站下车；约90分钟</li>
       </ul>
-      <li>浦东机场 <span class="glyphicon glyphicon-arrow-right"></span> 上海交大闵行校区</li>
+      <li><strong>浦东机场 <span class="glyphicon glyphicon-arrow-right"></span> 上海交大闵行校区</strong></li>
       <ul>
         <li>出租车：全程约173元（不计夜间、等待时间）</li>
         <li>地铁：浦东机场换乘地铁2号线东延伸段-广兰路站换乘2号线-人民广场站换乘1号线-莘庄换乘5号线-东川路站下车。之后参照虹桥机场里的地铁路线。</li>
+        <li>地铁：乘坐"地铁2号线东延伸段（广兰路方向）"至"广兰路"站，换乘"地铁2号线（徐泾东方向）"至"人民广场"站，换乘"地铁1号线（莘庄方向）"至终点站"莘庄"，换乘"地铁5号线（闵行开发区方向）"至"东川路"站下车；约2小时50分钟</li>
       </ul>
-      <li>上海火车站/长途汽车客运总站 <span class="glyphicon glyphicon-arrow-right"></span> 上海交大闵行校区</li>
+      <li><strong>上海火车站/长途汽车客运总站 <span class="glyphicon glyphicon-arrow-right"></span> 上海交大闵行校区</strong></li>
       <ul>
         <li>出租车：全程约121元 （不计夜间、等待时间）</li>
-        <li>地铁：上海火车站换乘地铁1号线-莘庄换乘5号线-东川路站下车。之后参照虹桥机场里的地铁路线</li>
+        <li>地铁：从"上海火车站"乘"地铁1号线（莘庄方向）"至终点站"莘庄"，换乘"地铁5号线（闵行开发区方向）"至"东川路"站下车；约70分钟</li>
       </ul>
-      <li>上海火车南站/长途汽车客运南站 <span class="glyphicon glyphicon-arrow-right"></span> 上海交大闵行校区</li>
+      <li><strong>上海火车南站/长途汽车客运南站 <span class="glyphicon glyphicon-arrow-right"></span> 上海交大闵行校区</strong></li>
       <ul>
         <li>出租车：全程约70元 （不计夜间、等待时间）</li>
-        <li>地铁：上海南站换乘地铁1号线-莘庄换乘5号线-东川路站下车。之后参照虹桥机场的地铁路线。</li>
+        <li>地铁：从"上海南站"乘"地铁1号线（莘庄方向）"至终点站"莘庄"，换乘"地铁5号线（闵行开发区方向）"至"东川路"站下车；约40分钟</li>
+        <li>公交：180路（上海南站南广场，龙川北路石龙路站上车）至"永平路东川路站"下车（约90分钟）</li>
       </ul>
-      <li>上海火车西站/交通大众长途汽车站 <span class="glyphicon glyphicon-arrow-right"></span> 上海交大闵行校区</li>
+      <li><strong>上海火车西站/交通大众长途汽车站 <span class="glyphicon glyphicon-arrow-right"></span> 上海交大闵行校区</strong></li>
+      <ul>
+        <li>出租车：约123元</li>
+        <li>地铁：从"上海西站"乘坐"地铁11号线（三林方向）"至"徐家汇"，站内换乘"地铁1号线（莘庄方向）"至终点站"莘庄"，换乘"地铁5号线（闵行开发区方向）"至"东川路"站下车；约80分钟</li>
+      </ul>
+      <li><strong>东川路地铁站 <span class="glyphicon glyphicon-arrow-right"></span> 上海交大闵行校区（思源门/拖鞋门）</strong></li>
+      <ul>
+        <li>步行：约20分钟</li>
+        <li>出租车：郊区车12元，市区车14元</li>
+        <li>公交：江川7路（直到交大校区内）；虹桥枢纽4路（至永平路东川路站）；闵莘线（永平路东川路站）；闵行26路（至东川路沧源路站）</li>
+      </ul>
     </ul>
-
-    <p>可选择步行（20-30分钟）或打车（郊区车12元，市区车14元）或乘坐公交虹桥枢纽4路（至永平路东川路站），闵莘线（永平路东川路站），闵行26路（至东川路沧源路站）至东川路800号。</p>
 
     <p>
       注：<br>
       1、除虹桥机场（火车站）外，不推荐乘坐公交车。若实在不方便乘坐出租车或地铁、可使用百度地图查看可用公交线路。<br>
       2、出租车费用仅供参考。
     </p>
+
+    <h3>地图</h3>
+    <p><strong>上海交通闵行校区地图</strong></p>
+    <img src="{% static 'images/sjtu_minhang_campusmap_zh.jpg' %}" class="img-responsive" alt="SJTU Minhang Campus Map">
+    <br>
+    <br>
   </div>
 {% endblock %}
 
