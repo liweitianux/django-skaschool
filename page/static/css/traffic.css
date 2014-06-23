@@ -1,0 +1,16 @@
+/*
+ * traffic.css
+ * used with 'traffic.html' page
+ *
+ * 2014/06/23
+ */
+
+img.modal-images {
+    cursor: pointer;
+}
+
+// modal style
+@media (min-width: 768px) {
+    //
+}
+

@@ -7,6 +7,10 @@
 
 {% block pagetitle %}交通{% endblock %}
 
+{% block css_extra %}
+  <link href="{% static 'css/traffic.css' %}" rel="stylesheet">
+{% endblock %}
+
 {% block content %}
   <div class="container">
     <h2>交通/地图</h2>
@@ -26,50 +30,77 @@
       <ul>
         <li>出租车：全程约81元（不计夜间、等待时间）；约40分钟</li>
         <li>公交：虹桥枢纽4路（紫竹科技园区方向）至"永平路东川路"站下车即到；约80分钟</li>
-        <li>地铁：乘坐"地铁10号线（新江湾城方向）"至"陕西南路"站，站内换乘"地铁1号线（莘庄方向）"至终点站"莘庄"，换乘"地铁5号线（闵行开发区方向）"至"东川路"站下车；约90分钟</li>
+        <li>地铁：乘坐"地铁10号线（新江湾城方向）"至"虹桥路"站，站内换乘"地铁4号线（上海体育馆方向）"至"上海体育馆"站，换乘"地铁1号线（莘庄方向）"至终点站"莘庄"，换乘"地铁5号线（闵行开发区方向）"至"东川路"站下车；票价6元；约80分钟（不含出地铁站至会场的时间）</li>
       </ul>
       <li><strong>浦东机场 <span class="glyphicon glyphicon-arrow-right"></span> 上海交大闵行校区</strong></li>
       <ul>
         <li>出租车：全程约173元（不计夜间、等待时间）</li>
-        <li>地铁：浦东机场换乘地铁2号线东延伸段-广兰路站换乘2号线-人民广场站换乘1号线-莘庄换乘5号线-东川路站下车。之后参照虹桥机场里的地铁路线。</li>
-        <li>地铁：乘坐"地铁2号线东延伸段（广兰路方向）"至"广兰路"站，换乘"地铁2号线（徐泾东方向）"至"人民广场"站，换乘"地铁1号线（莘庄方向）"至终点站"莘庄"，换乘"地铁5号线（闵行开发区方向）"至"东川路"站下车；约2小时50分钟</li>
+        <li>地铁：乘坐"地铁2号线东延伸段（广兰路方向）"至"广兰路"站，换乘"地铁2号线（徐泾东方向）"至"人民广场"站，换乘"地铁1号线（莘庄方向）"至终点站"莘庄"，换乘"地铁5号线（闵行开发区方向）"至"东川路"站下车；票价9元；约2小时10分钟（不含出地铁站至会场的时间）</li>
       </ul>
       <li><strong>上海火车站/长途汽车客运总站 <span class="glyphicon glyphicon-arrow-right"></span> 上海交大闵行校区</strong></li>
       <ul>
         <li>出租车：全程约121元 （不计夜间、等待时间）</li>
-        <li>地铁：从"上海火车站"乘"地铁1号线（莘庄方向）"至终点站"莘庄"，换乘"地铁5号线（闵行开发区方向）"至"东川路"站下车；约70分钟</li>
+        <li>地铁：从"上海火车站"乘"地铁1号线（莘庄方向）"至终点站"莘庄"，换乘"地铁5号线（闵行开发区方向）"至"东川路"站下车；票价6元；约60分钟（不含出地铁站至会场的时间）</li>
       </ul>
       <li><strong>上海火车南站/长途汽车客运南站 <span class="glyphicon glyphicon-arrow-right"></span> 上海交大闵行校区</strong></li>
       <ul>
         <li>出租车：全程约70元 （不计夜间、等待时间）</li>
-        <li>地铁：从"上海南站"乘"地铁1号线（莘庄方向）"至终点站"莘庄"，换乘"地铁5号线（闵行开发区方向）"至"东川路"站下车；约40分钟</li>
+        <li>地铁：从"上海南站"乘"地铁1号线（莘庄方向）"至终点站"莘庄"，换乘"地铁5号线（闵行开发区方向）"至"东川路"站下车；票价5元；约35分钟（不含出地铁站至会场的时间）</li>
         <li>公交：180路（上海南站南广场，龙川北路石龙路站上车）至"永平路东川路站"下车（约90分钟）</li>
       </ul>
       <li><strong>上海火车西站/交通大众长途汽车站 <span class="glyphicon glyphicon-arrow-right"></span> 上海交大闵行校区</strong></li>
       <ul>
-        <li>出租车：约123元</li>
-        <li>地铁：从"上海西站"乘坐"地铁11号线（三林方向）"至"徐家汇"，站内换乘"地铁1号线（莘庄方向）"至终点站"莘庄"，换乘"地铁5号线（闵行开发区方向）"至"东川路"站下车；约80分钟</li>
+        <li>出租车：约123元（不计夜间、等待时间）</li>
+        <li>地铁：从"上海西站"乘坐"地铁11号线（罗山路方向）"至"徐家汇"，站内换乘"地铁1号线（莘庄方向）"至终点站"莘庄"，换乘"地铁5号线（闵行开发区方向）"至"东川路"站下车；票价6元；约70分钟（不含出地铁站至会场的时间）</li>
       </ul>
       <li><strong>东川路地铁站 <span class="glyphicon glyphicon-arrow-right"></span> 上海交大闵行校区（思源门/拖鞋门）</strong></li>
       <ul>
-        <li>步行：约20分钟</li>
+        <li>步行：约20分钟；约1.4公里</li>
         <li>出租车：郊区车12元，市区车14元</li>
         <li>公交：江川7路（直到交大校区内）；虹桥枢纽4路（至永平路东川路站）；闵莘线（永平路东川路站）；闵行26路（至东川路沧源路站）</li>
+        <div class="row">
+          <div class="col-md-4">
+          <li><img class="modal-images img-responsive" src="{% static 'images/map-dongchuan-route.png' %}" alt="Route from Dongchuan metro station to SJTU campus"></li>
+          </div>
+        </div>
       </ul>
     </ul>
 
     <p>
       注：<br>
-      1、除虹桥机场（火车站）外，不推荐乘坐公交车。若实在不方便乘坐出租车或地铁、可使用百度地图查看可用公交线路。<br>
-      2、出租车费用仅供参考。
+      1. 除"虹桥机场/虹桥火车站"外，不推荐乘坐公交。推荐乘坐地铁，价格合适，时间容易把握。<br>
+      2. 上海地铁有一些车站需要"出站换乘"，因此使用单程票时需要分段购买。使用交通卡则无需担心。
     </p>
 
     <h3>地图</h3>
-    <p><strong>上海交通闵行校区地图</strong></p>
-    <img src="{% static 'images/sjtu_minhang_campusmap_zh.jpg' %}" class="img-responsive" alt="SJTU Minhang Campus Map">
+    <div class="row">
+      <div class="col-md-6">
+        <p><strong>上海交通闵行校区地图</strong></p>
+        <img src="{% static 'images/sjtu_minhang_campusmap_zh.jpg' %}" class="img-responsive modal-images" alt="SJTU Minhang Campus Map">
+      </div>
+      <div class="col-md-6">
+        <p><strong>上海轨迹交通网络示意图</strong></p>
+        <img src="{% static 'images/shmetro_map2014.jpg' %}" class="img-responsive modal-images" alt="Shanghai Metro Network Map">
+      </div>
+    </div> <!-- row -->
     <br>
     <br>
+
+    <!-- bootstrap modal box -->
+    <div class="modal fade" id="imageviewer-modal" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-body">
+            <!-- modal-body -->
+          </div>
+        </div> <!-- modal-content -->
+      </div> <!-- moal-dialog -->
+    </div> <!-- modal -->
   </div>
+{% endblock %}
+
+{% block js_extra %}
+  <script src="{% static 'js/traffic.js' %}" type="text/javascript"></script>
 {% endblock %}
 
 {# vim: set ts=8 sw=2 tw=0 fenc=utf-8 ft=htmldjango.html: #}
