@@ -6,4 +6,11 @@
 
 #
 django_skaschool/settings_email.py
+django_skaschool/secret_key.txt
+
+#
+db.sqlite3
+backup/
+static_root/
+media_root/
 
