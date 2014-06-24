@@ -1,0 +1,41 @@
+/*
+ * schedule.css
+ * used with 'schedule.html' page
+ *
+ * 2014/06/24
+ */
+
+/* bootstrap panel */
+.panel .panel-heading {
+    font-size: 180%;
+    font-weight: bold;
+}
+
+/* event-contents */
+.event-contents p {
+    margin: 0px 0px 5px;
+}
+.event-contents .panel-heading {
+    font-size: 100%;
+    font-weight: normal;
+    padding: 5px 5px;
+    cursor: pointer;
+}
+.event-contents .panel-body {
+    padding: 5px 5px;
+}
+
+/* event-attachments */
+.event-attachments p {
+    margin: 0px 0px 5px;
+}
+.event-attachments .panel-heading {
+    font-size: 100%;
+    font-weight: normal;
+    padding: 5px 5px;
+    cursor: pointer;
+}
+.event-attachments .panel-body {
+    padding: 5px 5px;
+}
+

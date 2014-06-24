@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load url from future %}
+{% load bootstrap3 %}
+{% load dict_utils %}
+{% load my_markdown %}
+
+{# program template #}
+
+{% block pagetitle %}日程{% endblock %}
+
+{% block css_extra %}
+  <link href="{% static 'css/schedule.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+  <div class="container">
+    <h2>2014 SKA 暑期学校日程安排</h2>
+    <br>
+    <div class="alert alert-info">
+      <strong>会场地址</strong>：学术活动中心（上海交通大学闵行校区）
+    </div>
+    {% if event_empty %}
+      <div class="alert alert-warning">
+        日程安排尚未确定，请等待我们的后续通知……
+      </div>
+    {% endif %}
+
+    {% for day in day_all %}
+    <div class="panel panel-info">
+      <div class="panel-heading">
+        {{ day }}
+      </div>
+      <div class="panel-body">
+      {% with event_day=event_dict|dictkey:day %}
+        {% for event in event_day %}
+          <div class="row event">
+            <div class="col-md-2 event-time">
+              <p><strong>{{ event.time_start|time:'H:i' }} &ndash; {{ event.time_end|time:'H:i' }}</strong></p>
+            </div> <!-- event-time -->
+            <div class="col-md-10 event-body">
+              <p>
+                <strong>{{ event.title }}</strong><br>
+                <em>{{ event.person }}</em>
+              </p>
+              {% if event.contents %}
+                <div class="panel panel-default event-contents">
+                  <div class="panel-heading">
+                    <span class="glyphicon glyphicon-chevron-down"></span>
+                    <span class="action">显示</span>详情
+                  </div>
+                  <div class="panel-body">
+                    {{ event.contents|my_markdown }}
+                  </div>
+                </div>
+              {% endif %}
+              {% if event.attachments.all %}
+                <div class="panel panel-default event-attachments">
+                  <div class="panel-heading">
+                    <span class="glyphicon glyphicon-chevron-down"></span>
+                    <span class="action">显示</span>附件
+                  </div>
+                  <div class="panel-body">
+                    {% for attachment in event.attachments.all %}
+                      <p><a href="{{ attachment.attachment.url }}">{{ attachment.title }}</a> &ndash; {{ attachment.description }}</p>
+                    {% endfor %} {# attachment #}
+                  </div> <!-- panel-body -->
+                </div> <!-- event-attachments -->
+              {% endif %} {# attachments #}
+            </div> <!-- event-body -->
+          </div> <!-- event -->
+        {% endfor %} {# event #}
+      {% endwith %} {# event_day #}
+      </div> <!-- panel-body -->
+    </div> <!-- panel -->
+    {% endfor %} {# day #}
+
+    <br>
+    <p>注：<br>
+      1. 我们会根据实际情况及时更新日程安排。<br>
+      2. 上课讲义及其他相关资料会及时上传和更新。
+    </p>
+    <br>
+    <p>Last updated: {{ updated_at }}</p>
+    <br>
+  </div>
+{% endblock %}
+
+{% block js_extra %}
+  <script src="{% static 'js/schedule.js' %}" type="text/javascript"></script>
+{% endblock %}
+
+{# vim: set ts=8 sw=2 tw=0 fenc=utf-8 ft=htmldjango.html: #}

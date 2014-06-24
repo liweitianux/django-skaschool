@@ -24,6 +24,8 @@ class Event(models.Model):
     time_end = models.TimeField(_("End time"))
     contents = models.TextField(_("Contents"), blank=True,
             help_text=_("Markdown syntax supported"))
+    updated_at = models.DateTimeField(_("Updated time"),
+            auto_now=True, auto_now_add=True)
     attachments = generic.GenericRelation('EventAttachment')
 
     class Meta:
@@ -49,6 +51,8 @@ class EventAttachment(models.Model):
     content_type = models.ForeignKey(ContentType)
     object_id = models.PositiveIntegerField()
     content_object = generic.GenericForeignKey("content_type", "object_id")
+    updated_at = models.DateTimeField(_("Updated time"),
+            auto_now=True, auto_now_add=True)
 
     class Meta:
         verbose_name = _('Event attachment')

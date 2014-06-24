@@ -14,10 +14,6 @@ urlpatterns = patterns('',
     url(r'^introduction/$',
         TemplateView.as_view(template_name='page/introduction.html'),
         name='introduction'),
-    # program page
-    url(r'^program/$',
-        TemplateView.as_view(template_name='page/program.html'),
-        name='program'),
     # committee page
     url(r'^committee/$',
         TemplateView.as_view(template_name='page/committee.html'),

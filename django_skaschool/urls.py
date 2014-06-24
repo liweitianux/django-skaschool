@@ -20,6 +20,8 @@ urlpatterns = patterns('',
     url(r'^$', IndexView.as_view(), name='index'),
     # app 'page'
     url(r'^page/', include('page.urls')),
+    # app 'schedule'
+    url(r'^schedule/', include('schedule.urls')),
     # app 'notice'
     url(r'^notice/', include('notice.urls')),
     # app 'archive'
