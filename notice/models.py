@@ -56,7 +56,7 @@ class NoticeAttachment(models.Model):
     description = models.TextField(_("Description"), blank=True)
     attachment = models.FileField(upload_to='notice/attachments',
             verbose_name=_("Attachment"),
-            storage=OverwriteStorage)
+            storage=OverwriteStorage())
     content_type = models.ForeignKey(ContentType)
     object_id = models.PositiveIntegerField()
     content_object = generic.GenericForeignKey("content_type", "object_id")
