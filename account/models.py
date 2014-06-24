@@ -13,7 +13,8 @@ from django.utils.translation import ugettext_lazy as _
 from django.db.models.signals import pre_delete
 from registration.signals import user_registered, user_activated
 
-from account.extra import ContentTypeRestrictedFileField, OverwriteStorage, file_cleanup
+from account.extra import ContentTypeRestrictedFileField
+from tools.storage import OverwriteStorage, file_cleanup
 
 import os
 

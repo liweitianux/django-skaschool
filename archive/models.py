@@ -1,14 +1,11 @@
 # -*- coding: utf-8 -*-
 
 from django.db import models
+from django.db.models.signals import pre_delete
 from django.contrib.auth.models import User
-from django.contrib.contenttypes.models import ContentType
-from django.contrib.contenttypes import generic
 from django.utils.translation import ugettext_lazy as _
 
-from django.db.models.signals import pre_delete
-
-from account.extra import OverwriteStorage, file_cleanup
+from tools.storage import OverwriteStorage, file_cleanup
 
 
 class Archive(models.Model):
