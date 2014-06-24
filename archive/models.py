@@ -30,7 +30,8 @@ class Archive(models.Model):
         ordering = ['category', '-pubtime', 'id']
 
     def __unicode__(self):
-        return u'Archive %s: %s' % (self.category.name, self.title)
+        return u'Archive #%s: (%s) %s' % (
+                self.id, self.category.name, self.title)
 
     def show_pubtime(self):
         # used in 'list_notice.html' template

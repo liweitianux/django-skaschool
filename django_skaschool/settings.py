@@ -54,6 +54,8 @@ LOCAL_APPS = (
     'page',
     'notice',
     'archive',
+    'schedule',
+    'tools',    # fake app to hold generic utilities
 )
 # INSTALLED_APPS
 INSTALLED_APPS = DEFAULT_APPS + THIRD_PARTY_APPS + LOCAL_APPS
