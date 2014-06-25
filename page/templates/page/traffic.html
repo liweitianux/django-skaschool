@@ -17,11 +17,16 @@
     <br>
     <div class="alert alert-info">
       <p><strong>地点</strong>：上海交通大学闵行校区（上海市闵行区东川路800号）</p>
-      <p><strong>会场</strong>：学术活动中心</p>
+      <p><strong>会场</strong>：学术活动中心(Acadmeic Activity Center)</p>
     </div>
 
-    <div class="map-place">
-      <img src="{% static 'images/map-place.png' %}" class="img-responsive" alt="Map of Metting Place">
+    <div class="row map-place">
+      <div class="col-md-6">
+        <img src="{% static 'images/map-place.png' %}" class="modal-images img-responsive" alt="Map of Metting Place">
+      </div>
+      <div class="col-md-6">
+        <img src="{% static 'images/sjtu_xueshu_02.jpg' %}" class="modal-images img-responsive" alt="Acadmeic Activity Center">
+      </div>
     </div>
 
     <h3>交通路线</h3>
@@ -60,7 +65,10 @@
         <li>公交：江川7路（直到交大校区内）；虹桥枢纽4路（至永平路东川路站）；闵莘线（永平路东川路站）；闵行26路（至东川路沧源路站）</li>
         <div class="row">
           <div class="col-md-4">
-          <li><img class="modal-images img-responsive" src="{% static 'images/map-dongchuan-route.png' %}" alt="Route from Dongchuan metro station to SJTU campus"></li>
+            <img class="modal-images img-responsive" src="{% static 'images/map-dongchuan-route.png' %}" alt="Route from Dongchuan metro station to SJTU campus">
+          </div>
+          <div class="col-md-4">
+            <img class="modal-images img-responsive" src="{% static 'images/sjtu_tuoxie_02.jpg' %}" alt="SJTU Tuoxie Door">
           </div>
         </div>
       </ul>
@@ -74,11 +82,11 @@
 
     <h3>地图</h3>
     <div class="row">
-      <div class="col-md-6">
+      <div class="col-md-7">
         <p><strong>上海交通闵行校区地图</strong></p>
         <img src="{% static 'images/sjtu_minhang_campusmap_zh.jpg' %}" class="img-responsive modal-images" alt="SJTU Minhang Campus Map">
       </div>
-      <div class="col-md-6">
+      <div class="col-md-5">
         <p><strong>上海轨迹交通网络示意图</strong></p>
         <img src="{% static 'images/shmetro_map2014.jpg' %}" class="img-responsive modal-images" alt="Shanghai Metro Network Map">
       </div>
