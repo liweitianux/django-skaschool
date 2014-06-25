@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-06-07 13:09+0800\n"
+"POT-Creation-Date: 2014-06-25 12:48+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Weitian LI <liweitianux@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -138,7 +138,7 @@ msgstr "邮箱"
 msgid "Null"
 msgstr "无"
 
-#: account/admin.py:209 account/models.py:80
+#: account/admin.py:209 account/models.py:81
 msgid "Transcript"
 msgstr "成绩单"
 
@@ -146,39 +146,39 @@ msgstr "成绩单"
 msgid "Attachments"
 msgstr "附件"
 
-#: account/admin.py:245 account/models.py:88
+#: account/admin.py:245 account/models.py:89
 msgid "Is approved"
 msgstr "是否审定"
 
-#: account/admin.py:261 account/models.py:90
+#: account/admin.py:261 account/models.py:91
 msgid "Is sponsored"
 msgstr "是否资助"
 
-#: account/admin.py:277 account/models.py:92
+#: account/admin.py:277 account/models.py:93
 msgid "Is checkin"
 msgstr "是否报到"
 
-#: account/extra.py:52
+#: account/extra.py:47
 msgid "Please keep filesize under %(maxsize)s. Current filesize %(filesize)s"
 msgstr "请使文件小于%(maxsize)s. 当前大小%(filesize)s"
 
-#: account/extra.py:54
+#: account/extra.py:49
 msgid "Unsupported filetype"
 msgstr "不支持的文件类型"
 
-#: account/forms.py:28 account/models.py:71
+#: account/forms.py:28 account/models.py:72
 msgid "Name"
 msgstr "姓名"
 
-#: account/forms.py:29 account/models.py:72
+#: account/forms.py:29 account/models.py:73
 msgid "Gender"
 msgstr "性别"
 
-#: account/forms.py:30 account/models.py:73
+#: account/forms.py:30 account/models.py:74
 msgid "Institute (and major)"
 msgstr "单位(及专业)"
 
-#: account/forms.py:31 account/models.py:74
+#: account/forms.py:31 account/models.py:75
 msgid "Identity"
 msgstr "身份"
 
@@ -220,154 +220,155 @@ msgstr "必须填写邮箱地址"
 msgid "Transcript is required."
 msgstr "必须上传成绩单"
 
-#: account/models.py:29
+#: account/models.py:30
 msgid "Male"
 msgstr "男"
 
-#: account/models.py:30
+#: account/models.py:31
 msgid "Female"
 msgstr "女"
 
-#: account/models.py:31
+#: account/models.py:32
 msgid "Secret"
 msgstr "保密"
 
-#: account/models.py:35 account/models.py:41 account/models.py:47
+#: account/models.py:36 account/models.py:42 account/models.py:48
 msgid "Yes"
 msgstr "是"
 
-#: account/models.py:36 account/models.py:42 account/models.py:48
+#: account/models.py:37 account/models.py:43 account/models.py:49
 msgid "No"
 msgstr "否"
 
-#: account/models.py:37 account/models.py:43
+#: account/models.py:38 account/models.py:44
 msgid "Checking"
 msgstr "审核中"
 
-#: account/models.py:49
+#: account/models.py:50
 msgid "N/A"
 msgstr "不可用"
 
-#: account/models.py:53
+#: account/models.py:54
 msgid "Other"
 msgstr "其他"
 
-#: account/models.py:54
+#: account/models.py:55
 msgid "Undergraudate (junior and below)"
 msgstr "本科生(大三及以下)"
 
-#: account/models.py:55
+#: account/models.py:56
 msgid "Undergraudate (senior)"
 msgstr "本科生(大四)"
 
-#: account/models.py:56
+#: account/models.py:57
 msgid "Master graudate"
 msgstr "硕士研究生"
 
-#: account/models.py:57
+#: account/models.py:58
 msgid "PhD graudate"
 msgstr "博士研究生"
 
-#: account/models.py:58
+#: account/models.py:59
 msgid "Post-doctoral"
 msgstr "博士后"
 
-#: account/models.py:59
+#: account/models.py:60
 msgid "Assistant researcher"
 msgstr "助理研究员"
 
-#: account/models.py:60
+#: account/models.py:61
 msgid "Associate researcher"
 msgstr "副研究员"
 
-#: account/models.py:61
+#: account/models.py:62
 msgid "Distinguished researcher"
 msgstr "特别研究员"
 
-#: account/models.py:62
+#: account/models.py:63
 msgid "Researcher"
 msgstr "研究员"
 
-#: account/models.py:63
+#: account/models.py:64
 msgid "Instructor"
 msgstr "讲师"
 
-#: account/models.py:64
+#: account/models.py:65
 msgid "Assistant professor"
 msgstr "助理教授"
 
-#: account/models.py:65
+#: account/models.py:66
 msgid "Associate professor"
 msgstr "副教授"
 
-#: account/models.py:66
+#: account/models.py:67
 msgid "Professor"
 msgstr "教授"
 
-#: account/models.py:70 account/models.py:255
+#: account/models.py:71 account/models.py:256
 msgid "User"
 msgstr "用户"
 
-#: account/models.py:77
+#: account/models.py:78
 msgid "Why attend"
 msgstr "为什么参加"
 
-#: account/models.py:81
+#: account/models.py:82
 msgid ""
 "Undergraduate (junior and below) required to upload transcript. PDF format "
 "is recommended."
 msgstr "本科生(大三及以下)需要上传成绩单. 推荐上传PDF格式."
 
-#: account/models.py:86
+#: account/models.py:87
 msgid "Supplement"
 msgstr "补充说明"
 
-#: account/models.py:95
+#: account/models.py:96
 msgid "SJTU student ID"
 msgstr "SJTU学号"
 
-#: account/models.py:97
+#: account/models.py:98
 msgid "SJTU initial password"
 msgstr "SJTU初始密码"
 
-#: account/models.py:101
+#: account/models.py:102
 msgid "user profile"
 msgstr "用户信息"
 
-#: account/models.py:102
+#: account/models.py:103
 msgid "user profiles"
 msgstr "用户信息"
 
-#: account/models.py:215
+#: account/models.py:216
 msgid "attachments"
 msgstr "附件"
 
-#: account/models.py:256 archive/models.py:18 notice/models.py:14
-#: notice/models.py:52
+#: account/models.py:257 archive/models.py:15 notice/models.py:17
+#: notice/models.py:55 schedule/models.py:20 schedule/models.py:46
 msgid "Title"
 msgstr "标题"
 
-#: account/models.py:257 archive/models.py:22 notice/models.py:53
+#: account/models.py:258 archive/models.py:19 notice/models.py:56
+#: schedule/models.py:47
 msgid "Description"
 msgstr "描述"
 
-#: account/models.py:259 archive/models.py:23
+#: account/models.py:260 archive/models.py:20
 msgid "File"
 msgstr "文件"
 
-#: account/models.py:263 archive/models.py:67 notice/models.py:41
+#: account/models.py:264 archive/models.py:65 notice/models.py:44
 msgid "Created time"
 msgstr "创建时间"
 
-#: account/models.py:265
+#: account/models.py:266
 msgid "Modified time"
 msgstr "修改时间"
 
-#: account/models.py:268
+#: account/models.py:269
 msgid "user file"
 msgstr "用户文件"
 
-#: account/models.py:269
+#: account/models.py:270
 msgid "user files"
 msgstr "用户文件"
 
@@ -375,77 +376,113 @@ msgstr "用户文件"
 msgid "Add another attachment"
 msgstr "再增加一个附件"
 
-#: archive/models.py:19 notice/models.py:15
+#: archive/models.py:16 notice/models.py:18
 msgid "Publish time"
 msgstr "发布时间"
 
-#: archive/models.py:20 notice/models.py:16
+#: archive/models.py:17 notice/models.py:19
 msgid "Category"
 msgstr "类别"
 
-#: archive/models.py:21
+#: archive/models.py:18
 msgid "Publisher"
 msgstr "发布人"
 
-#: archive/models.py:28
+#: archive/models.py:25
 msgid "archive"
 msgstr "资料"
 
-#: archive/models.py:29
+#: archive/models.py:26
 msgid "archives"
 msgstr "资料"
 
-#: archive/models.py:66 notice/models.py:40
+#: archive/models.py:64 notice/models.py:43
 msgid "Category name"
 msgstr "类别名称"
 
-#: archive/models.py:70
+#: archive/models.py:68
 msgid "archive category"
 msgstr "资料类别"
 
-#: archive/models.py:71
+#: archive/models.py:69
 msgid "archive categories"
 msgstr "资料类别"
 
-#: notice/models.py:17
+#: notice/models.py:20
 msgid "Is important"
 msgstr "是否重要"
 
-#: notice/models.py:18
+#: notice/models.py:21 schedule/models.py:25
 msgid "Contents"
 msgstr "内容"
 
-#: notice/models.py:19
+#: notice/models.py:22 schedule/models.py:26
 msgid "Markdown syntax supported"
 msgstr "支持Markdown语法格式"
 
-#: notice/models.py:24
+#: notice/models.py:27
 msgid "notice"
 msgstr "通知"
 
-#: notice/models.py:25
+#: notice/models.py:28
 msgid "notices"
 msgstr "通知"
 
-#: notice/models.py:44
+#: notice/models.py:47
 msgid "notice category"
 msgstr "通知类别"
 
-#: notice/models.py:45
+#: notice/models.py:48
 msgid "notice categories"
 msgstr "通知类别"
 
-#: notice/models.py:55
+#: notice/models.py:58 schedule/models.py:49
 msgid "Attachment"
 msgstr "附件"
 
-#: notice/models.py:61
+#: notice/models.py:65
 msgid "notice attachment"
 msgstr "通知附件"
 
-#: notice/models.py:62
+#: notice/models.py:66
 msgid "notice attachments"
 msgstr "通知附件"
+
+#: schedule/models.py:21
+msgid "Person in charge"
+msgstr "负责人"
+
+#: schedule/models.py:22
+msgid "Date"
+msgstr "日期"
+
+#: schedule/models.py:23
+msgid "Start time"
+msgstr "开始时间"
+
+#: schedule/models.py:24
+msgid "End time"
+msgstr "结束时间"
+
+#: schedule/models.py:27 schedule/models.py:54
+msgid "Updated time"
+msgstr "更新时间"
+
+#: schedule/models.py:32
+msgid "Event"
+msgstr "事项"
+
+#: schedule/models.py:33
+msgid "Events"
+msgstr "事项"
+
+#: schedule/models.py:58
+msgid "Event attachment"
+msgstr "事项附件"
+
+#: schedule/models.py:59
+msgid "Event attachments"
+msgstr "事项附件"
 
 #~ msgid "Invalid filetype."
 #~ msgstr "不支持的文件格式"
