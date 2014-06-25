@@ -10,6 +10,15 @@ https://docs.djangoproject.com/en/1.6/ref/contrib/contenttypes/
     [natural keys] dumpdata --natural
 
 
-## dumpdata
+### dumpdata ###
+# --settings:
 $ python manage.py dumpdata --settings='django_skaschool.settings_production' --indent=4
+
+# problems with contenttypes
+> dumpdata --natural
+some other useful arguments:
+> -e contenttypes -e auth.Permission
+only use this together with --natural,
+or else might end up with badly aligned id numbers
+
 
